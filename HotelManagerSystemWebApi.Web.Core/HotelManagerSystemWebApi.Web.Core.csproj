@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>HotelManagerSystemWebApi.Web.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="HotelManagerSystemWebApi.Web.Core.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotelManagerSystemWebApi.Application\HotelManagerSystemWebApi.Application.csproj" />
+    <ProjectReference Include="..\HotelManagerSystemWebApi.Database.Migrations\HotelManagerSystemWebApi.Database.Migrations.csproj" />
+  </ItemGroup>
+
+</Project>

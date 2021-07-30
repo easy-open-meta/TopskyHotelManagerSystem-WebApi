@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HotelManagerSystemWebApi.Application</name>
+    </assembly>
+    <members>
+        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoAppService">
+            <summary>
+            管理员信息控制器
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Application.AdminInfoAppService.adminInfoService">
+            <summary>
+            管理员信息
+            </summary>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoAppService.#ctor(HotelManagerSystemWebApi.Application.IAdminInfoService)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="adminInfoService"></param>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoAppService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
+            <summary>
+            查询管理员信息列表
+            </summary>
+            <param name="adminInfoListDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoListDto">
+            <summary>
+            查询管理员信息列表
+            输入DTO
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Application.AdminInfoListDto.AdminName">
+            <summary>
+            管理员名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Application.AdminInfoListDto.IsAdmin">
+            <summary>
+            是否为超级管理员
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.OAdminInfoListDto">
+            <summary>
+            查询管理员信息列表
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Application.OAdminInfoListDto.listSource">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoService">
+            <summary>
+            管理员信息模块接口实现
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Application.AdminInfoService.adminInfoRepository">
+            <summary>
+            管理员信息仓储
+            </summary>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.#ctor(Furion.DatabaseAccessor.IRepository{HotelManagerSystemWebApi.Core.AdminInfo})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="adminInfoRepository"></param>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
+            <summary>
+            查询管理员信息列表
+            </summary>
+            <param name="adminInfoListDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.IAdminInfoService">
+            <summary>
+            管理员信息模块接口
+            </summary>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
+            <summary>
+            查询管理员信息列表
+            </summary>
+            <param name="adminInfoListDto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

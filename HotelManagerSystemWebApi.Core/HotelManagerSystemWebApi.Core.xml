@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HotelManagerSystemWebApi.Core</name>
+    </assembly>
+    <members>
+        <member name="T:HotelManagerSystemWebApi.Core.DtoExtend">
+            <summary>
+            实体类库
+            </summary>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty``1(System.Collections.Generic.List{``0})">
+            <summary>
+            是否为空值或空字符串(集合)
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <param name="source"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty``1(``0)">
+            <summary>
+            是否为空值或空字符串(实体)
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <param name="t1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.String)">
+            <summary>
+            是否为空值或空字符串(字符串)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.Nullable{System.Int32})">
+            <summary>
+            是否为空值或空字符串(整数)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.Nullable{System.Decimal})">
+            <summary>
+            是否为空值或空字符串(十进制)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.Nullable{System.Int64})">
+            <summary>
+            是否为空值或空字符串(长整型)
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.CopyModelTo``2(``0)">
+            <summary>
+            复制实体A的数据到实体B
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <typeparam name="T2"></typeparam>
+            <param name="t1"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.AdminInfo">
+            <summary>
+            管理员信息实体类
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.Id">
+            <summary>
+            索引ID
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.AdminAccount">
+            <summary>
+            管理员账号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.AdminPassword">
+            <summary>
+            管理员密码
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.AdminType">
+            <summary>
+            管理员类型
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.AdminName">
+            <summary>
+            管理员名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.IsAdmin">
+            <summary>
+            是否为超级管理员
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.DeleteMk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.datains_usr">
+            <summary>
+            资料新增人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.datains_time">
+            <summary>
+            资料新增时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.datachg_time">
+            <summary>
+            资料更新时间
+            </summary>
+        </member>
+    </members>
+</doc>
