@@ -1,61 +1,63 @@
-﻿using Furion.DatabaseAccessor;
+using Furion.DatabaseAccessor;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 管理员信息实体类
+    /// 商品信息表
     /// </summary>
-    [Table("admininfo")]
-    public class AdminInfo: IEntity
+    [Table("sellthing")]
+    public class SellThing : IEntity
     {
         /// <summary>
-        /// 索引ID
+        /// 
+        /// </summary>
+        public SellThing()
+        {
+        }
+
+        /// <summary>
+        /// 商品编号
         /// </summary>
         [Key]
         [Column(Order = 1)]
-        public System.Int32 Id { get; set; }
+        public System.String SellNo { get; set; }
 
         /// <summary>
-        /// 管理员账号
+        /// 商品名称
         /// </summary>
-        public System.String AdminAccount { get; set; }
+        public System.String SellName { get; set; }
 
         /// <summary>
-        /// 管理员密码
+        /// 商品价格
         /// </summary>
-        public System.String AdminPassword { get; set; }
+        public System.Decimal SellPrice { get; set; }
 
         /// <summary>
-        /// 管理员类型
+        /// 规格型号
         /// </summary>
-        public System.String AdminType { get; set; }
+        public System.String format { get; set; }
 
         /// <summary>
-        /// 管理员名称
+        /// 库存数量
         /// </summary>
-        public System.String AdminName { get; set; }
-
-        /// <summary>
-        /// 是否为超级管理员
-        /// </summary>
-        public System.Int32? IsAdmin { get; set; }
+        public System.Int32 Stock { get; set; }
 
         /// <summary>
         /// 删除标记
         /// </summary>
-        public System.Int32? DeleteMk { get; set; }
+        public System.Int32 delete_mk { get; set; }
 
         /// <summary>
-        /// 资料新增人
+        /// 资料创建人
         /// </summary>
         public System.String datains_usr { get; set; }
 
         /// <summary>
-        /// 资料新增时间
+        /// 资料创建时间
         /// </summary>
-        public System.DateTime? datains_time { get; set; }
+        public System.DateTime? datains_date { get; set; }
 
         /// <summary>
         /// 资料更新人
@@ -65,6 +67,6 @@ namespace HotelManagerSystemWebApi.Core
         /// <summary>
         /// 资料更新时间
         /// </summary>
-        public System.DateTime? datachg_time { get; set; }
+        public System.DateTime? datachg_date { get; set; }
     }
 }

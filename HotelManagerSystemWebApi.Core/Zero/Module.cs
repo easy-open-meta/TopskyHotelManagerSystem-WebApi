@@ -1,51 +1,43 @@
-﻿using Furion.DatabaseAccessor;
+using Furion.DatabaseAccessor;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 管理员信息实体类
+    /// 功能模块表
     /// </summary>
-    [Table("admininfo")]
-    public class AdminInfo: IEntity
+    [Table("module")]
+    public class Module : IEntity
     {
         /// <summary>
-        /// 索引ID
+        /// 
+        /// </summary>
+        public Module()
+        {
+        }
+
+        /// <summary>
+        /// 模块ID
         /// </summary>
         [Key]
         [Column(Order = 1)]
-        public System.Int32 Id { get; set; }
+        public System.Int32 module_id { get; set; }
 
         /// <summary>
-        /// 管理员账号
+        /// 模块名称
         /// </summary>
-        public System.String AdminAccount { get; set; }
+        public System.String module_name { get; set; }
 
         /// <summary>
-        /// 管理员密码
+        /// 模块描述
         /// </summary>
-        public System.String AdminPassword { get; set; }
-
-        /// <summary>
-        /// 管理员类型
-        /// </summary>
-        public System.String AdminType { get; set; }
-
-        /// <summary>
-        /// 管理员名称
-        /// </summary>
-        public System.String AdminName { get; set; }
-
-        /// <summary>
-        /// 是否为超级管理员
-        /// </summary>
-        public System.Int32? IsAdmin { get; set; }
+        public System.String module_desc { get; set; }
 
         /// <summary>
         /// 删除标记
         /// </summary>
-        public System.Int32? DeleteMk { get; set; }
+        public System.Int32 delete_mk { get; set; }
 
         /// <summary>
         /// 资料新增人

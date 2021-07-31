@@ -36,5 +36,45 @@ namespace HotelManagerSystemWebApi.Application
             return adminInfoService.AdminInfoList(adminInfoListDto);
         }
 
+        /// <summary>
+        /// 查询管理员信息
+        /// </summary>
+        /// <param name="adminInfoDto"></param>
+        /// <returns></returns>
+        public OAdminInfoDto AdminInfo(AdminInfoDto adminInfoDto)
+        {
+            return adminInfoService.AdminInfo(adminInfoDto);
+        }
+
+        /// <summary>
+        /// 添加管理员信息
+        /// </summary>
+        /// <param name="addAdminInfoDto"></param>
+        /// <returns></returns>
+        public OAddAdminInfoDto AddAdminInfo(AddAdminInfoDto addAdminInfoDto)
+        {
+            return adminInfoService.AddAdminInfo(addAdminInfoDto);
+        }
+
+        /// <summary>
+        /// 删除管理员信息
+        /// </summary>
+        /// <param name="delAdminInfoDto"></param>
+        /// <returns></returns>
+        public ODelAdminInfoDto DelAdminInfo(DelAdminInfoDto delAdminInfoDto)
+        {
+            return adminInfoService.DelAdminInfo(delAdminInfoDto);
+        }
+
+        /// <summary>
+        /// 更新管理员信息
+        /// </summary>
+        /// <param name="updAdminInfoDto"></param>
+        /// <returns></returns>
+        public OUpdAdminInfoDto UpdAdminInfo(UpdAdminInfoDto updAdminInfoDto)
+        {
+            return adminInfoService.UpdAdminInfo(updAdminInfoDto);
+        }
+
     }
 }

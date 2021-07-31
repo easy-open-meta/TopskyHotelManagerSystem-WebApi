@@ -1,10 +1,12 @@
-﻿namespace HotelManagerSystemWebApi.Application
+﻿using HotelManagerSystemWebApi.Core;
+
+namespace HotelManagerSystemWebApi.Application
 {
     /// <summary>
     /// 查询管理员信息列表
     /// 输入DTO
     /// </summary>
-    public class AdminInfoListDto
+    public class AdminInfoListDto:IListDto
     {
         /// <summary>
         /// 管理员名称
