@@ -20,59 +20,28 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：履历类
+ *模块说明：系统信息静态类
  */
-using Furion.DatabaseAccessor;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
-    /// <summary>
-    /// 员工履历
-    /// </summary>
-    [Table("workerhistory")]
-    public class WorkerHistory:EntityBase
+    [Table("base")]
+    public class Base
     {
         /// <summary>
-        /// 工号
+        /// 地址编号
         /// </summary>
-        public string WorkerId { get; set; }
+        public int url_no { get; set; }
+
         /// <summary>
-        /// 开始时间
+        /// 地址
         /// </summary>
-        public DateTime StartDate { get; set; }
-        /// <summary>
-        /// 结束时间
-        /// </summary>
-        public DateTime EndDate { get; set; }
-        /// <summary>
-        /// 职位
-        /// </summary>
-        public string Position { get; set; }
-        /// <summary>
-        /// 公司
-        /// </summary>
-        public string Company { get; set; }
-        /// <summary>
-        /// 删除标记
-        /// </summary>
-        public int delete_mk { get; set; }
-        /// <summary>
-        /// 资料创建人
-        /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
+        public string url_addr { get; set; }
     }
 }

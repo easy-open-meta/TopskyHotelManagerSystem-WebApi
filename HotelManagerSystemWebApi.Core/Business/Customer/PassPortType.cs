@@ -20,42 +20,32 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：证件类型类
  */
-using Furion.DatabaseAccessor;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 证件类型
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("passporttype")]
+    public class PassPortType
     {
         /// <summary>
-        /// 工号
+        /// 证件类型
         /// </summary>
-        public string WorkerNo { get; set; }
-        /// <summary>
-        /// 打卡时间
-        /// </summary>
-        public DateTime CheckTime { get; set; }
-        /// <summary>
-        /// 打卡方式
-        /// </summary>
-        public string CheckWay { get; set; }
-        /// <summary>
-        /// 打卡状态
-        /// </summary>
-        public int CheckState { get; set; }
+        public int PassportId { get; set; }
 
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        /// <summary>
+        /// 证件名称
+        /// </summary>
+        public string PassportName { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>
@@ -76,6 +66,5 @@ namespace HotelManagerSystemWebApi.Core
         /// 资料更新时间
         /// </summary>
         public DateTime datachg_date { get; set; }
-
     }
 }

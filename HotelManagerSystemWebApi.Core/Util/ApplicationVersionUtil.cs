@@ -20,62 +20,46 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：检测软件版本
  */
-using Furion.DatabaseAccessor;
+using SqlSugar;
+using SYS.Common;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 程序版本号检测
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    public class ApplicationVersionUtil:Repository<applicationversion>
     {
         /// <summary>
-        /// 工号
+        /// 检测版本号
         /// </summary>
-        public string WorkerNo { get; set; }
-        /// <summary>
-        /// 打卡时间
-        /// </summary>
-        public DateTime CheckTime { get; set; }
-        /// <summary>
-        /// 打卡方式
-        /// </summary>
-        public string CheckWay { get; set; }
-        /// <summary>
-        /// 打卡状态
-        /// </summary>
-        public int CheckState { get; set; }
+        /// <returns></returns>
+        public applicationversion CheckBaseVersion() 
+        {
+            return base.GetSingle(a => a.base_versionId == 1);
+        }
+    }
 
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+    [Table("applicationversion")]
+    public class applicationversion
+    {
         /// <summary>
-        /// 删除标记
+        /// 流水号
         /// </summary>
-        public int delete_mk { get; set; }
-        /// <summary>
-        /// 资料创建人
-        /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
+        [SugarColumn(ColumnName = "base_versionId")]//数据库是自增才配自增
+        public int base_versionId { get; set; }
 
+        /// <summary>
+        /// 版本号
+        /// </summary>
+        [SugarColumn(ColumnName = "base_version")]//数据库是自增才配自增
+        public string base_version { get; set; }
     }
 }

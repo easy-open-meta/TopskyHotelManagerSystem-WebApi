@@ -13,73 +13,6 @@ namespace HotelManagerSystemWebApi.Core
     public static class DtoExtend
     {
         /// <summary>
-        /// 是否为空值或空字符串(集合)
-        /// </summary>
-        /// <typeparam name="T1"></typeparam>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        public static bool IsNullOrEmpty<T1>(this List<T1> source)
-        {
-            //集合不为空和集合数量大于0
-            return !(source != null && source.Count > 0);
-        }
-
-        /// <summary>
-        /// 是否为空值或空字符串(实体)
-        /// </summary>
-        /// <typeparam name="T1"></typeparam>
-        /// <param name="t1"></param>
-        /// <returns></returns>
-        public static bool IsNullOrEmpty<T1>(this T1 t1) where T1 : class
-        {
-            return t1 == null;
-        }
-
-        /// <summary>
-        /// 是否为空值或空字符串(字符串)
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-
-        public static bool IsNullOrEmpty(this string value)
-        {
-            return string.IsNullOrEmpty(value);
-        }
-
-        /// <summary>
-        /// 是否为空值或空字符串(整数)
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-
-        public static bool IsNullOrEmpty(this int? value)
-        {
-            return value == null;
-        }
-
-        /// <summary>
-        /// 是否为空值或空字符串(十进制)
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-
-        public static bool IsNullOrEmpty(this decimal? value)
-        {
-            return value == null;
-        }
-
-        /// <summary>
-        /// 是否为空值或空字符串(长整型)
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-
-        public static bool IsNullOrEmpty(this long? value)
-        {
-            return value == null;
-        }
-
-        /// <summary>
         /// 复制实体A的数据到实体B
         /// </summary>
         /// <typeparam name="T1"></typeparam>
@@ -210,24 +143,6 @@ namespace HotelManagerSystemWebApi.Core
                 });
             });
             return _T1;
-        }
-
-        /// <summary>
-        /// 是否调用成功
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="dto"></param>
-        /// <returns></returns>
-        public static bool isOK<T>(this T dto) where T : MsgDto
-        {
-            if (dto.Status == StatusCode.OK)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         /// <summary>
@@ -441,5 +356,6 @@ namespace HotelManagerSystemWebApi.Core
             return dto;
         }
         #endregion
+
     }
 }

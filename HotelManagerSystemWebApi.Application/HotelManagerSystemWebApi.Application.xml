@@ -55,32 +55,6 @@
             <param name="updAdminInfoDto"></param>
             <returns></returns>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoListDto">
-            <summary>
-            查询管理员信息列表
-            输入DTO
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Application.AdminInfoListDto.AdminName">
-            <summary>
-            管理员名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Application.AdminInfoListDto.IsAdmin">
-            <summary>
-            是否为超级管理员
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Application.OAdminInfoListDto">
-            <summary>
-            查询管理员信息列表
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Application.OAdminInfoListDto.listSource">
-            <summary>
-            数据源
-            </summary>
-        </member>
         <member name="T:HotelManagerSystemWebApi.Application.AddAdminInfoDto">
             <summary>
             添加管理员信息
@@ -138,56 +112,21 @@
             管理员账号
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoService">
-            <summary>
-            管理员信息模块接口实现
-            </summary>
-        </member>
-        <member name="F:HotelManagerSystemWebApi.Application.AdminInfoService.adminInfoRepository">
-            <summary>
-            管理员信息仓储
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.#ctor(Furion.DatabaseAccessor.IRepository{HotelManagerSystemWebApi.Core.AdminInfo})">
-            <summary>
-            构造函数
-            </summary>
-            <param name="adminInfoRepository"></param>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
+        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoListDto">
             <summary>
             查询管理员信息列表
+            输入DTO
             </summary>
-            <param name="adminInfoListDto"></param>
-            <returns></returns>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AdminInfo(HotelManagerSystemWebApi.Application.AdminInfoDto)">
+        <member name="P:HotelManagerSystemWebApi.Application.AdminInfoListDto.AdminName">
             <summary>
-            查询管理员信息
+            管理员名称
             </summary>
-            <param name="adminInfoDto"></param>
-            <returns></returns>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AddAdminInfo(HotelManagerSystemWebApi.Application.AddAdminInfoDto)">
+        <member name="P:HotelManagerSystemWebApi.Application.AdminInfoListDto.IsAdmin">
             <summary>
-            添加管理员信息
+            是否为超级管理员
             </summary>
-            <param name="addAdminInfoDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.DelAdminInfo(HotelManagerSystemWebApi.Application.DelAdminInfoDto)">
-            <summary>
-            删除管理员信息
-            </summary>
-            <param name="delAdminInfoDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.UpdAdminInfo(HotelManagerSystemWebApi.Application.UpdAdminInfoDto)">
-            <summary>
-            更新管理员信息
-            </summary>
-            <param name="updAdminInfoDto"></param>
-            <returns></returns>
         </member>
         <member name="T:HotelManagerSystemWebApi.Application.DelAdminInfoDto">
             <summary>
@@ -199,46 +138,6 @@
             <summary>
             管理员账号
             </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Application.IAdminInfoService">
-            <summary>
-            管理员信息模块接口
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
-            <summary>
-            查询管理员信息列表
-            </summary>
-            <param name="adminInfoListDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AdminInfo(HotelManagerSystemWebApi.Application.AdminInfoDto)">
-            <summary>
-            查询管理员信息
-            </summary>
-            <param name="adminInfoDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AddAdminInfo(HotelManagerSystemWebApi.Application.AddAdminInfoDto)">
-            <summary>
-            添加管理员信息
-            </summary>
-            <param name="addAdminInfoDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.DelAdminInfo(HotelManagerSystemWebApi.Application.DelAdminInfoDto)">
-            <summary>
-            删除管理员信息
-            </summary>
-            <param name="delAdminInfoDto"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.UpdAdminInfo(HotelManagerSystemWebApi.Application.UpdAdminInfoDto)">
-            <summary>
-            更新管理员信息
-            </summary>
-            <param name="updAdminInfoDto"></param>
-            <returns></returns>
         </member>
         <member name="T:HotelManagerSystemWebApi.Application.OAddAdminInfoDto">
             <summary>
@@ -253,6 +152,16 @@
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Application.OAdminInfoDto.source">
+            <summary>
+            数据源
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.OAdminInfoListDto">
+            <summary>
+            查询管理员信息列表
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Application.OAdminInfoListDto.listSource">
             <summary>
             数据源
             </summary>
@@ -314,6 +223,97 @@
             <summary>
             资料新增时间
             </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.AdminInfoService">
+            <summary>
+            管理员信息模块接口实现
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Application.AdminInfoService.adminInfoRepository">
+            <summary>
+            管理员信息仓储
+            </summary>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.#ctor(Furion.DatabaseAccessor.IRepository{HotelManagerSystemWebApi.Core.AdminInfo})">
+            <summary>
+            
+            </summary>
+            <param name="adminInfoRepository"></param>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
+            <summary>
+            查询管理员信息列表
+            </summary>
+            <param name="adminInfoListDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AdminInfo(HotelManagerSystemWebApi.Application.AdminInfoDto)">
+            <summary>
+            查询管理员信息
+            </summary>
+            <param name="adminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.AddAdminInfo(HotelManagerSystemWebApi.Application.AddAdminInfoDto)">
+            <summary>
+            添加管理员信息
+            </summary>
+            <param name="addAdminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.DelAdminInfo(HotelManagerSystemWebApi.Application.DelAdminInfoDto)">
+            <summary>
+            删除管理员信息
+            </summary>
+            <param name="delAdminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.AdminInfoService.UpdAdminInfo(HotelManagerSystemWebApi.Application.UpdAdminInfoDto)">
+            <summary>
+            更新管理员信息
+            </summary>
+            <param name="updAdminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Application.IAdminInfoService">
+            <summary>
+            管理员信息模块接口
+            </summary>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AdminInfoList(HotelManagerSystemWebApi.Application.AdminInfoListDto)">
+            <summary>
+            查询管理员信息列表
+            </summary>
+            <param name="adminInfoListDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AdminInfo(HotelManagerSystemWebApi.Application.AdminInfoDto)">
+            <summary>
+            查询管理员信息
+            </summary>
+            <param name="adminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.AddAdminInfo(HotelManagerSystemWebApi.Application.AddAdminInfoDto)">
+            <summary>
+            添加管理员信息
+            </summary>
+            <param name="addAdminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.DelAdminInfo(HotelManagerSystemWebApi.Application.DelAdminInfoDto)">
+            <summary>
+            删除管理员信息
+            </summary>
+            <param name="delAdminInfoDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HotelManagerSystemWebApi.Application.IAdminInfoService.UpdAdminInfo(HotelManagerSystemWebApi.Application.UpdAdminInfoDto)">
+            <summary>
+            更新管理员信息
+            </summary>
+            <param name="updAdminInfoDto"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

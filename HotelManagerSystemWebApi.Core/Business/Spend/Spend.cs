@@ -20,42 +20,61 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：消费信息类
  */
-using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 消费信息
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("custospend")]
+    public class Spend
     {
         /// <summary>
-        /// 工号
+        /// 房间编号
         /// </summary>
-        public string WorkerNo { get; set; }
+        public string RoomNo { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 客户编号
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        public string CustoNo { get; set; }
         /// <summary>
-        /// 打卡方式
+        /// 商品名称
         /// </summary>
-        public string CheckWay { get; set; }
+        public string SpendName { get; set; }
         /// <summary>
-        /// 打卡状态
+        /// 消费数量
         /// </summary>
-        public int CheckState { get; set; }
-
+        public int SpendAmount { get; set; }
+        /// <summary>
+        /// 商品单价
+        /// </summary>
+        public decimal SpendPrice { get; set; }
         ///// <summary>
-        ///// 打卡状态
+        ///// 商品单价描述
         ///// </summary>
         //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        //public string SpendPriceStr { get; set; }
+        /// <summary>
+        /// 消费金额
+        /// </summary>
+        public decimal SpendMoney { get; set; }
+        ///// <summary>
+        ///// 消费金额描述
+        ///// </summary>
+        //[SqlSugar.SugarColumn(IsIgnore = true)]
+        //public string SpendMoneyStr { get; set; }
+        /// <summary>
+        /// 消费时间
+        /// </summary>
+        public DateTime SpendTime { get; set; }
+        /// <summary>
+        /// 结算状态
+        /// </summary>
+        public string MoneyState { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>
@@ -77,5 +96,10 @@ namespace HotelManagerSystemWebApi.Core
         /// </summary>
         public DateTime datachg_date { get; set; }
 
+        ///// <summary>
+        ///// 结算状态描述
+        ///// </summary>
+        //[SqlSugar.SugarColumn(IsIgnore = true)]
+        //public string SpendStateNm { get; set; }
     }
 }

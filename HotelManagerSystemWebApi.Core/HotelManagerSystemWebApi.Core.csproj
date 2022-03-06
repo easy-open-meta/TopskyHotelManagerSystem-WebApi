@@ -7,6 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Base\**" />
+    <Compile Remove="Customer\**" />
+    <EmbeddedResource Remove="Base\**" />
+    <EmbeddedResource Remove="Customer\**" />
+    <None Remove="Base\**" />
+    <None Remove="Customer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Util\ApplicationVersionUtil.cs" />
+    <Compile Remove="Util\CounterHelper.cs" />
+    <Compile Remove="Util\CounterRuleConsts.cs" />
+    <Compile Remove="Util\IDCardUtil.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="HotelManagerSystemWebApi.Core.xml" />
   </ItemGroup>
 
@@ -14,6 +30,10 @@
     <PackageReference Include="Furion" Version="2.16.1" />
     <PackageReference Include="Furion.Extras.Authentication.JwtBearer" Version="2.16.1" />
     <PackageReference Include="Furion.Extras.ObjectMapper.Mapster" Version="2.16.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Util\" />
   </ItemGroup>
 
 </Project>

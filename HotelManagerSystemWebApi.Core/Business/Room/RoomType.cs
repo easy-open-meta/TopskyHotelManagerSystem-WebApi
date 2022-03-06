@@ -20,42 +20,30 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：房间类型类
  */
-using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 房间类型
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("roomtype")]
+    public class RoomType
     {
         /// <summary>
-        /// 工号
+        /// 类型编号
         /// </summary>
-        public string WorkerNo { get; set; }
+       //[SqlSugar.SugarColumn(ColumnName = "RoomType")]
+       [Column("RoomType")]
+        public int Roomtype { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 房间类型
         /// </summary>
-        public DateTime CheckTime { get; set; }
-        /// <summary>
-        /// 打卡方式
-        /// </summary>
-        public string CheckWay { get; set; }
-        /// <summary>
-        /// 打卡状态
-        /// </summary>
-        public int CheckState { get; set; }
+        public string RoomName { get; set; }
 
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>
@@ -76,6 +64,5 @@ namespace HotelManagerSystemWebApi.Core
         /// 资料更新时间
         /// </summary>
         public DateTime datachg_date { get; set; }
-
     }
 }

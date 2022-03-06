@@ -20,62 +20,26 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：宣传联动类
  */
-using Furion.DatabaseAccessor;
-using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 酒店宣传联动内容
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("fonts")]
+    public class Fonts
     {
         /// <summary>
-        /// 工号
+        /// 宣传内容编号
         /// </summary>
-        public string WorkerNo { get; set; }
-        /// <summary>
-        /// 打卡时间
-        /// </summary>
-        public DateTime CheckTime { get; set; }
-        /// <summary>
-        /// 打卡方式
-        /// </summary>
-        public string CheckWay { get; set; }
-        /// <summary>
-        /// 打卡状态
-        /// </summary>
-        public int CheckState { get; set; }
+        public int FontsId { get; set; }
 
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
         /// <summary>
-        /// 删除标记
+        /// 宣传内容
         /// </summary>
-        public int delete_mk { get; set; }
-        /// <summary>
-        /// 资料创建人
-        /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
-
+        public string FontsMess { get; set; }
     }
 }

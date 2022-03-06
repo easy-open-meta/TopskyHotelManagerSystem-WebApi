@@ -20,42 +20,57 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：部门实体类
  */
-using Furion.DatabaseAccessor;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 部门表
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("dept")]
+    public class Dept
     {
         /// <summary>
-        /// 工号
-        /// </summary>
-        public string WorkerNo { get; set; }
+        /// 部门编号
+        /// </summary>  
+        public string dept_no { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 部门名称
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        public string dept_name { get; set; }
         /// <summary>
-        /// 打卡方式
+        /// 部门描述
         /// </summary>
-        public string CheckWay { get; set; }
+        public string dept_desc { get; set; }
         /// <summary>
-        /// 打卡状态
+        /// 创建时间(部门)
         /// </summary>
-        public int CheckState { get; set; }
-
+        public DateTime dept_date { get; set; }
+        /// <summary>
+        /// 部门主管
+        /// </summary>
+        public string dept_leader { get; set; }
         ///// <summary>
-        ///// 打卡状态
+        ///// 部门主管
         ///// </summary>
         //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        //public string leader_name { get; set; }
+        /// <summary>
+        /// 上级部门
+        /// </summary>
+        public string dept_parent { get; set; }
+        ///// <summary>
+        ///// 上级部门
+        ///// </summary>
+        //[SqlSugar.SugarColumn(IsIgnore = true)]
+        //public string parent_name { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>

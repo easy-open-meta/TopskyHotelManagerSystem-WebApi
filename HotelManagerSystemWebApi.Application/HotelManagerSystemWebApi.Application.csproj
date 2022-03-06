@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="jvncorelib" Version="1.0.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HotelManagerSystemWebApi.Core\HotelManagerSystemWebApi.Core.csproj" />
   </ItemGroup>
 

@@ -4,349 +4,244 @@
         <name>HotelManagerSystemWebApi.Core</name>
     </assembly>
     <members>
-        <member name="T:HotelManagerSystemWebApi.Core.Dept">
+        <member name="T:HotelManagerSystemWebApi.Core.Cash">
             <summary>
-            部门信息表
+            资产管理
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Dept.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashNo">
             <summary>
-            构造函数
+            资产编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeptNo">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashName">
             <summary>
-            部门编号
+            资产名称
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeptName">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashPrice">
             <summary>
-            部门名称
+            资产总值
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeptDesc">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashClub">
             <summary>
-            部门描述
+            所属部门
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeptDate">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashTime">
             <summary>
-            创建时间(部门)
+            入库时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeptLeader">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashSource">
             <summary>
-            部门主管
+            资产来源
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeptParent">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.CashPerson">
             <summary>
-            上级部门
+            资产经办人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DeleteMk">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.delete_mk">
             <summary>
             删除标记
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DatainsUsr">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.datains_usr">
             <summary>
             资料创建人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DatainsDate">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.datains_date">
             <summary>
             资料创建时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DatachgUsr">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.datachg_usr">
             <summary>
             资料更新人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Dept.DatachgDate">
+        <member name="P:HotelManagerSystemWebApi.Core.Cash.datachg_date">
             <summary>
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.Education">
+        <member name="T:HotelManagerSystemWebApi.Core.Custo">
             <summary>
-            教育程度表
+            客户信息
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Education.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoNo">
             <summary>
-            构造函数
+            客户编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.education_no">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoName">
             <summary>
-            学历编号
+            客户名称
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.education_name">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoSex">
             <summary>
-            学历名称
+            客户性别
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.delete_mk">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoTel">
+            <summary>
+            客户电话
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.PassportType">
+            <summary>
+            证件类型
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoID">
+            <summary>
+            证件号码
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoAdress">
+            <summary>
+            居住地址
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoBirth">
+            <summary>
+            出生日期
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.CustoType">
+            <summary>
+            客户类型
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.delete_mk">
             <summary>
             删除标记
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.datains_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.datains_usr">
             <summary>
             资料创建人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.datains_date">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.datains_date">
             <summary>
             资料创建时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.datachg_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.datachg_usr">
             <summary>
             资料更新人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Education.datachg_date">
+        <member name="P:HotelManagerSystemWebApi.Core.Custo.datachg_date">
             <summary>
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.Fonts">
+        <member name="T:HotelManagerSystemWebApi.Core.CustoSpend">
             <summary>
-            跑马灯内容表
+            酒店盈利情况
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Fonts.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.Years">
             <summary>
-            
+            年
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.FontsId">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.Money">
             <summary>
-            内容ID
+            总金额
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.FontsMess">
+        <member name="T:HotelManagerSystemWebApi.Core.CustoType">
             <summary>
-            内容信息
+            客户类型
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.delete_mk">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.UserType">
+            <summary>
+            客户类型
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.TypeName">
+            <summary>
+            类型名字
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.delete_mk">
             <summary>
             删除标记
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.datains_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.datains_usr">
             <summary>
             资料创建人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.datains_date">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.datains_date">
             <summary>
             资料创建时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.datachg_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.datachg_usr">
             <summary>
             资料更新人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Fonts.datachg_date">
+        <member name="P:HotelManagerSystemWebApi.Core.CustoType.datachg_date">
             <summary>
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.GBType">
+        <member name="T:HotelManagerSystemWebApi.Core.PassPortType">
             <summary>
-            奖惩类型表
+            证件类型
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.GBType.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.PassportId">
             <summary>
-            
+            证件类型
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.GBTypeId">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.PassportName">
             <summary>
-            奖惩类型ID
+            证件名称
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.GBName">
-            <summary>
-            奖惩类型信息
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.delete_mk">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.delete_mk">
             <summary>
             删除标记
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.datains_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.datains_usr">
             <summary>
             资料创建人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.datains_date">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.datains_date">
             <summary>
             资料创建时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.datachg_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.datachg_usr">
             <summary>
             资料更新人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.GBType.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Core.Nation">
-            <summary>
-            民族信息表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Nation.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.nation_no">
-            <summary>
-            民族编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.nation_name">
-            <summary>
-            民族名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Nation.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Core.PassportType">
-            <summary>
-            证照类型表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.PassportType.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.PassportId">
-            <summary>
-            证照类型ID
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.PassportName">
-            <summary>
-            证照类型名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.PassportType.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Core.Position">
-            <summary>
-            职位表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Position.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.position_no">
-            <summary>
-            职位编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.position_name">
-            <summary>
-            职位名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Position.datachg_date">
+        <member name="P:HotelManagerSystemWebApi.Core.PassPortType.datachg_date">
             <summary>
             资料更新时间
             </summary>
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.SexType">
             <summary>
-            性别类型表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.SexType.#ctor">
-            <summary>
-            
+            性别
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.SexType.sexId">
@@ -384,199 +279,59 @@
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.CashInfo">
+        <member name="T:HotelManagerSystemWebApi.Core.Fonts">
             <summary>
-            酒店资产表
+            酒店宣传联动内容
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.CashInfo.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.Fonts.FontsId">
             <summary>
-            
+            宣传内容编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashNo">
+        <member name="P:HotelManagerSystemWebApi.Core.Fonts.FontsMess">
             <summary>
-            资产编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashName">
-            <summary>
-            资产名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashPrice">
-            <summary>
-            资产总值
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashClub">
-            <summary>
-            所属部门
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashTime">
-            <summary>
-            入库时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashSource">
-            <summary>
-            资产来源
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.CashPerson">
-            <summary>
-            资产经办人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CashInfo.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Core.CustoSpend">
-            <summary>
-            客户消费信息
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.CustoSpend.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.SpendId">
-            <summary>
-            记录编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.RoomNo">
-            <summary>
-            房间编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.CustoNo">
-            <summary>
-            客户编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.SpendName">
-            <summary>
-            商品名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.SpendAmount">
-            <summary>
-            商品数量
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.SpendPrice">
-            <summary>
-            商品价格
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.SpendMoney">
-            <summary>
-            消费总额
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.SpendTime">
-            <summary>
-            消费时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.MoneyState">
-            <summary>
-            结算状态
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustoSpend.datachg_date">
-            <summary>
-            资料更新时间
+            宣传内容
             </summary>
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.Reser">
             <summary>
-            房间预约表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Reser.#ctor">
-            <summary>
-            
+            预约列表
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.ReserId">
             <summary>
-            预约ID
+            预约编号
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.CustoName">
             <summary>
-            客户姓名
+            客户名称
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.CustoTel">
             <summary>
-            联系方式
+            预约电话
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.ReserWay">
             <summary>
-            预约方式
+            预约渠道
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.ReserRoom">
             <summary>
-            预约房间号码
+            预约房号
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.ReserDate">
             <summary>
-            预约时间
+            预约起始
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.ReserEndDay">
             <summary>
-            截止时间
+            预约止日
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Reser.delete_mk">
@@ -606,12 +361,7 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.Room">
             <summary>
-            房间信息表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Room.#ctor">
-            <summary>
-            
+            房间实体类
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Room.RoomNo">
@@ -631,22 +381,27 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Room.CheckTime">
             <summary>
-            入住时间
+            最后一次入住时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Room.CheckOutTime">
             <summary>
-            退房时间
+            最后一次退房时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Room.RoomStateId">
             <summary>
-            房间状态
+            房间状态ID
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Room.RoomMoney">
             <summary>
             房间单价
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Room.RoomDeposit">
+            <summary>
+            房间押金
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Room.RoomPosition">
@@ -681,22 +436,17 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.RoomState">
             <summary>
-            房间状态表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.RoomState.#ctor">
-            <summary>
-            
+            房间状态
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.RoomState.RoomStateId">
             <summary>
-            房间状态ID
+            房间状态编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.RoomState.RoomStateNm">
+        <member name="P:HotelManagerSystemWebApi.Core.RoomState.RoomStateName">
             <summary>
-            状态名称
+            房间状态
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.RoomState.delete_mk">
@@ -726,22 +476,17 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.RoomType">
             <summary>
-            房间类型表
+            房间类型
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.RoomType.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.RoomType.Roomtype">
             <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.RoomType.RoomTypeId">
-            <summary>
-            房间类型ID
+            类型编号
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.RoomType.RoomName">
             <summary>
-            房间类型名称
+            房间类型
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.RoomType.delete_mk">
@@ -771,12 +516,7 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.SellThing">
             <summary>
-            商品信息表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.SellThing.#ctor">
-            <summary>
-            
+            商品信息
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.SellThing.SellNo">
@@ -801,7 +541,7 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.SellThing.Stock">
             <summary>
-            库存数量
+            库存
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.SellThing.delete_mk">
@@ -829,262 +569,157 @@
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.Wtinfo">
+        <member name="T:HotelManagerSystemWebApi.Core.Spend">
             <summary>
-            水电信息表
+            消费信息
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Wtinfo.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.WtiNo">
-            <summary>
-            记录编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.RoomNo">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.RoomNo">
             <summary>
             房间编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.UseDate">
-            <summary>
-            开始时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.EndDate">
-            <summary>
-            结束时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.WaterUse">
-            <summary>
-            用水情况
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.PowerUse">
-            <summary>
-            用电情况
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.Record">
-            <summary>
-            记录人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.CustoNo">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.CustoNo">
             <summary>
             客户编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.delete_mk">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.SpendName">
+            <summary>
+            商品名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.SpendAmount">
+            <summary>
+            消费数量
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.SpendPrice">
+            <summary>
+            商品单价
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.SpendMoney">
+            <summary>
+            消费金额
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.SpendTime">
+            <summary>
+            消费时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.MoneyState">
+            <summary>
+            结算状态
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.delete_mk">
             <summary>
             删除标记
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.datains_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.datains_usr">
             <summary>
             资料创建人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.datains_date">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.datains_date">
             <summary>
             资料创建时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.datachg_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.datachg_usr">
             <summary>
             资料更新人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Wtinfo.datachg_date">
+        <member name="P:HotelManagerSystemWebApi.Core.Spend.datachg_date">
             <summary>
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.CustomerInfo">
+        <member name="T:HotelManagerSystemWebApi.Core.SpendConsts">
             <summary>
-            客户信息表
+            结算状态常量
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.CustomerInfo.#ctor">
+        <member name="F:HotelManagerSystemWebApi.Core.SpendConsts.Settled">
             <summary>
-            
+            已结算状态常量
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoNo">
+        <member name="F:HotelManagerSystemWebApi.Core.SpendConsts.UnSettle">
             <summary>
-            用户编号
+            未结算状态常量
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoName">
+        <member name="T:HotelManagerSystemWebApi.Core.Wti">
             <summary>
-            用户名称
+            水电信息
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoSex">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.WtiNo">
             <summary>
-            用户性别
+            信息编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoTel">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.RoomNo">
             <summary>
-            用户电话
+            房间编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.PassportType">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.UseDate">
             <summary>
-            证照类型
+            开始使用时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoID">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.EndDate">
             <summary>
-            证件号码
+            结束使用时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoAdress">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.WaterUse">
             <summary>
-            居住地址
+            水费
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoBirth">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.PowerUse">
             <summary>
-            出生日期
+            电费
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.CustoType">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.Record">
             <summary>
-            客户类型
+            记录员
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.delete_mk">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.CustoNo">
             <summary>
-            删除标记
+            客户编号
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerInfo.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Core.CustomerType">
-            <summary>
-            客户类型表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.CustomerType.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.UserType">
-            <summary>
-            客户类型ID
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.TypeName">
-            <summary>
-            客户类型名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.delete_mk">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.delete_mk">
             <summary>
             删除标记
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.datains_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.datains_usr">
             <summary>
             资料创建人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.datains_date">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.datains_date">
             <summary>
             资料创建时间
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.datachg_usr">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.datachg_usr">
             <summary>
             资料更新人
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.CustomerType.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
-        <member name="T:HotelManagerSystemWebApi.Core.VipRule">
-            <summary>
-            会员等级规则表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.VipRule.#ctor">
-            <summary>
-            会员等级规则表
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.id">
-            <summary>
-            索引ID
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.rule_id">
-            <summary>
-            会员规则流水号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.rule_name">
-            <summary>
-            会员规则名称
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.rule_value">
-            <summary>
-            预设数值
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.type_id">
-            <summary>
-            会员等级
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datachg_date">
+        <member name="P:HotelManagerSystemWebApi.Core.Wti.datachg_date">
             <summary>
             资料更新时间
             </summary>
@@ -1139,50 +774,6 @@
             实体类库
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty``1(System.Collections.Generic.List{``0})">
-            <summary>
-            是否为空值或空字符串(集合)
-            </summary>
-            <typeparam name="T1"></typeparam>
-            <param name="source"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty``1(``0)">
-            <summary>
-            是否为空值或空字符串(实体)
-            </summary>
-            <typeparam name="T1"></typeparam>
-            <param name="t1"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.String)">
-            <summary>
-            是否为空值或空字符串(字符串)
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.Nullable{System.Int32})">
-            <summary>
-            是否为空值或空字符串(整数)
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.Nullable{System.Decimal})">
-            <summary>
-            是否为空值或空字符串(十进制)
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.IsNullOrEmpty(System.Nullable{System.Int64})">
-            <summary>
-            是否为空值或空字符串(长整型)
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
         <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.CopyModelTo``2(``0)">
             <summary>
             复制实体A的数据到实体B
@@ -1192,20 +783,24 @@
             <param name="t1"></param>
             <returns></returns>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.isOK``1(``0)">
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.UpdateToModel``2(``0,``1)">
             <summary>
-            是否调用成功
+            实体更新数据
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="dto"></param>
+            <typeparam name="T1">输出实体类型</typeparam>
+            <typeparam name="T2">输入实体类型</typeparam>
+            <param name="_T1">输入数据源</param>
+            <param name="_T2">输入数据源</param>
+            <returns>输出数据源</returns>
             <returns></returns>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.OK``1(``0)">
+        <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.OK``1(``0,System.String)">
             <summary>
             设置调用成功
             </summary>
             <typeparam name="T"></typeparam>
             <param name="dto"></param>
+            <param name="strMsg"></param>
             <returns></returns>
         </member>
         <member name="M:HotelManagerSystemWebApi.Core.DtoExtend.setEmpty``1(``0,System.String)">
@@ -1334,6 +929,11 @@
             <param name="strMsg"></param>
             <returns></returns>
         </member>
+        <member name="T:HotelManagerSystemWebApi.Core.MappingField">
+            <summary>
+            字段映射
+            </summary>
+        </member>
         <member name="T:HotelManagerSystemWebApi.Core.StatusCode">
             <summary>
             状态码枚举类
@@ -1419,89 +1019,19 @@
             Token过期
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.UploadInfo">
-            <summary>
-            公告日志表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.UploadInfo.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.NoticeNo">
-            <summary>
-            公告编号
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.Noticetheme">
-            <summary>
-            公告主题
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.NoticeType">
-            <summary>
-            公告类型
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.NoticeTime">
-            <summary>
-            发布日期
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.NoticeContent">
-            <summary>
-            公告正文
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.NoticeClub">
-            <summary>
-            发文部门
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.delete_mk">
-            <summary>
-            删除标记
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.datains_usr">
-            <summary>
-            资料创建人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.datains_date">
-            <summary>
-            资料创建时间
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.datachg_usr">
-            <summary>
-            资料更新人
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.UploadInfo.datachg_date">
-            <summary>
-            资料更新时间
-            </summary>
-        </member>
         <member name="T:HotelManagerSystemWebApi.Core.Worker">
             <summary>
-            员工信息表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Worker.#ctor">
-            <summary>
-            
+            员工信息
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerId">
             <summary>
-            工号
+            员工账号/工号
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerName">
             <summary>
-            名字
+            员工姓名
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerBirthday">
@@ -1511,22 +1041,22 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerSex">
             <summary>
-            性别
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerTel">
-            <summary>
-            电话
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerClub">
-            <summary>
-            部门
+            员工性别
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerNation">
             <summary>
-            民族
+            民族类型
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerTel">
+            <summary>
+            员工电话
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerClub">
+            <summary>
+            所属部门
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerAddress">
@@ -1536,32 +1066,32 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerPosition">
             <summary>
-            职位
+            员工职位
             </summary>
         </member>
-        <member name="P:HotelManagerSystemWebApi.Core.Worker.CardID">
+        <member name="P:HotelManagerSystemWebApi.Core.Worker.CardId">
             <summary>
             证件号码
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerPwd">
             <summary>
-            系统密码
+            员工密码
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerTime">
             <summary>
-            入职时间
+            员工入职时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerFace">
             <summary>
-            面貌
+            员工面貌
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.WorkerEducation">
             <summary>
-            学历
+            教育程度
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Worker.delete_mk">
@@ -1591,17 +1121,7 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.WorkerCheck">
             <summary>
-            打卡记录表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.WorkerCheck.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.WorkerCheck.Id">
-            <summary>
-            索引ID
+            员工打卡考勤
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerCheck.WorkerNo">
@@ -1651,17 +1171,7 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.WorkerGoodBad">
             <summary>
-            员工奖惩信息
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.WorkerGoodBad.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.WorkerGoodBad.Id">
-            <summary>
-            索引ID
+            员工奖罚
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerGoodBad.WorkNo">
@@ -1671,7 +1181,7 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerGoodBad.GBInfo">
             <summary>
-            奖惩内容
+            奖惩信息
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerGoodBad.GBType">
@@ -1681,7 +1191,7 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerGoodBad.GBOperation">
             <summary>
-            奖惩记录人
+            奖惩操作人
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerGoodBad.GBTime">
@@ -1716,17 +1226,7 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.WorkerHistory">
             <summary>
-            员工履历表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.WorkerHistory.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.Id">
-            <summary>
-            索引ID
+            员工履历
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.WorkerId">
@@ -1736,22 +1236,22 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.StartDate">
             <summary>
-            参加工作时间
+            开始时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.EndDate">
             <summary>
-            结束工作时间
+            结束时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.Position">
             <summary>
-            所任职位
+            职位
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.Company">
             <summary>
-            所属公司
+            公司
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.WorkerHistory.delete_mk">
@@ -1779,14 +1279,24 @@
             资料更新时间
             </summary>
         </member>
+        <member name="T:HotelManagerSystemWebApi.Core.WorkerPic">
+            <summary>
+            员工照片
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.WorkerPic.WorkerId">
+            <summary>
+            工号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.WorkerPic.Pic">
+            <summary>
+            照片路径
+            </summary>
+        </member>
         <member name="T:HotelManagerSystemWebApi.Core.AdminInfo">
             <summary>
             管理员信息实体类
-            </summary>
-        </member>
-        <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.Id">
-            <summary>
-            索引ID
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminInfo.AdminAccount">
@@ -1844,11 +1354,6 @@
             管理员类型
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.AdminType.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.Id">
             <summary>
             编号
@@ -1861,7 +1366,7 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.type_name">
             <summary>
-            管理员类型名称
+            类型名称
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.delete_mk">
@@ -1871,22 +1376,32 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.datains_usr">
             <summary>
-            资料创建人
+            新增人
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.datains_date">
             <summary>
-            资料创建时间
+            新增时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.datachg_usr">
             <summary>
-            资料更新人
+            修改人
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.AdminType.datachg_date">
             <summary>
-            资料更新时间
+            修改时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Base.url_no">
+            <summary>
+            地址编号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Base.url_addr">
+            <summary>
+            地址
             </summary>
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.CardCodes">
@@ -1926,12 +1441,7 @@
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.CheckInfo">
             <summary>
-            监管统计表
-            </summary>
-        </member>
-        <member name="M:HotelManagerSystemWebApi.Core.CheckInfo.#ctor">
-            <summary>
-            
+            监管统计
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckNo">
@@ -1941,32 +1451,32 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckClub">
             <summary>
-            受监管部门
+            监管部门
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckProgres">
             <summary>
-            受监管部门总体概述
+            监管进度
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckCash">
             <summary>
-            受监管部门交易情况
+            
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckScore">
             <summary>
-            受监管部门得分情况
+            
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckPerson">
             <summary>
-            本次监管负责人
+            
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.CheckAdvice">
             <summary>
-            监管建议
+            
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.CheckInfo.delete_mk">
@@ -2064,14 +1574,109 @@
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.Module">
+        <member name="T:HotelManagerSystemWebApi.Core.Dept">
             <summary>
-            功能模块表
+            部门表
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.Module.#ctor">
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.dept_no">
             <summary>
-            
+            部门编号
+            </summary>  
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.dept_name">
+            <summary>
+            部门名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.dept_desc">
+            <summary>
+            部门描述
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.dept_date">
+            <summary>
+            创建时间(部门)
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.dept_leader">
+            <summary>
+            部门主管
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.dept_parent">
+            <summary>
+            上级部门
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.delete_mk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.datains_usr">
+            <summary>
+            资料创建人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.datains_date">
+            <summary>
+            资料创建时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Dept.datachg_date">
+            <summary>
+            资料更新时间
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.Education">
+            <summary>
+            学历
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.education_no">
+            <summary>
+            学历编号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.education_name">
+            <summary>
+            学历名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.delete_mk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.datains_usr">
+            <summary>
+            资料创建人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.datains_date">
+            <summary>
+            资料创建时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Education.datachg_date">
+            <summary>
+            资料更新时间
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.Module">
+            <summary>
+            模块实体
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Module.module_id">
@@ -2096,12 +1701,12 @@
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Module.datains_usr">
             <summary>
-            资料新增人
+            资料创建人
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Module.datains_time">
             <summary>
-            资料新增时间
+            资料创建时间
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.Module.datachg_usr">
@@ -2114,14 +1719,64 @@
             资料更新时间
             </summary>
         </member>
-        <member name="T:HotelManagerSystemWebApi.Core.ModuleZero">
+        <member name="T:HotelManagerSystemWebApi.Core.ModuleConsts">
             <summary>
-            功能模块权限表
+            系统模块常量类
             </summary>
         </member>
-        <member name="M:HotelManagerSystemWebApi.Core.ModuleZero.#ctor">
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.BaseInfo">
             <summary>
-            
+            基础信息
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.CashInfo">
+            <summary>
+            财务信息
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.WtiInfo">
+            <summary>
+            水电管理
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.CheckInfo">
+            <summary>
+            监管统计
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.RoomManager">
+            <summary>
+            客房管理
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.CustomerManager">
+            <summary>
+            客户管理
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.HumanResourcesManager">
+            <summary>
+            人事管理
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.MaterialManager">
+            <summary>
+            物资管理
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.OperationLogManager">
+            <summary>
+            员工操作日志
+            </summary>
+        </member>
+        <member name="F:HotelManagerSystemWebApi.Core.ModuleConsts.AdminManager">
+            <summary>
+            系统管理
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.ModuleZero">
+            <summary>
+            模块权限表
             </summary>
         </member>
         <member name="P:HotelManagerSystemWebApi.Core.ModuleZero.module_id">
@@ -2142,6 +1797,106 @@
         <member name="P:HotelManagerSystemWebApi.Core.ModuleZero.module_enable">
             <summary>
             是否开启
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.Nation">
+            <summary>
+            民族
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.nation_no">
+            <summary>
+            民族编号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.nation_name">
+            <summary>
+            民族名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.delete_mk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.datains_usr">
+            <summary>
+            资料创建人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.datains_date">
+            <summary>
+            资料创建时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Nation.datachg_date">
+            <summary>
+            资料更新时间
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.Notice">
+            <summary>
+            任命公告
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.NoticeNo">
+            <summary>
+            公告编号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.Noticetheme">
+            <summary>
+            公告主题
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.NoticeType">
+            <summary>
+            公告类型
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.NoticeTime">
+            <summary>
+            公告时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.NoticeContent">
+            <summary>
+            公告正文
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.NoticeClub">
+            <summary>
+            发文部门
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.delete_mk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.datains_usr">
+            <summary>
+            资料创建人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.datains_date">
+            <summary>
+            资料创建时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Notice.datachg_date">
+            <summary>
+            资料更新时间
             </summary>
         </member>
         <member name="T:HotelManagerSystemWebApi.Core.OperationLog">
@@ -2202,6 +1957,141 @@
         <member name="P:HotelManagerSystemWebApi.Core.OperationLog.datachg_date">
             <summary>
             资料更新时间
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.Position">
+            <summary>
+            职位
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.position_no">
+            <summary>
+            职位编号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.position_name">
+            <summary>
+            职位名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.delete_mk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.datains_usr">
+            <summary>
+            资料创建人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.datains_date">
+            <summary>
+            资料创建时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.Position.datachg_date">
+            <summary>
+            资料更新时间
+            </summary>
+        </member>
+        <member name="T:HotelManagerSystemWebApi.Core.VipRule">
+            <summary>
+            会员等级规则类
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.id">
+            <summary>
+            索引ID
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.rule_id">
+            <summary>
+            会员规则流水号
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.rule_name">
+            <summary>
+            会员规则名称
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.rule_value">
+            <summary>
+            预设数值(历史消费总额)
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.type_id">
+            <summary>
+            会员等级
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.delete_mk">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datains_usr">
+            <summary>
+            新增人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datains_date">
+            <summary>
+            新增时间
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datachg_usr">
+            <summary>
+            修改人
+            </summary>
+        </member>
+        <member name="P:HotelManagerSystemWebApi.Core.VipRule.datachg_date">
+            <summary>
+            修改时间
+            </summary>
+        </member>
+        <member name="T:SYS.Application.GBType">
+            <summary>
+            奖惩类型实体类
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.GBTypeId">
+            <summary>
+            奖惩编号
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.GBName">
+            <summary>
+            奖惩名称
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.delete_mk">
+            <summary>
+            删除标记
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.datains_usr">
+            <summary>
+            资料新增人
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.datains_date">
+            <summary>
+            资料新增日期
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.datachg_usr">
+            <summary>
+            资料更新人
+            </summary>
+        </member>
+        <member name="P:SYS.Application.GBType.datachg_date">
+            <summary>
+            资料更新日期
             </summary>
         </member>
     </members>

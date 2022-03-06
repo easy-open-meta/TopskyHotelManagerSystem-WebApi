@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HotelManagerSystemWebApi.Application\HotelManagerSystemWebApi.Application.csproj" />
-    <ProjectReference Include="..\HotelManagerSystemWebApi.Database.Migrations\HotelManagerSystemWebApi.Database.Migrations.csproj" />
+    <ProjectReference Include="..\HotelManagerSystemWebApi.EntityFramework.Core\HotelManagerSystemWebApi.EntityFramework.Core.csproj" />
   </ItemGroup>
 
 </Project>

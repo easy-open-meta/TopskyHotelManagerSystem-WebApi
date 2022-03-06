@@ -20,45 +20,63 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：水电信息类
  */
-using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 水电信息
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("wtinfo")]
+    public class Wti
     {
         /// <summary>
-        /// 工号
+        /// 信息编号
         /// </summary>
-        public string WorkerNo { get; set; }
+        [Column("WtiNo")]
+        public int WtiNo { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 房间编号
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        [Column("RoomNo")]
+        public string RoomNo { get; set; }
         /// <summary>
-        /// 打卡方式
+        /// 开始使用时间
         /// </summary>
-        public string CheckWay { get; set; }
+        [Column("UseDate")]
+        public DateTime UseDate { get; set; }
         /// <summary>
-        /// 打卡状态
+        /// 结束使用时间
         /// </summary>
-        public int CheckState { get; set; }
-
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        [Column("EndDate")]
+        public DateTime EndDate { get; set; }
+        /// <summary>
+        /// 水费
+        /// </summary>
+        [Column( "WaterUse")]
+        public decimal WaterUse { get; set; }
+        /// <summary>
+        /// 电费
+        /// </summary>
+        [Column("PowerUse")]
+        public decimal PowerUse { get; set; }
+        /// <summary>
+        /// 记录员
+        /// </summary>
+        [Column("Record")]
+        public string Record { get; set; }
+        /// <summary>
+        /// 客户编号
+        /// </summary>
+        [Column("CustoNo")]
+        public string CustoNo { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>
+        [Column("delete_mk")]
         public int delete_mk { get; set; }
         /// <summary>
         /// 资料创建人
@@ -76,6 +94,7 @@ namespace HotelManagerSystemWebApi.Core
         /// 资料更新时间
         /// </summary>
         public DateTime datachg_date { get; set; }
+
 
     }
 }

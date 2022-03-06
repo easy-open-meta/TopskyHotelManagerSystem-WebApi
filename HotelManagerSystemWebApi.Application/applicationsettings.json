@@ -4,7 +4,7 @@
     "GroupOpenApiInfos": [
       {
         "DefaultGroupName": "TSHotelManagerSystem 2.0",
-        "Group": "TSHotelManagerSystem 2.0",
+        "Group": "Default",
         "Title": "WebAPI接口文档",
         "Description": "用于TS酒店管理系统v2.0版本的后端WebAPI接口。",
         "Version": "1.0.0",

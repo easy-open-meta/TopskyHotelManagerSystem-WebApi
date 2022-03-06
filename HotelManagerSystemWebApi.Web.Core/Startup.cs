@@ -11,7 +11,6 @@ namespace HotelManagerSystemWebApi.Web.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddJwt<JwtHandler>();
-
             services.AddCorsAccessor();
 
             services.AddControllers()

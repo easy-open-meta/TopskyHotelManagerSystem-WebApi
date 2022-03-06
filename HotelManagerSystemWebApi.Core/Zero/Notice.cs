@@ -20,45 +20,58 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：任命公告类
  */
-using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 任命公告
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("uploadinfo")]
+    public class Notice
     {
         /// <summary>
-        /// 工号
+        /// 公告编号
         /// </summary>
-        public string WorkerNo { get; set; }
+        [Column("NoticeNo")]
+        public string NoticeNo { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 公告主题
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        [Column("Noticetheme")]
+        public string Noticetheme { get; set; }
         /// <summary>
-        /// 打卡方式
+        /// 公告类型
         /// </summary>
-        public string CheckWay { get; set; }
-        /// <summary>
-        /// 打卡状态
-        /// </summary>
-        public int CheckState { get; set; }
-
+        [Column("NoticeType")]
+        public string NoticeType { get; set; }
         ///// <summary>
-        ///// 打卡状态
+        ///// 公告类型(描述)
         ///// </summary>
         //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        //public string NoticeTypeName { get; set; }
+        /// <summary>
+        /// 公告时间
+        /// </summary>
+        [Column("NoticeTime")]
+        public DateTime NoticeTime { get; set; }
+        /// <summary>
+        /// 公告正文
+        /// </summary>
+        [Column("NoticeContent")]
+        public string NoticeContent { get; set; }
+        /// <summary>
+        /// 发文部门
+        /// </summary>
+        [Column("NoticeClub")]
+        public string NoticeClub { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>
+        [Column("delete_mk")]
         public int delete_mk { get; set; }
         /// <summary>
         /// 资料创建人

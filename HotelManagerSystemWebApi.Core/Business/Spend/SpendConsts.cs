@@ -20,59 +20,29 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：履历类
+ *模块说明：结算状态常量
  */
-using Furion.DatabaseAccessor;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工履历
+    /// 结算状态常量
     /// </summary>
-    [Table("workerhistory")]
-    public class WorkerHistory:EntityBase
+    public class SpendConsts
     {
         /// <summary>
-        /// 工号
+        /// 已结算状态常量
         /// </summary>
-        public string WorkerId { get; set; }
+        public const string Settled = "Settled";
+
         /// <summary>
-        /// 开始时间
+        /// 未结算状态常量
         /// </summary>
-        public DateTime StartDate { get; set; }
-        /// <summary>
-        /// 结束时间
-        /// </summary>
-        public DateTime EndDate { get; set; }
-        /// <summary>
-        /// 职位
-        /// </summary>
-        public string Position { get; set; }
-        /// <summary>
-        /// 公司
-        /// </summary>
-        public string Company { get; set; }
-        /// <summary>
-        /// 删除标记
-        /// </summary>
-        public int delete_mk { get; set; }
-        /// <summary>
-        /// 资料创建人
-        /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
+        public const string UnSettle = "UnSettle";
     }
 }

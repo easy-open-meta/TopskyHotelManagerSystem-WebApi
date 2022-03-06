@@ -20,42 +20,47 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：预约类
  */
-using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 预约列表
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("reser")]
+    public class Reser
     {
         /// <summary>
-        /// 工号
+        /// 预约编号
         /// </summary>
-        public string WorkerNo { get; set; }
+        public string ReserId { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 客户名称
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        public string CustoName { get; set; }
         /// <summary>
-        /// 打卡方式
+        /// 预约电话
         /// </summary>
-        public string CheckWay { get; set; }
+        public string CustoTel { get; set; }
         /// <summary>
-        /// 打卡状态
+        /// 预约渠道
         /// </summary>
-        public int CheckState { get; set; }
-
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        public string ReserWay { get; set; }
+        /// <summary>
+        /// 预约房号
+        /// </summary>
+        public string ReserRoom { get; set; }
+        /// <summary>
+        /// 预约起始
+        /// </summary>
+        public DateTime ReserDate { get; set; }
+        /// <summary>
+        /// 预约止日
+        /// </summary>
+        public DateTime ReserEndDay { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>

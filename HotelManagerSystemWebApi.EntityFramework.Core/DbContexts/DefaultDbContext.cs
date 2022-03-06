@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagerSystemWebApi.EntityFramework.Core
 {
-    [AppDbContext("MySqlConnectStr", DbProvider.MySqlOfficial)]
+    [AppDbContext("NpgSqlConnectStr", DbProvider.Npgsql)]
     public class DefaultDbContext : AppDbContext<DefaultDbContext>
     {
         public DefaultDbContext(DbContextOptions<DefaultDbContext> options) : base(options)

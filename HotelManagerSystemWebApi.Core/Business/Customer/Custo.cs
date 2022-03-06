@@ -20,42 +20,70 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：客户信息类
  */
-using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 客户信息
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("userinfo")]
+    public class Custo
     {
         /// <summary>
-        /// 工号
+        /// 客户编号
         /// </summary>
-        public string WorkerNo { get; set; }
+        public string CustoNo { get; set; }
         /// <summary>
-        /// 打卡时间
+        /// 客户名称
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        public string CustoName { get; set; }
         /// <summary>
-        /// 打卡方式
+        /// 客户性别
         /// </summary>
-        public string CheckWay { get; set; }
+        public int CustoSex { get; set; }
         /// <summary>
-        /// 打卡状态
+        /// 客户电话
         /// </summary>
-        public int CheckState { get; set; }
-
+        public string CustoTel { get; set; }
+        /// <summary>
+        /// 证件类型
+        /// </summary>
+        public int PassportType { get; set; }
+        /// <summary>
+        /// 证件号码
+        /// </summary>
+        public string CustoID { get; set; }
+        /// <summary>
+        /// 居住地址
+        /// </summary>
+        public string CustoAdress { get; set; }
+        /// <summary>
+        /// 出生日期
+        /// </summary>
+        public DateTime CustoBirth { get; set; }
+        /// <summary>
+        /// 客户类型
+        /// </summary>
+        public int CustoType { get; set; }
         ///// <summary>
-        ///// 打卡状态
+        ///// 客户类型
         ///// </summary>
         //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        //public string typeName { get; set; }
+        ///// <summary>
+        ///// 证件类型
+        ///// </summary>
+        //[SqlSugar.SugarColumn(IsIgnore = true)]
+        //public string PassportName { get; set; }
+        ///// <summary>
+        ///// 性别
+        ///// </summary>
+        //[SqlSugar.SugarColumn(IsIgnore = true)]
+        //public string SexName { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>

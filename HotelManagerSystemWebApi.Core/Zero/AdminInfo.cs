@@ -8,14 +8,8 @@ namespace HotelManagerSystemWebApi.Core
     /// 管理员信息实体类
     /// </summary>
     [Table("admininfo")]
-    public class AdminInfo: IEntity
+    public class AdminInfo: EntityBase
     {
-        /// <summary>
-        /// 索引ID
-        /// </summary>
-        [Key]
-        [Column(Order = 1)]
-        public System.Int32 Id { get; set; }
 
         /// <summary>
         /// 管理员账号

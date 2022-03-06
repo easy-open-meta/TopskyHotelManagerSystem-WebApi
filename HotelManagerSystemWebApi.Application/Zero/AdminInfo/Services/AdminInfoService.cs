@@ -2,6 +2,7 @@
 using Furion.DependencyInjection;
 using Furion.LinqBuilder;
 using HotelManagerSystemWebApi.Core;
+using jvncorelib.Entitylib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,8 @@ namespace HotelManagerSystemWebApi.Application
     /// <summary>
     /// 管理员信息模块接口实现
     /// </summary>
-    public class AdminInfoService: IAdminInfoService, ITransient
+    public class AdminInfoService: IAdminInfoService, ITransient 
+        //笔记：如果把Migrations层删除后使用瞬时服务，必须让EntityFramework.Core层被Web.Core层引用，否则会导致服务无法被正常识别
     {
         /// <summary>
         /// 管理员信息仓储
@@ -21,7 +23,7 @@ namespace HotelManagerSystemWebApi.Application
         private readonly IRepository<AdminInfo> adminInfoRepository;
 
         /// <summary>
-        /// 构造函数
+        /// 
         /// </summary>
         /// <param name="adminInfoRepository"></param>
         public AdminInfoService(IRepository<AdminInfo> adminInfoRepository)

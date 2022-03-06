@@ -20,62 +20,75 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：会员等级规则类
  */
 using Furion.DatabaseAccessor;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 会员等级规则类
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    [Table("vip_rule")]
+    public class VipRule:IEntity
     {
         /// <summary>
-        /// 工号
+        /// 索引ID
         /// </summary>
-        public string WorkerNo { get; set; }
-        /// <summary>
-        /// 打卡时间
-        /// </summary>
-        public DateTime CheckTime { get; set; }
-        /// <summary>
-        /// 打卡方式
-        /// </summary>
-        public string CheckWay { get; set; }
-        /// <summary>
-        /// 打卡状态
-        /// </summary>
-        public int CheckState { get; set; }
+        public int id { get; set; }
 
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
         /// <summary>
-        /// 删除标记
+        /// 会员规则流水号
+        /// </summary>
+        public string rule_id { get; set; }
+
+        /// <summary>
+        /// 会员规则名称
+        /// </summary>
+        public string rule_name { get; set; }
+
+        /// <summary>
+        /// 预设数值(历史消费总额)
+        /// </summary>
+        public decimal rule_value { get; set; }
+
+        /// <summary>
+        /// 会员等级
+        /// </summary>
+        public int type_id { get; set; }
+
+        /// <summary>
+        /// 删除标识
         /// </summary>
         public int delete_mk { get; set; }
         /// <summary>
-        /// 资料创建人
+        /// 新增人
         /// </summary>
         public string datains_usr { get; set; }
+
         /// <summary>
-        /// 资料创建时间
+        /// 新增时间
         /// </summary>
         public DateTime datains_date { get; set; }
         /// <summary>
-        /// 资料更新人
+        /// 修改人
         /// </summary>
         public string datachg_usr { get; set; }
         /// <summary>
-        /// 资料更新时间
+        /// 修改时间
         /// </summary>
         public DateTime datachg_date { get; set; }
 
+        ///// <summary>
+        ///// 会员等级描述
+        ///// </summary>
+        //[SqlSugar.SugarColumn(IsIgnore = true)]
+        //public string type_name { get; set; }
     }
 }

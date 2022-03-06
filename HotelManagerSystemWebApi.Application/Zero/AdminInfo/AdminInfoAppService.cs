@@ -1,4 +1,5 @@
-﻿using Furion.DynamicApiController;
+﻿using Furion.DependencyInjection;
+using Furion.DynamicApiController;
 using System;
 using System.Collections.Generic;
 using System.Linq;

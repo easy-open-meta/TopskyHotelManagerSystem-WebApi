@@ -10,7 +10,7 @@ namespace HotelManagerSystemWebApi.EntityFramework.Core
         {
             services.AddDatabaseAccessor(options =>
             {
-                options.AddDbPool<DefaultDbContext>($"{DbProvider.MySqlOfficial}@8.0.23");
+                options.AddDbPool<DefaultDbContext>();
             });
         }
     }

@@ -20,62 +20,60 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：打卡考勤类
+ *模块说明：系统模块常量类
  */
-using Furion.DatabaseAccessor;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Core
 {
     /// <summary>
-    /// 员工打卡考勤
+    /// 系统模块常量类
     /// </summary>
-    [Table("workercheck")]
-    public class WorkerCheck:EntityBase
+    public class ModuleConsts
     {
         /// <summary>
-        /// 工号
+        /// 基础信息
         /// </summary>
-        public string WorkerNo { get; set; }
+        public const string BaseInfo = "BaseInfo";
         /// <summary>
-        /// 打卡时间
+        /// 财务信息
         /// </summary>
-        public DateTime CheckTime { get; set; }
+        public const string CashInfo = "CashInfo";
         /// <summary>
-        /// 打卡方式
+        /// 水电管理
         /// </summary>
-        public string CheckWay { get; set; }
+        public const string WtiInfo = "WtiInfo";
         /// <summary>
-        /// 打卡状态
+        /// 监管统计
         /// </summary>
-        public int CheckState { get; set; }
-
-        ///// <summary>
-        ///// 打卡状态
-        ///// </summary>
-        //[SqlSugar.SugarColumn(IsIgnore = true)]
-        //public string CheckStateNm { get; set; }
+        public const string CheckInfo = "CheckInfo";
         /// <summary>
-        /// 删除标记
+        /// 客房管理
         /// </summary>
-        public int delete_mk { get; set; }
+        public const string RoomManager = "RoomManager";
         /// <summary>
-        /// 资料创建人
+        /// 客户管理
         /// </summary>
-        public string datains_usr { get; set; }
+        public const string CustomerManager = "CustomerManager";
         /// <summary>
-        /// 资料创建时间
+        /// 人事管理
         /// </summary>
-        public DateTime datains_date { get; set; }
+        public const string HumanResourcesManager = "HumanResourcesManager";
         /// <summary>
-        /// 资料更新人
+        /// 物资管理
         /// </summary>
-        public string datachg_usr { get; set; }
+        public const string MaterialManager = "MaterialManager";
         /// <summary>
-        /// 资料更新时间
+        /// 员工操作日志
         /// </summary>
-        public DateTime datachg_date { get; set; }
-
+        public const string OperationLogManager = "OperationLogManager";
+        /// <summary>
+        /// 系统管理
+        /// </summary>
+        public const string AdminManager = "AdminManager";
     }
 }
