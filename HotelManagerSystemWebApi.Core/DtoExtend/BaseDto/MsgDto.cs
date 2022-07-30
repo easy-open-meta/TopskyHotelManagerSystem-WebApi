@@ -9,7 +9,7 @@ namespace HotelManagerSystemWebApi.Core
     /// <summary>
     /// 输出DTO
     /// </summary>
-    public abstract class MsgDto:BaseDto
+    public abstract class MsgDto:IBaseDto
     {
         /// <summary>
         /// 状态码

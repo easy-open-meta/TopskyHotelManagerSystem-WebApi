@@ -22,6 +22,7 @@
  *
  *模块说明：房间类型类
  */
+using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,7 +32,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 房间类型
     /// </summary>
     [Table("roomtype")]
-    public class RoomType
+    public class RoomType:IEntity
     {
         /// <summary>
         /// 类型编号

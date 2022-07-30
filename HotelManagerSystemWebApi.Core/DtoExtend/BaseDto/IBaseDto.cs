@@ -9,8 +9,11 @@ namespace HotelManagerSystemWebApi.Core
     /// <summary>
     /// 输入DTO
     /// </summary>
-    public class IBaseDto:BaseDto
+    public class IBaseDto
     {
-        
+        /// <summary>
+        /// 当前登录人员
+        /// </summary>
+        public string NowLoginUsr { get; set; }
     }
 }

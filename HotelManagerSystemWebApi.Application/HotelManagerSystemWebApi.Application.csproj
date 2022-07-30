@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <NoWarn>1701;1702;1591</NoWarn>
     <DocumentationFile>HotelManagerSystemWebApi.Application.xml</DocumentationFile>
   </PropertyGroup>
@@ -18,11 +18,37 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="jvncorelib" Version="1.0.1.4" />
+    <PackageReference Include="jvncorelib" Version="1.0.1.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HotelManagerSystemWebApi.Core\HotelManagerSystemWebApi.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Business\Sellthing\Dtos\" />
+    <Folder Include="Business\Spend\Dtos\" />
+    <Folder Include="Worker\GoodBad\Dtos\" />
+    <Folder Include="Worker\History\Dtos\" />
+    <Folder Include="Worker\WorkerCheck\Dtos\" />
+    <Folder Include="Worker\WorkerInfo\Dtos\" />
+    <Folder Include="Worker\WorkerPic\Dtos\" />
+    <Folder Include="Zero\Base\Dtos\" />
+    <Folder Include="Zero\CheckInfo\Dtos\" />
+    <Folder Include="Zero\CheckInfo\Services\" />
+    <Folder Include="Zero\CheckInfo\Temp\" />
+    <Folder Include="Zero\Module\Dtos\" />
+    <Folder Include="Zero\Module\Services\" />
+    <Folder Include="Zero\Module\Temp\" />
+    <Folder Include="Zero\Notice\Dtos\" />
+    <Folder Include="Zero\Notice\Services\" />
+    <Folder Include="Zero\Notice\Temp\" />
+    <Folder Include="Zero\OperationLog\Dtos\" />
+    <Folder Include="Zero\OperationLog\Temp\" />
+    <Folder Include="Zero\OperationLog\Services\" />
+    <Folder Include="Zero\VipRule\Dtos\" />
+    <Folder Include="Zero\VipRule\Services\" />
+    <Folder Include="Zero\VipRule\Temp\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

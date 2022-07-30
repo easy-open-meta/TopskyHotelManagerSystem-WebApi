@@ -13,13 +13,123 @@ namespace HotelManagerSystemWebApi.Core
     public static class DtoExtend
     {
         /// <summary>
+        /// 对结果进行分页处理
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static List<T1> GetPageList<T1>(this List<T1> source,int pageIndex,int pageSize,ref int count)
+        {
+            var listSource =  source.Skip((pageIndex - 1) * pageSize)
+                    .Take(pageSize).ToList();
+            count = source.Count;
+            return listSource;
+        }
+
+        /// <summary>
+        /// 实体集合转换成指定实体集合
+        /// </summary>
+        /// <typeparam name="T1">输入实体类型</typeparam>
+        /// <typeparam name="T2">输出实体类型</typeparam>
+        /// <param name="source">输入数据源</param>
+        /// <returns>输出数据源</returns>
+        public static List<T2> CopyToModel<T1, T2>(this List<T1> source)
+        {
+            List<T2> listT2 = new List<T2>();
+
+            T2 _T2 = default(T2);
+            PropertyInfo[] _T1PI = typeof(T1).GetProperties();
+            PropertyInfo[] _T2PI = typeof(T2).GetProperties();
+            foreach (T1 _T1 in source)
+            {
+                _T2 = Activator.CreateInstance<T2>();
+                for (int i = 0; i < _T2PI.Length; i++)
+                {
+                    //判断源实体中有没有对应的字段属性
+                    var _PI = _T1PI.Where(a => a.Name.ToUpper() == _T2PI[i].Name.ToUpper()).FirstOrDefault();
+                    if (_PI == null)
+                    {
+                        //字段名称
+                        var propName = string.Empty;
+                        //获取字段的自定义属性
+                        var mappingField = _T2PI[i].GetCustomAttribute<MappingField>();
+                        //如果自定义的映射属性存在，则取属性名称
+                        if (mappingField != null)
+                        {
+                            propName = mappingField.ColName;
+                        }
+                        else
+                        {
+                            propName = _T2PI[i].Name;
+                        }
+                        //判断源实体中有没有对应的字段属性
+                        _PI = _T1PI.Where(a => a.Name.ToUpper() == propName.ToUpper()).FirstOrDefault();
+                    }
+                    if (_PI != null)
+                    {
+                        object value = _PI.GetValue(_T1, null);
+                        Type t = _T2PI[i].PropertyType;
+                        if ((!t.Equals(_PI.PropertyType)) && value != null)
+                        {
+                            if (t == typeof(int))
+                            {
+                                value = Convert.ToInt32(_PI.GetValue(_T1, null));
+                            }
+                            else if (t == typeof(int?))
+                            {
+                                value = Convert.ToInt32(_PI.GetValue(_T1, null));
+                            }
+                            else if (t == typeof(string))
+                            {
+                                if (_PI.PropertyType == typeof(byte[]))
+                                {
+                                    value = System.Text.Encoding.UTF8.GetString((byte[])_PI.GetValue(_T1, null));
+                                }
+                                else
+                                {
+                                    value = _PI.GetValue(_T1, null) + "";
+                                }
+                            }
+                            else if (t == typeof(DateTime))
+                            {
+                                value = Convert.ToDateTime(_PI.GetValue(_T1, null));
+                            }
+                            else if (t == typeof(DateTime?))
+                            {
+                                value = Convert.ToDateTime(_PI.GetValue(_T1, null));
+                            }
+                            else if (t == typeof(decimal?))
+                            {
+                                value = Convert.ToDecimal(_PI.GetValue(_T1, null));
+                            }
+                            else if (t == typeof(decimal))
+                            {
+                                value = Convert.ToDecimal(_PI.GetValue(_T1, null));
+                            }
+                            else
+                            {
+                                value = _PI.GetValue(_T1, null);
+                            }
+                        }
+                        _T2PI[i].SetValue(_T2, value, null);
+                    }
+                }
+                listT2.Add(_T2);
+            }
+            return listT2;
+        }
+
+        /// <summary>
         /// 复制实体A的数据到实体B
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
         /// <param name="t1"></param>
         /// <returns></returns>
-        public static T2 CopyModelTo<T1, T2>(this T1 t1) where T2 : class, new()
+        public static T2 CopyToModel<T1, T2>(this T1 t1) where T2 : class, new()
         {
             T2 t2 = Activator.CreateInstance<T2>();
             var tInType = t1.GetType();

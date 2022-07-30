@@ -9,16 +9,16 @@ namespace HotelManagerSystemWebApi.Core
     /// <summary>
     /// 输入DTO(列表)
     /// </summary>
-    public class IListDto:BaseDto
+    public class IListDto:IBaseDto
     {
         /// <summary>
         /// 页数
         /// </summary>
-        public int? PageIndex { get; set; }
+        public int PageIndex { get; set; }
 
         /// <summary>
         /// 总数
         /// </summary>
-        public int? PageSize { get; set; }
+        public int PageSize { get; set; }
     }
 }

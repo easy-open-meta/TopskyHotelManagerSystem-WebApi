@@ -22,6 +22,7 @@
  *
  *模块说明：宣传联动类
  */
+using Furion.DatabaseAccessor;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
@@ -30,7 +31,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 酒店宣传联动内容
     /// </summary>
     [Table("fonts")]
-    public class Fonts
+    public class Fonts:IEntity
     {
         /// <summary>
         /// 宣传内容编号

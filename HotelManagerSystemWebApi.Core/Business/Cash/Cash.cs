@@ -22,6 +22,7 @@
  *
  *模块说明：资产类
  */
+using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,7 +32,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 资产管理
     /// </summary>
     [Table("cashinfo")]
-    public class Cash
+    public class Cash:IEntity
     {
         /// <summary>
         /// 资产编号

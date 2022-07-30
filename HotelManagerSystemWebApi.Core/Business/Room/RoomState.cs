@@ -22,7 +22,8 @@
  *
  *模块说明：房间状态类
  */
-using System;
+
+using Furion.DatabaseAccessor;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HotelManagerSystemWebApi.Core
@@ -31,7 +32,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 房间状态
     /// </summary>
     [Table("roomstate")]
-    public class RoomState
+    public class RoomState:IEntity
     {
         /// <summary>
         /// 房间状态编号

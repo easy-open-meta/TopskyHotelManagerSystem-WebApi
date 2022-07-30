@@ -1,5 +1,6 @@
 ﻿using Furion.DatabaseAccessor;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace HotelManagerSystemWebApi.EntityFramework.Core
 {

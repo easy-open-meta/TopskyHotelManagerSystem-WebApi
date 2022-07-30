@@ -22,6 +22,7 @@
  *
  *模块说明：客户信息类
  */
+using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,7 +32,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 客户信息
     /// </summary>
     [Table("userinfo")]
-    public class Custo
+    public class Custo:IEntity
     {
         /// <summary>
         /// 客户编号

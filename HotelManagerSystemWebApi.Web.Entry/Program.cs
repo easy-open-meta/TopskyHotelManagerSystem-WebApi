@@ -7,15 +7,11 @@ namespace HotelManagerSystemWebApi.Web.Entry
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var builder = WebApplication.CreateBuilder(args).Inject();
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            var app = builder.Build();
+            app.Run();
         }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.Inject()
-                                     .UseStartup<Startup>();
-                });
+        
     }
 }

@@ -22,6 +22,7 @@
  *
  *模块说明：消费信息类
  */
+using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,7 +32,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 消费信息
     /// </summary>
     [Table("custospend")]
-    public class Spend
+    public class Spend:IEntity
     {
         /// <summary>
         /// 房间编号

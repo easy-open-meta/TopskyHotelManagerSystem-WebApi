@@ -22,6 +22,7 @@
  *
  *模块说明：预约类
  */
+using Furion.DatabaseAccessor;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -31,7 +32,7 @@ namespace HotelManagerSystemWebApi.Core
     /// 预约列表
     /// </summary>
     [Table("reser")]
-    public class Reser
+    public class Reser:IEntity
     {
         /// <summary>
         /// 预约编号

@@ -1,5 +1,6 @@
 {
   "ConnectionStrings": {
-    "MySqlConnectStr": "Data Source=127.0.0.1;Database=tshoteldb;User ID=softuser;Password=yjj990720;pooling=true;port=3306;sslmode=none;CharSet=utf8"
+    "MySqlConnectStr": "Data Source=127.0.0.1;Database=tshoteldb;User ID=softuser;Password=;pooling=true;port=3306;sslmode=none;CharSet=utf8",
+    "NpgSqlConnectStr": "PORT=5630;DATABASE=tshoteldb;HOST=.;PASSWORD=.;USER ID=postgres"
   }
 }
