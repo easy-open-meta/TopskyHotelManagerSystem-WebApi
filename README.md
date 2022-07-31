@@ -29,21 +29,21 @@
 
 ###  :mag_right: 系统开发环境：
 
-操作系统：Windows 10(x64)
+操作系统：Windows 11(x64)
 
-开发工具：Microsoft Visual Studio 2019(系统最新版本)
+开发工具：Microsoft Visual Studio 2022(系统最新版本)
 
-数据库：MySQL v8.0.23(强烈推荐！)
+数据库：PostgreSQL v13
 
-数据库管理工具：Navicat 15
+数据库管理工具：Navicat 16
 
 开发语言：C#语言、LINQ语言
 
 开发平台：.Net
 
-开发框架：.Net 5/Furion
+开发框架：.Net 6/Furion
 
-开发技术：.NET 5 WebAPI
+开发技术：.NET 6 WebAPI
 
 ### :open_file_folder: 系统结构：
 
@@ -99,27 +99,16 @@ HotelManagerSystemWebApi
 
 **咖啡与网络(后期维护和开发)**
 
-###  :computer: 项目运行部署(执行下面步骤前需先安装.NET 5 SDK和Runtime)：
+###  :computer: 项目运行部署(执行下面步骤前需先安装.NET 6 SDK和Runtime)：
 
-**下载并安装Microsoft Visual Studio Professional 2019及以上版本，并通过下载Zip包解压，打开.sln后缀格式文件运行。**
+**下载并安装Microsoft Visual Studio Professional 2022及以上版本，并通过下载Zip包解压，打开.sln后缀格式文件运行。**
 
 ###  :inbox_tray: 数据库运行部署(本地)：
 
-**作者及开发团队强烈建议使用MySQL数据库，安装MySQL数据库并开启服务，通过可视化管理工具对数据库进行建立，可通过打开执行数据库脚本文件夹内的.sql后缀格式文件进行快速建立数据表和导入数据，执行步骤(以MySQL数据库为例)：**
+**作者及开发团队强烈建议使用PostgreSQL数据库，安装PostgreSQL数据库并开启服务，通过可视化管理工具对数据库进行建立，可通过打开执行数据库脚本文件夹内的.sql后缀格式文件进行快速建立数据表和导入数据，执行步骤(以PostgreSQL数据库为例)：**
 
 **1、通过可视化管理工具打开Table.sql文件进行数据表建立。**
 
 **2、随后打开Data.sql文件进行数据导入。**
-
-### :exclamation: 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request(https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/pulls)
-
-1. #  :chart_with_upwards_trend: Star趋势图(感谢[Giteye](https://giteye.net/)提供的趋势图报表功能！)：
-
-   [![Giteye chart](https://chart.giteye.net/gitee/java-and-net/topsky-hotel-manager-system-web-api/QXF965PJ.png)](https://giteye.net/chart/QXF965PJ)](https://giteye.net/chart/Z9DD26VK)
 
 ​       [![咖啡与网络/TopskyHotelManagerSystem-WebApi](https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/widgets/widget_card.svg?colors=4183c4,ffffff,ffffff,e3e9ed,666666,9b9b9b)](https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api)
