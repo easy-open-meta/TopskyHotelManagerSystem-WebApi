@@ -1,19 +1,12 @@
 ﻿
 
-using SYS.Core.Util;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelManagerSystemWebApi.Application
 {
     /// <summary>
     /// 员工照片接口实现类
     /// </summary>
-    public  class WorkerPicService:Repository<WorkerPic>,IWorkerPicService
+    public  class WorkerPicService:IWorkerPicService,ITransient
     {
         /// <summary>
         /// 查询员工照片

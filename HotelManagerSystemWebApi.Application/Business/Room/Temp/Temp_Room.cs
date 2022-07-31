@@ -24,21 +24,9 @@ namespace HotelManagerSystemWebApi.Application
         /// </summary>
         public string CustoNo { get; set; }
         /// <summary>
-        /// 最后一次入住时间
-        /// </summary>
-        public DateTime? CheckTime { get; set; }
-        /// <summary>
-        /// 最后一次退房时间
-        /// </summary>
-        public DateTime? CheckOutTime { get; set; }
-        /// <summary>
         /// 房间状态ID
         /// </summary>
         public int RoomStateId { get; set; }
-        /// <summary>
-        /// 房间状态
-        /// </summary>
-        public string RoomState { get; set; }
         /// <summary>
         /// 房间单价
         /// </summary>
@@ -51,38 +39,21 @@ namespace HotelManagerSystemWebApi.Application
         /// 房间位置
         /// </summary>
         public string RoomPosition { get; set; }
+
+
+
         /// <summary>
-        /// 客户类型名称
+        /// 房间类型描述
         /// </summary>
-        public string typeName { get; set; }
+        public string RoomTypeNm { get; set; }
         /// <summary>
-        /// 房间名称
+        /// 客户编号描述
         /// </summary>
-        public string RoomName { get; set; }
+        public string CustoNm { get; set; }
         /// <summary>
-        /// 最后一次入住时间
+        /// 房间状态描述
         /// </summary>
-        public string CheckTimeFormat { get; set; }
-        /// <summary>
-        /// 删除标记
-        /// </summary>
-        public int delete_mk { get; set; }
-        /// <summary>
-        /// 资料创建人
-        /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
+        public string RoomStateNm { get; set; }
 
     }
 }

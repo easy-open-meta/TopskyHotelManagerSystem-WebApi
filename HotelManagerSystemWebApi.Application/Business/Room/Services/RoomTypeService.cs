@@ -21,7 +21,7 @@
  *SOFTWARE.
  *
  */
-using HotelManagerSystemWebApi.Application.Business.Room.Dtos;
+using HotelManagerSystemWebApi.Application;
 
 namespace HotelManagerSystemWebApi.Application
 {
@@ -45,7 +45,6 @@ namespace HotelManagerSystemWebApi.Application
             this.roomTypeRepository = roomTypeRepository;
         }
 
-        #region 获取所有房间类型
         /// <summary>
         /// 获取所有房间类型
         /// </summary>
@@ -77,6 +76,5 @@ namespace HotelManagerSystemWebApi.Application
 
             return oSelectRoomTypesAllDto;
         }
-        #endregion
     }
 }

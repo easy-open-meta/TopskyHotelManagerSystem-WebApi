@@ -38,7 +38,7 @@ namespace HotelManagerSystemWebApi.Application
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
-        Admin SelectMangerByPass(Admin admin);
+        AdminInfo SelectMangerByPass(AdminInfo admin);
         #endregion
 
 
@@ -48,41 +48,41 @@ namespace HotelManagerSystemWebApi.Application
         /// </summary>
         /// <param name="account"></param>
         /// <returns></returns>
-        Admin SelectAdminPwdByAccount(string account);
+        AdminInfo SelectAdminPwdByAccount(string account);
         #endregion
 
         /// <summary>
         /// 获取所有管理员列表
         /// </summary>
         /// <returns></returns>
-        List<Admin> GetAllAdminList();
+        List<AdminInfo> GetAllAdminList();
 
         /// <summary>
         /// 修改密码
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
-        bool UpdateNewPwdByOldPwd(Admin admin);
+        bool UpdateNewPwdByOldPwd(AdminInfo admin);
 
         /// <summary>
         /// 获取管理员列表
         /// </summary>
         /// <returns></returns>
-        List<Admin> GetAllAdmin();
+        List<AdminInfo> GetAllAdmin();
 
         /// <summary>
         /// 添加管理员
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
-        bool AddAdmin(Admin admin);
+        bool AddAdmin(AdminInfo admin);
 
         /// <summary>
         /// 获取管理员信息
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
-        Admin GetAdminInfoByAdminAccount(Admin admin);
+        AdminInfo GetAdminInfoByAdminAccount(AdminInfo admin);
 
         /// <summary>
         /// 获取所有管理员类型
@@ -95,6 +95,6 @@ namespace HotelManagerSystemWebApi.Application
         /// </summary>
         /// <param name="admins"></param>
         /// <returns></returns>
-        bool UpdAccount(Admin admins);
+        bool UpdAccount(AdminInfo admins);
     }
 }

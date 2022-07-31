@@ -33,7 +33,7 @@ namespace HotelManagerSystemWebApi.Application
     /// <summary>
     /// 管理员数据访问层
     /// </summary>
-    public class AdminService:Repository<Admin>, IAdminService
+    public class AdminService:IAdminService,ITransient
     {
         EncryptLib encryptLib = new EncryptLib();
 

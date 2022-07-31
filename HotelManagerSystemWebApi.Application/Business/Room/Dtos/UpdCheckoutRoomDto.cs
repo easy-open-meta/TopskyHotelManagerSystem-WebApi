@@ -22,43 +22,18 @@
  *
  */
 
-using System;
-
 namespace HotelManagerSystemWebApi.Application
 {
     /// <summary>
-    /// 获取所有房间信息
+    /// 根据房间编号退房（退房）
     /// 输入DTO
     /// </summary>
-    public class RoomListDto:IListDto
+    public class UpdCheckoutRoomDto : IBaseDto
     {
         /// <summary>
         /// 房间编号
         /// </summary>
+        [Required]
         public string RoomNo { get; set; }
-        /// <summary>
-        /// 房间类型
-        /// </summary>
-        public int RoomType { get; set; }
-        /// <summary>
-        /// 客户编号
-        /// </summary>
-        public string CustoNo { get; set; }
-        /// <summary>
-        /// 最后一次入住时间
-        /// </summary>
-        public DateTime? CheckTime { get; set; }
-        /// <summary>
-        /// 最后一次退房时间
-        /// </summary>
-        public DateTime? CheckOutTime { get; set; }
-        /// <summary>
-        /// 房间状态ID
-        /// </summary>
-        public int RoomStateId { get; set; }
-        /// <summary>
-        /// 删除标记
-        /// </summary>
-        public int delete_mk { get; set; }
     }
 }

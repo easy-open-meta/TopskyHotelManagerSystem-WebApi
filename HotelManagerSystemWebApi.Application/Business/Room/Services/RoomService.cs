@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Furion.DependencyInjection;
+using HotelManagerSystemWebApi.Application;
 using HotelManagerSystemWebApi.Core;
 
 
@@ -64,67 +65,15 @@ namespace HotelManagerSystemWebApi.Application
         {
             _roomRepository = roomRepository;
         }
-
-        #region 根据房间状态获取相应状态的房间信息
-        /// <summary>
-        /// 根据房间状态获取相应状态的房间信息
-        /// </summary>
-        /// <param name="stateid"></param>
-        /// <returns></returns>
-        public List<Room> SelectRoomByRoomState(int stateid)
-        {
-            List<RoomState> roomStates = new List<RoomState>();
-            roomStates = base.Change<RoomState>().GetList(a => a.delete_mk != 1);
-            List<RoomType> roomTypes = new List<RoomType>();
-            roomTypes = base.Change<RoomType>().GetList(a => a.delete_mk != 1);
-            List<Room> rooms = new List<Room>();
-            rooms = base.GetList(a => a.delete_mk != 1 && a.RoomStateId == stateid).OrderBy(a => a.RoomNo).ToList();
-            rooms.ForEach(source =>
-            {
-                var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
-                var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
-            });
-            return rooms;
-        }
-        #endregion
-
-
-        #region 根据房间状态来查询可使用的房间
-        /// <summary>
-        /// 根据房间状态来查询可使用的房间
-        /// </summary>
-        /// <returns></returns>
-        public List<Room> SelectCanUseRoomAll()
-        {
-            List<RoomState> roomStates = new List<RoomState>();
-            roomStates = base.Change<RoomState>().GetList(a => a.delete_mk != 1);
-            List<RoomType> roomTypes = new List<RoomType>();
-            roomTypes = base.Change<RoomType>().GetList(a => a.delete_mk != 1);
-            List<Room> rooms = new List<Room>();
-            rooms = base.GetList(a => a.delete_mk != 1 && a.RoomStateId == 0).OrderBy(a => a.RoomNo).ToList();
-            rooms.ForEach(source =>
-            {
-                var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
-                var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
-            });
-            return rooms;
-        }
-        #endregion
-
-
-        #region 获取所有房间信息
+        
         /// <summary>
         /// 获取所有房间信息
         /// </summary>
         /// <param name="roomListDto"></param>
         /// <returns></returns>
-        public ORoomListDto RoomList(RoomListDto roomListDto)
+        public OSelectRoomListDto SelectRoomList(SelectRoomListDto roomListDto)
         {
-            ORoomListDto oRoomListDto = new ORoomListDto();
+            OSelectRoomListDto oRoomListDto = new OSelectRoomListDto();
 
             var where = LinqExpression.Create<Room>(a => a.delete_mk != 1);
 
@@ -132,6 +81,26 @@ namespace HotelManagerSystemWebApi.Application
             if (!roomListDto.RoomNo.IsNullOrEmpty())
             {
                 where = where.And(a => a.RoomNo.Contains(roomListDto.RoomNo));
+            }
+            //客户编号
+            if (!roomListDto.CustoNo.IsNullOrEmpty())
+            {
+                where = where.And(a => a.CustoNo.Contains(roomListDto.CustoNo));
+            }
+            //房间状态
+            if (!roomListDto.RoomStateId.IsNullOrEmpty())
+            {
+                where = where.And(a => a.RoomStateId == roomListDto.RoomStateId);
+            }
+            //房间类型
+            if (!roomListDto.RoomType.IsNullOrEmpty())
+            {
+                where = where.And(a => a.RoomType == roomListDto.RoomType);
+            }
+            //删除标记
+            if (!roomListDto.delete_mk.IsNullOrEmpty())
+            {
+                where = where.And(a => a.delete_mk == roomListDto.delete_mk);
             }
 
             //查询出所有房间类型
@@ -142,275 +111,208 @@ namespace HotelManagerSystemWebApi.Application
             var listCustoNo = listSource.Select(a => a.CustoNo).Distinct().ToList();
             var listCusto = this._custoRepository.AsQueryable(a => listCustoNo.Contains(a.CustoNo)).ToList();
 
-            //房间类型
-            var listRoomStateId = listSource.Select(a => a.RoomStateId).Distinct().ToList();
-            var listRoomState = this._roomStateRepository.AsQueryable()
             //房间状态
+            var listRoomStateId = listSource.Select(a => a.RoomStateId).Distinct().ToList();
+            var listRoomState = this._roomStateRepository.AsQueryable().ToList();
+
+            //房间类型
+            var listRoomTypeId = listSource.Select(a => a.RoomType).Distinct().ToList();
+            var listRoomType = this._roomTypeRepository.AsQueryable().ToList();
+
+            listSource.ForEach(source =>
+            {
+                //客户
+                var customer = listCusto.Find(a => a.CustoNo.Equals(source.CustoNo));
+                source.CustoNm = customer.IsNullOrEmpty() ? "" : customer.CustoName;
+
+                //房间状态
+                var roomState = listRoomState.Find(a => a.RoomStateId == source.RoomStateId);
+                source.RoomStateNm = roomState.IsNullOrEmpty() ? "" : roomState.RoomStateName;
+
+                //房间类型
+                var roomType = listRoomType.Find(a => a.Roomtype == source.RoomType);
+                source.RoomTypeNm = roomType.IsNullOrEmpty() ? "" : roomType.RoomName;
+
+            });
 
             oRoomListDto.listSource = listSource;
+            oRoomListDto.total = listSource.Count;
             oRoomListDto.OK();
 
             return oRoomListDto;
         }
-        #endregion
 
-        #region 获取房间分区的信息
         /// <summary>
-        /// 获取房间分区的信息
+        /// 单条房间信息
         /// </summary>
+        /// <param name="selectRoomDto"></param>
         /// <returns></returns>
-        public List<Room> SelectRoomByTypeName(string TypeName)
+        public OSelectRoomDto SelectRoom(SelectRoomDto selectRoomDto)
         {
-            List<RoomState> roomStates = new List<RoomState>();
-            roomStates = base.Change<RoomState>().GetList(a => a.delete_mk != 1);
-            List<RoomType> roomTypes = new List<RoomType>();
-            roomTypes = base.Change<RoomType>().GetList(a => a.delete_mk != 1 && a.RoomName == TypeName);
-            var listTypes = roomTypes.Select(a => a.Roomtype).Distinct().ToList();
-            List<Room> rooms = new List<Room>();
-            rooms = base.GetList(a => a.delete_mk != 1 && listTypes.Contains(a.RoomType)).OrderBy(a => a.RoomNo).ToList();
-            rooms.ForEach(source =>
+            OSelectRoomDto oSelectRoomDto = new OSelectRoomDto();
+
+            //查询房间信息
+            var source = this._roomRepository.Single(a => a.RoomNo.Equals(selectRoomDto.RoomNo))
+                .CopyToModel<Room,Temp_Room>();
+
+            if (source.IsNullOrEmpty())
             {
-                var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
-                var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
-            });
-            return rooms;
-        }
-        #endregion
+                oSelectRoomDto.Error_NotFound();
+                return oSelectRoomDto;
+            }
 
-        #region 根据房间编号查询房间信息
-        /// <summary>
-        /// 根据房间编号查询房间信息
-        /// </summary>
-        /// <param name="no"></param>
-        /// <returns></returns>
-        public Room SelectRoomByRoomNo(string no)
-        {
-            List<RoomState> roomStates = new List<RoomState>();
-            roomStates = base.Change<RoomState>().GetList(a => a.delete_mk != 1);
-            Room room = new Room();
-            room = base.GetSingle(a => a.delete_mk != 1 && a.RoomNo == no);
-            var roomSate = roomStates.FirstOrDefault(a => a.RoomStateId == room.RoomStateId);
-            room.RoomState = string.IsNullOrEmpty(roomSate.RoomStateName) ? "" : roomSate.RoomStateName;
-            return room;
-        }
-        #endregion
+            //客户
+            var customer = this._custoRepository.Single(a => a.CustoNo.Equals(source.CustoNo));
+            source.CustoNm = customer.IsNullOrEmpty() ? "" : customer.CustoName;
 
-        #region 根据房间编号退房（退房）
+            //房间状态
+            var roomState = this._roomStateRepository.Single(a => a.RoomStateId == source.RoomStateId);
+            source.RoomStateNm = roomState.IsNullOrEmpty() ? "" : roomState.RoomStateName;
+
+            //房间类型
+            var roomType = this._roomTypeRepository.Single(a => a.Roomtype == source.RoomType);
+            source.RoomTypeNm = roomType.IsNullOrEmpty() ? "" : roomType.RoomName;
+
+            oSelectRoomDto.source = source;
+            oSelectRoomDto.OK();
+
+            return oSelectRoomDto;
+
+        }
+
         /// <summary>
         /// 根据房间编号退房（退房）
         /// </summary>
-        /// <param name="room"></param>
+        /// <param name="checkoutRoomDto"></param>
         /// <returns></returns>
-        public bool UpdateRoomByRoomNo(string room)
+        public OUpdCheckoutRoomDto UpdCheckoutRoom(UpdCheckoutRoomDto checkoutRoomDto)
         {
-            return base.Update(a => new Room()
-            {
-                CustoNo = null,
-                CheckTime = null,
-                CheckOutTime = DateTime.Now,
-                RoomStateId = 3
-            },a => a.RoomNo == room);
-        }
-        #endregion
+            OUpdCheckoutRoomDto oUpdateRoomByRoomNoDto = new OUpdCheckoutRoomDto();
 
-        #region 根据房间编号查询截止到今天住了多少天
+            //查询房间信息
+            var source = this._roomRepository.Single(a => a.RoomNo.Equals(checkoutRoomDto.RoomNo));
+
+            if (source.IsNullOrEmpty())
+            {
+                oUpdateRoomByRoomNoDto.Error_NotFound();
+                return oUpdateRoomByRoomNoDto;
+            }
+
+            source.RoomStateId = 3;
+            source.CustoNo = null;
+            source.CheckOutTime = DateTime.Now;
+            source.datachg_usr = checkoutRoomDto.NowLoginUsr;
+            source.datachg_date = DateTime.Now;
+            this._roomRepository.Update(source);
+            oUpdateRoomByRoomNoDto.OK();
+
+            return oUpdateRoomByRoomNoDto;
+        }
+
+        /// <summary>
+        /// 根据房间编号退房（入住）
+        /// </summary>
+        /// <param name="checkInRoomDto"></param>
+        /// <returns></returns>
+        public OUpdCheckInRoomDto UpdCheckInRoom(UpdCheckInRoomDto checkInRoomDto)
+        {
+            OUpdCheckInRoomDto oCheckInRoomDto = new OUpdCheckInRoomDto();
+
+            //查询房间信息
+            var source = this._roomRepository.Single(a => a.RoomNo.Equals(checkInRoomDto.RoomNo));
+
+            if (source.IsNullOrEmpty())
+            {
+                oCheckInRoomDto.Error_NotFound();
+                return oCheckInRoomDto;
+            }
+
+            source.RoomStateId = 1;
+            source.CustoNo = checkInRoomDto.CustoNo;
+            source.CheckOutTime = null;
+            source.CheckTime = DateTime.Now;
+            source.datachg_usr = checkInRoomDto.NowLoginUsr;
+            source.datachg_date = DateTime.Now;
+            this._roomRepository.Update(source);
+            oCheckInRoomDto.OK();
+
+            return oCheckInRoomDto;
+        }
+
+        /// <summary>
+        /// 根据房间编号退房（预约）
+        /// </summary>
+        /// <param name="reserRoomDto"></param>
+        /// <returns></returns>
+        public OUpdReserRoomDto UpdReserRoom(UpdReserRoomDto reserRoomDto)
+        {
+            OUpdReserRoomDto oReserRoomDto = new OUpdReserRoomDto();
+
+            //查询房间信息
+            var source = this._roomRepository.Single(a => a.RoomNo.Equals(reserRoomDto.RoomNo));
+
+            if (source.IsNullOrEmpty())
+            {
+                oReserRoomDto.Error_NotFound();
+                return oReserRoomDto;
+            }
+
+            source.RoomStateId = 4;
+            source.CustoNo = null;
+            source.CheckOutTime = null;
+            source.CheckTime = null;
+            source.datachg_usr = reserRoomDto.NowLoginUsr;
+            source.datachg_date = DateTime.Now;
+            this._roomRepository.Update(source);
+            oReserRoomDto.OK();
+
+            return oReserRoomDto;
+        }
+
         /// <summary>
         /// 根据房间编号查询截止到今天住了多少天
         /// </summary>
-        /// <param name="roomno"></param>
+        /// <param name="dayByRoomNoDto"></param>
         /// <returns></returns>
-        public object DayByRoomNo(string roomno)
+        public ODayByRoomNoDto DayByRoomNo(DayByRoomNoDto dayByRoomNoDto)
         {
-            return Math.Abs(((TimeSpan)(base.GetSingle(a => a.RoomNo == roomno).CheckTime - DateTime.Now)).Days);
-        }
-        #endregion
+            ODayByRoomNoDto oDayByRoomNoDto = new ODayByRoomNoDto();
 
-        #region 根据房间编号修改房间信息（入住）
-        /// <summary>
-        /// 根据房间编号修改房间信息（入住）
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public bool UpdateRoomInfo(Room r)
-        {
-            return base.Update(a => new Room()
+            //查询房间信息
+            var source = this._roomRepository.Single(a => a.RoomNo.Equals(dayByRoomNoDto.RoomNo));
+
+            if (source.IsNullOrEmpty())
             {
-                CheckTime = r.CheckTime,
-                RoomStateId = r.RoomStateId,
-                CustoNo = r.CustoNo
-            },a => a.RoomNo == r.RoomNo);
-        }
-        #endregion
+                oDayByRoomNoDto.Error_NotFound();
+                return oDayByRoomNoDto;
+            }
 
-        #region 根据房间编号修改房间信息（预约）
-        /// <summary>
-        /// 根据房间编号修改房间信息（预约）
-        /// </summary>
-        /// <param name="r"></param>
-        /// <returns></returns>
-        public bool UpdateRoomInfoWithReser(Room r)
-        {
-            return base.Update(a => new Room()
-            {
-                RoomStateId = r.RoomStateId,
-                datachg_usr = LoginInfo.WorkerNo,
-                datachg_date = DateTime.Now
-            }, a => a.RoomNo == r.RoomNo);
-        }
-        #endregion
+            oDayByRoomNoDto.days = Math.Abs(((TimeSpan)(source.CheckTime - DateTime.Now)).Days);
+            oDayByRoomNoDto.OK();
 
-        #region 查询可入住房间数量
-        /// <summary>
-        /// 查询可入住房间数量
-        /// </summary>
-        /// <returns></returns>
-        public object SelectCanUseRoomAllByRoomState()
-        {
-            return base.GetList(a => a.RoomStateId == 0 && a.delete_mk != 1).OrderBy(a => a.RoomNo).Count();
+            return oDayByRoomNoDto;
         }
-        #endregion
 
-        #region 查询已入住房间数量
-        /// <summary>
-        /// 查询已入住房间数量
-        /// </summary>
-        /// <returns></returns>
-        public object SelectNotUseRoomAllByRoomState()
-        {
-            return base.GetList(a => a.RoomStateId == 1 && a.delete_mk != 1).OrderBy(a => a.RoomNo).Count();
-        }
-        #endregion
-
-        #region 根据房间编号查询房间价格
-        /// <summary>
-        /// 根据房间编号查询房间价格
-        /// </summary>
-        /// <returns></returns>
-        public object SelectRoomByRoomPrice(string r)
-        {
-            return base.GetSingle(a => a.RoomNo == r).RoomMoney;
-        }
-        #endregion
-
-        #region 查询脏房数量
-        /// <summary>
-        /// 查询脏房数量
-        /// </summary>
-        /// <returns></returns>
-        public object SelectNotClearRoomAllByRoomState()
-        {
-            return base.GetList(a => a.RoomStateId == 3 && a.delete_mk != 1).OrderBy(a => a.RoomNo).Count();
-        }
-        #endregion
-
-        #region 查询维修房数量
-        /// <summary>
-        /// 查询维修房数量
-        /// </summary>
-        /// <returns></returns>
-        public object SelectFixingRoomAllByRoomState()
-        {
-            return base.GetList(a => a.RoomStateId == 2 && a.delete_mk != 1).OrderBy(a => a.RoomNo).Count();
-        }
-        #endregion
-
-        #region 查询预约房数量
-        /// <summary>
-        /// 查询预约房数量
-        /// </summary>
-        /// <returns></returns>
-        public object SelectReseredRoomAllByRoomState()
-        {
-            return base.GetList(a => a.RoomStateId == 4 && a.delete_mk != 1).OrderBy(a => a.RoomNo).Count();
-        }
-        #endregion
-
-        #region 根据房间编号更改房间状态
-        /// <summary>
-        /// 根据房间编号更改房间状态
-        /// </summary>
-        /// <param name="roomno"></param>
-        /// <param name="stateid"></param>
-        /// <returns></returns>
-        public bool UpdateRoomStateByRoomNo(string roomno, int stateid)
-        {
-            return base.Update(a => new Room()
-            {
-                RoomStateId = stateid,
-                datains_usr = LoginInfo.WorkerNo,
-                datachg_date = DateTime.Now
-            },a => a.RoomNo == roomno);
-        }
-        #endregion
-
-        #region 添加房间
         /// <summary>
         /// 添加房间
         /// </summary>
-        /// <param name="rn"></param>
+        /// <param name="insertRoomDto"></param>
         /// <returns></returns>
-        public bool InsertRoom(Room rn)
+        public OInsertRoomDto InsertRoom(InsertRoomDto insertRoomDto)
         {
-            try
-            {
-                return base.Insert(rn);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-        #endregion
+            OInsertRoomDto oInsertRoomDto = new OInsertRoomDto();
 
-        #region 查询所有可消费（已住）房间
-        /// <summary>
-        /// 查询所有可消费（已住）房间
-        /// </summary>
-        /// <returns></returns>
-        public List<Room> SelectRoomByStateAll()
-        {
-            List<RoomState> roomStates = new List<RoomState>();
-            roomStates = base.Change<RoomState>().GetList(a => a.delete_mk != 1);
-            List<RoomType> roomTypes = new List<RoomType>();
-            roomTypes = base.Change<RoomType>().GetList(a => a.delete_mk != 1);
-            List<Room> rooms = new List<Room>();
-            rooms = base.GetList(a => a.delete_mk != 1 && a.RoomStateId == 1).OrderBy(a => a.RoomNo).ToList();
-            rooms.ForEach(source =>
-            {
-                var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
-                var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
-            });
-            return rooms;
-        }
-        #endregion
+            var source = new Room();
 
-        #region 获取所有房间状态
-        /// <summary>
-        /// 获取所有房间状态
-        /// </summary>
-        /// <returns></returns>
-        public List<RoomState> SelectRoomStateAll()
-        {
-            List<RoomState> rs = new List<RoomState>();
-            rs = base.Change<RoomState>().GetList(a => a.delete_mk != 1);
-            return rs;
-        }
-        #endregion
+            source = source.UpdateToModel(insertRoomDto);
+            source.delete_mk = 0;
+            source.datains_usr = insertRoomDto.NowLoginUsr;
+            source.datains_date = DateTime.Now;
+            this._roomRepository.Insert(source);
+            oInsertRoomDto.OK();
 
-        #region 根据房间编号查询房间状态编号
-        /// <summary>
-        /// 根据房间编号查询房间状态编号
-        /// </summary>
-        /// <param name="roomno"></param>
-        /// <returns></returns>
-        public object SelectRoomStateIdByRoomNo(string roomno)
-        {
-            return base.GetSingle(a => a.RoomNo == roomno).RoomStateId;
+            return oInsertRoomDto;
         }
-        #endregion
+
     }
 }

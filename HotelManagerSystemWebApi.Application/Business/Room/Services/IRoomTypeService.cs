@@ -22,7 +22,7 @@
  *
  */
 
-using HotelManagerSystemWebApi.Application.Business.Room.Dtos;
+using HotelManagerSystemWebApi.Application;
 using HotelManagerSystemWebApi.Core;
 using System.Collections.Generic;
 

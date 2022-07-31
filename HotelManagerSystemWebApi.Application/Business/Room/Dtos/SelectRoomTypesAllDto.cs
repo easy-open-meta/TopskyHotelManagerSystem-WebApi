@@ -22,7 +22,7 @@
  *
  */
 
-namespace HotelManagerSystemWebApi.Application.Business.Room.Dtos
+namespace HotelManagerSystemWebApi.Application
 {
     /// <summary>
     /// 获取所有房间类型

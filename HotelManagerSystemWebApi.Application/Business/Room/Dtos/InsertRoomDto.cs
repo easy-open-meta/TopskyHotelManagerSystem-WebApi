@@ -20,49 +20,53 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：房间状态类
  */
-
-using Furion.DatabaseAccessor;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HotelManagerSystemWebApi.Core
+namespace HotelManagerSystemWebApi.Application
 {
     /// <summary>
-    /// 房间状态
+    /// 添加房间
+    /// 输入DTO
     /// </summary>
-    [Table("roomstate")]
-    public class RoomState:IEntity
+    public class InsertRoomDto : IBaseDto
     {
         /// <summary>
-        /// 房间状态编号
+        /// 房间编号
+        /// </summary>
+        public string RoomNo { get; set; }
+        /// <summary>
+        /// 房间类型
+        /// </summary>
+        public int RoomType { get; set; }
+        /// <summary>
+        /// 客户编号
+        /// </summary>
+        public string CustoNo { get; set; }
+        /// <summary>
+        /// 最后一次入住时间
+        /// </summary>
+        public DateTime? CheckTime { get; set; }
+        /// <summary>
+        /// 最后一次退房时间
+        /// </summary>
+        public DateTime? CheckOutTime { get; set; }
+        /// <summary>
+        /// 房间状态ID
         /// </summary>
         public int RoomStateId { get; set; }
         /// <summary>
-        /// 房间状态
+        /// 房间单价
         /// </summary>
-        [Column("RoomState")]
-        public string RoomStateName { get; set; }
+        public decimal RoomMoney { get; set; }
         /// <summary>
-        /// 删除标记
+        /// 房间押金
         /// </summary>
-        public int delete_mk { get; set; }
+        [MappingField("deposit")]
+        public decimal RoomDeposit { get; set; }
         /// <summary>
-        /// 资料创建人
+        /// 房间位置
         /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
+        public string RoomPosition { get; set; }
     }
 }

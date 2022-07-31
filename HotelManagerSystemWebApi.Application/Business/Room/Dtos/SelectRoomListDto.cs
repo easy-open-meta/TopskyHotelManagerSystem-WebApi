@@ -20,49 +20,37 @@
  *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *SOFTWARE.
  *
- *模块说明：房间状态类
  */
 
-using Furion.DatabaseAccessor;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HotelManagerSystemWebApi.Core
+namespace HotelManagerSystemWebApi.Application
 {
     /// <summary>
-    /// 房间状态
+    /// 获取所有房间信息
+    /// 输入DTO
     /// </summary>
-    [Table("roomstate")]
-    public class RoomState:IEntity
+    public class SelectRoomListDto : IListDto
     {
         /// <summary>
-        /// 房间状态编号
+        /// 房间编号
         /// </summary>
-        public int RoomStateId { get; set; }
+        public string RoomNo { get; set; }
         /// <summary>
-        /// 房间状态
+        /// 房间类型
         /// </summary>
-        [Column("RoomState")]
-        public string RoomStateName { get; set; }
+        public int? RoomType { get; set; }
+        /// <summary>
+        /// 客户编号
+        /// </summary>
+        public string CustoNo { get; set; }
+        /// <summary>
+        /// 房间状态ID
+        /// </summary>
+        public int? RoomStateId { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>
-        public int delete_mk { get; set; }
-        /// <summary>
-        /// 资料创建人
-        /// </summary>
-        public string datains_usr { get; set; }
-        /// <summary>
-        /// 资料创建时间
-        /// </summary>
-        public DateTime datains_date { get; set; }
-        /// <summary>
-        /// 资料更新人
-        /// </summary>
-        public string datachg_usr { get; set; }
-        /// <summary>
-        /// 资料更新时间
-        /// </summary>
-        public DateTime datachg_date { get; set; }
+        public int? delete_mk { get; set; }
     }
 }

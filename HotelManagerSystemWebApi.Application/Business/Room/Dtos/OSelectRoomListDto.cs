@@ -21,8 +21,6 @@
  *SOFTWARE.
  *
  */
-using HotelManagerSystemWebApi.Application;
-
 
 namespace HotelManagerSystemWebApi.Application
 {
@@ -30,11 +28,16 @@ namespace HotelManagerSystemWebApi.Application
     /// 获取所有房间信息
     /// 输出DTO
     /// </summary>
-    public class ORoomListDto:MsgDto
+    public class OSelectRoomListDto : MsgDto
     {
         /// <summary>
         /// 数据源
         /// </summary>
         public List<Temp_Room> listSource { get; set; }
+
+        /// <summary>
+        /// 总数
+        /// </summary>
+        public int total { get; set; }
     }
 }
