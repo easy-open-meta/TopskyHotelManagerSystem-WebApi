@@ -1,19 +1,21 @@
 <h1 align="center"><img src="https://foruda.gitee.com/avatar/1677165732744604624/7158691_java-and-net_1677165732.png!avatar100" alt="组织logo.png" /></h1>
 <h1 align="center">TopskyHotelManagerSystem-WebApi</h1>
 <p align="center">
-	<a href='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/stargazers'><img src='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/badge/star.svg?theme=dark' alt='star'></img></a>
-        <a href='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/fork'><img src='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/badge/fork.svg?theme=dark' alt='fork'></img></a>
-        <a href='https://img.shields.io/travis/antvis/g2.svg'><img src="https://img.shields.io/travis/antvis/g2.svg" alt=""></img>
+	<a href='https://github.com/easy-open-meta/TopskyHotelManagerSystem-WebApi/stargazers'><img src='https://img.shields.io/github/stars/easy-open-meta/TopskyHotelManagerSystem-WebApi?style=social
+' alt='star'></img></a>
+        <a href='https://github.com/easy-open-meta/TopskyHotelManagerSystem-WebApi/forks'><img src='https://img.shields.io/github/forks/easy-open-meta/TopskyHotelManagerSystem-WebApi
+' alt='fork'></img></a>
         <a href='https://img.shields.io/badge/license-MIT-000000.svg'><img src="https://img.shields.io/badge/license-MIT-000000.svg" alt=""></img></a>
         <a href='https://img.shields.io/badge/language-C#-red.svg'><img src="https://img.shields.io/badge/language-CSharp-red.svg" alt=""></img></a>
 </p>
+
 
 
 ###  :pray: 感谢以下开源项目：
 
 1. ##### Autofac——An addictive .NET IoC container。[Autofac, MIT开源协议](https://github.com/autofac/Autofac)     
 
-2. ##### SqlSugar——国内最受欢迎ORM框架。 [SQLSugar,Apache-2.0开源协议](https://gitee.com/dotnetchina/SqlSugar)
+2. ##### SqlSugar——国内最受欢迎ORM框架。 [SQLSugar,Apache-2.0开源协议](https://github.com/DotNetNext/SqlSugar)
 
 
 ### :exclamation: 本项目介绍：
