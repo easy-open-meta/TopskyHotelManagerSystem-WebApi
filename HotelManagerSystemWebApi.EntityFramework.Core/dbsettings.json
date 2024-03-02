@@ -1,5 +1,0 @@
-{
-  "ConnectionStrings": {
-    "MySqlConnectStr": "Data Source=127.0.0.1;Database=tshoteldb;User ID=softuser;Password=yjj990720;pooling=true;port=3306;sslmode=none;CharSet=utf8"
-  }
-}
