@@ -11,7 +11,7 @@
 
 1. ##### Autofac——An addictive .NET IoC container. [Autofac, MIT License](https://github.com/autofac/Autofac)
 
-2. ##### SqlSugar——The most popular ORM framework in China. [SQLSugar, Apache-2.0 License](https://github.com/DotNetNext/SqlSugar)
+2. ##### SqlSugar——.Net aot ORM Fastest ORM Simple Easy Sqlite orm Oracle ORM Mysql Orm postgresql ORm SqlServer oRm 达梦 ORM 人大金仓 ORM 神通ORM C# ORM , C# ORM .NET ORM NET5 ORM .NET6 ORM ClickHouse orm QuestDb ,TDengine ORM,OceanBase orm,GaussDB orm ,Tidb orm Object/Relational Mapping. [SQLSugar, MIT License](https://github.com/DotNetNext/SqlSugar)
 
 ### :exclamation: About this project:
 
