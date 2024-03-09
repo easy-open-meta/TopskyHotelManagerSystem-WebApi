@@ -23,18 +23,13 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 酒店宣传联动内容接口实现类
     /// </summary>
-    public class FontsService:IFontsService
+    public class FontsService : IFontsService
     {
         /// <summary>
         /// 跑马灯

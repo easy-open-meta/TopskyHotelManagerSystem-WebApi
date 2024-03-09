@@ -23,8 +23,6 @@
  *模块说明：奖惩类型类
  */
 //using EOM.TSHotelManager.Common.Core;
-using System;
-
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>

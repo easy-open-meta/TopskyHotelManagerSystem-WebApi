@@ -23,8 +23,6 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.Application
 {

@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -41,7 +40,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="no"></param>
         /// <returns></returns>
         [HttpGet]
-        public RoomType SelectRoomTypeByRoomNo([FromQuery]string no)
+        public RoomType SelectRoomTypeByRoomNo([FromQuery] string no)
         {
             return roomTypeService.SelectRoomTypeByRoomNo(no);
         }

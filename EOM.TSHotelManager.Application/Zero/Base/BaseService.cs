@@ -25,19 +25,13 @@ using CK.Common;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
 using SqlSugar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 基础信息接口实现类
     /// </summary>
-    public class BaseService:IBaseService
+    public class BaseService : IBaseService
     {
         /// <summary>
         /// 员工信息
@@ -399,7 +393,7 @@ namespace EOM.TSHotelManager.Application
             return educationRepository.Update(a => new Education()
             {
                 education_name = education.education_name,
-                datachg_usr =education.datachg_usr
+                datachg_usr = education.datachg_usr
             }, a => a.education_no == education.education_no);
         }
 
@@ -419,10 +413,16 @@ namespace EOM.TSHotelManager.Application
             depts = deptRepository.GetList(a => a.delete_mk != 1);
             depts.ForEach(source =>
             {
-                var dept = depts.FirstOrDefault(a => a.dept_no == source.dept_parent);
-                source.parent_name = dept == null || string.IsNullOrEmpty(dept.dept_name) ? "无" : dept.dept_name;
-                var leader = workers.FirstOrDefault(a => source.dept_leader != null && a.WorkerId == source.dept_leader);
-                source.leader_name = leader == null || string.IsNullOrEmpty(leader.WorkerName) ? "无" : leader.WorkerName;
+                if (!source.dept_parent.IsNullOrEmpty())
+                {
+                    var dept = depts.FirstOrDefault(a => a.dept_no == source.dept_parent);
+                    source.parent_name = dept == null || string.IsNullOrEmpty(dept.dept_name) ? "无" : dept.dept_name;
+                }
+                if (!source.dept_leader.IsNullOrEmpty())
+                {
+                    var leader = workers.FirstOrDefault(a => a.WorkerId == source.dept_leader);
+                    source.leader_name = leader == null || string.IsNullOrEmpty(leader.WorkerName) ? "无" : leader.WorkerName;
+                }
 
             });
             return depts;

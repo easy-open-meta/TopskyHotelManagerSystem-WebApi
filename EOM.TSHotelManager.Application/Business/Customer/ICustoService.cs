@@ -22,7 +22,6 @@
  *
  */
 using EOM.TSHotelManager.Common.Core;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -63,7 +62,7 @@ namespace EOM.TSHotelManager.Application
         /// 查询所有客户信息
         /// </summary>
         /// <returns></returns>
-        OSelectCustoAllDto SelectCustoAll(int? pageIndex, int? pageSize);
+        OSelectCustoAllDto SelectCustoAll(int? pageIndex, int? pageSize, bool onlyVip = false);
 
         /// <summary>
         /// 查询指定客户信息

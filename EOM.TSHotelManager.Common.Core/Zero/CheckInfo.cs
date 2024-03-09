@@ -22,8 +22,6 @@
  *
  *模块说明：监管统计类
  */
-using System;
-
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>

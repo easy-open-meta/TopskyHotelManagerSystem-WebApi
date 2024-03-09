@@ -21,9 +21,6 @@
  *SOFTWARE.
  *
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
 
@@ -32,7 +29,7 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 商品消费接口实现类
     /// </summary>
-    public class SpendService:ISpendService
+    public class SpendService : ISpendService
     {
         /// <summary>
         /// 商品消费
@@ -190,7 +187,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="roomno"></param>
         /// <param name="custono"></param>
         /// <returns></returns>
-        public object SelectMoneyByRoomNoAndTime(string roomno,string custono)
+        public object SelectMoneyByRoomNoAndTime(string roomno, string custono)
         {
             return spendRepository.GetList(a => a.RoomNo == roomno && a.CustoNo == custono && a.MoneyState.Equals(SpendConsts.UnSettle)).Sum(a => a.SpendMoney);
         }
@@ -208,7 +205,7 @@ namespace EOM.TSHotelManager.Application
             return spendRepository.Update(a => new Spend()
             {
                 MoneyState = SpendConsts.Settled
-            },a => a.RoomNo == roomno && a.SpendTime >= Convert.ToDateTime(checktime) && a.SpendTime <= DateTime.Now); 
+            }, a => a.RoomNo == roomno && a.SpendTime >= Convert.ToDateTime(checktime) && a.SpendTime <= DateTime.Now);
         }
         #endregion
 
@@ -223,12 +220,12 @@ namespace EOM.TSHotelManager.Application
             //查询当前用户未结算的数据
             var listSpendId = spendRepository.GetList(a => a.CustoNo.Equals(spend.CustoNo) && a.MoneyState.Equals(SpendConsts.UnSettle))
                 .Select(a => a.SpendName).ToList(); /*spends.Select(a => a.SpendName).Distinct().ToList();*/
-            
+
             return spendRepository.Update(a => new Spend()
             {
                 RoomNo = spend.RoomNo,
                 datachg_usr = spend.datachg_usr
-            }, a => listSpendId.Contains(a.SpendName) && a.CustoNo.Equals(spend.CustoNo)  && a.SpendTime >= DateTime.Now
+            }, a => listSpendId.Contains(a.SpendName) && a.CustoNo.Equals(spend.CustoNo) && a.SpendTime >= DateTime.Now
              && a.SpendTime <= DateTime.Now);
 
 
@@ -247,7 +244,7 @@ namespace EOM.TSHotelManager.Application
                 SpendAmount = spend.SpendAmount,
                 SpendMoney = spend.SpendMoney,
 
-            }, a => a.MoneyState.Equals(SpendConsts.UnSettle) 
+            }, a => a.MoneyState.Equals(SpendConsts.UnSettle)
             && a.RoomNo.Equals(spend.RoomNo)
             && a.CustoNo.Equals(spend.CustoNo)
             && a.SpendName.Equals(spend.SpendName));

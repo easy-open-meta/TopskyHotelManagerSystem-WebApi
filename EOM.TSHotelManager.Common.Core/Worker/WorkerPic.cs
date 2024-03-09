@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-//using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿//using System.ComponentModel.DataAnnotations.Schema;
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>
@@ -16,7 +10,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 自增长流水号
         /// </summary>
-        [SqlSugar.SugarColumn(IsIdentity = true,ColumnName = "Id",IsPrimaryKey = true)]
+        [SqlSugar.SugarColumn(IsIdentity = true, ColumnName = "Id", IsPrimaryKey = true)]
         public int Id { get; set; }
         /// <summary>
         /// 工号

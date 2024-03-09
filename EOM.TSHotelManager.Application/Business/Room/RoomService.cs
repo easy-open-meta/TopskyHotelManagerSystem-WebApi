@@ -24,16 +24,13 @@
 using CK.Common;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 客房信息接口实现类
     /// </summary>
-    public class RoomService:IRoomService
+    public class RoomService : IRoomService
     {
         /// <summary>
         /// 客房信息
@@ -146,7 +143,7 @@ namespace EOM.TSHotelManager.Application
                 source.CustoName = custo.IsNullOrEmpty() ? "" : custo.CustoName;
 
                 //把入住时间格式化
-                source.CheckTimeFormat = string.IsNullOrEmpty(source.CheckTime + "") ? "" 
+                source.CheckTimeFormat = string.IsNullOrEmpty(source.CheckTime + "") ? ""
                 : Convert.ToDateTime(source.CheckTime).ToString("yyyy-MM-dd HH:mm");
 
             });
@@ -220,7 +217,7 @@ namespace EOM.TSHotelManager.Application
                 CheckTime = null,
                 CheckOutTime = DateTime.Now,
                 RoomStateId = 3
-            },a => a.RoomNo == room);
+            }, a => a.RoomNo == room);
         }
         #endregion
 
@@ -249,7 +246,7 @@ namespace EOM.TSHotelManager.Application
                 CheckTime = r.CheckTime,
                 RoomStateId = r.RoomStateId,
                 CustoNo = r.CustoNo
-            },a => a.RoomNo == r.RoomNo);
+            }, a => a.RoomNo == r.RoomNo);
         }
         #endregion
 
@@ -347,7 +344,7 @@ namespace EOM.TSHotelManager.Application
             return roomRepository.Update(a => new Room()
             {
                 RoomStateId = stateid
-            },a => a.RoomNo == roomno);
+            }, a => a.RoomNo == roomno);
         }
         #endregion
 

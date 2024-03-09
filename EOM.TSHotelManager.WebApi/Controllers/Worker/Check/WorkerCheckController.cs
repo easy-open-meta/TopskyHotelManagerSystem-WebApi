@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="wid"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<WorkerCheck> SelectCheckInfoByWorkerNo([FromQuery]string wid)
+        public List<WorkerCheck> SelectCheckInfoByWorkerNo([FromQuery] string wid)
         {
             return workerCheckService.SelectCheckInfoByWorkerNo(wid);
         }
@@ -42,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="wkn"></param>
         /// <returns></returns>
         [HttpGet]
-        public object SelectWorkerCheckDaySumByWorkerNo([FromQuery]string wkn)
+        public object SelectWorkerCheckDaySumByWorkerNo([FromQuery] string wkn)
         {
             return workerCheckService.SelectWorkerCheckDaySumByWorkerNo(wkn);
         }
@@ -64,7 +63,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerCheck"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddCheckInfo([FromBody]WorkerCheck workerCheck)
+        public bool AddCheckInfo([FromBody] WorkerCheck workerCheck)
         {
             return workerCheckService.AddCheckInfo(workerCheck);
         }

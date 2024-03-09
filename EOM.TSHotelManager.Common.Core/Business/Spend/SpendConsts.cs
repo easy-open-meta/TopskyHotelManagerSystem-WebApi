@@ -22,12 +22,6 @@
  *
  *模块说明：结算状态常量
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>

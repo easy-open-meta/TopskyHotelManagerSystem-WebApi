@@ -22,7 +22,6 @@
  *
  */
 using EOM.TSHotelManager.Common.Core;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.Application
 {

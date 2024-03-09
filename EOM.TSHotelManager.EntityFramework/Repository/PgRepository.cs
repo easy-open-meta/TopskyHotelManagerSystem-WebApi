@@ -1,10 +1,5 @@
-﻿using SqlSugar;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using SqlSugar;
 
 namespace EOM.TSHotelManager.EntityFramework
 {
@@ -22,9 +17,10 @@ namespace EOM.TSHotelManager.EntityFramework
                     MoreSettings = new ConnMoreSettings()
                     {
                         PgSqlIsAutoToLower = false, //数据库存在大写字段的
-                                                  //，需要把这个设为false ，并且实体和字段名称要一样
-                                                  //如果数据库里的数据表本身就为小写，则改成true
-                                                  //详细可以参考官网https://www.donet5.com/Home/Doc
+                                                    //，需要把这个设为false ，并且实体和字段名称要一样
+                                                    //如果数据库里的数据表本身就为小写，则改成true
+                                                    //详细可以参考官网https://www.donet5.com/Home/Doc
+                        DisableMillisecond = true,
                     },
                     ConnectionString = AppSettingsJson.GetAppSettings().GetConnectionString("PgSqlConnectStr")
                 });

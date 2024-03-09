@@ -21,8 +21,6 @@
  *SOFTWARE.
  *
  */
-using System;
-using System.Collections.Generic;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
 
@@ -31,7 +29,7 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 水电信息接口实现类
     /// </summary>
-    public class WtiService:IWtiService
+    public class WtiService : IWtiService
     {
         /// <summary>
         /// 水电信息
@@ -133,7 +131,7 @@ namespace EOM.TSHotelManager.Application
                 CustoNo = w.CustoNo,
                 datachg_usr = w.datachg_usr,
                 RoomNo = w.RoomNo
-            },a => a.WtiNo == w.WtiNo);
+            }, a => a.WtiNo == w.WtiNo);
 
         }
         #endregion
@@ -151,7 +149,7 @@ namespace EOM.TSHotelManager.Application
                 WaterUse = w.WaterUse,
                 PowerUse = w.PowerUse,
                 datachg_usr = w.datachg_usr
-            },a => a.RoomNo == w.RoomNo && a.UseDate >= w.UseDate && a.EndDate >= w.EndDate);
+            }, a => a.RoomNo == w.RoomNo && a.UseDate >= w.UseDate && a.EndDate >= w.EndDate);
         }
         #endregion
 
@@ -187,7 +185,7 @@ namespace EOM.TSHotelManager.Application
             return wtiRepository.Update(a => new Wti()
             {
                 delete_mk = 1
-            },a => a.RoomNo == roomno && a.UseDate >= Convert.ToDateTime(usedate) && a.EndDate >= Convert.ToDateTime(enddate));
+            }, a => a.RoomNo == roomno && a.UseDate >= Convert.ToDateTime(usedate) && a.EndDate >= Convert.ToDateTime(enddate));
         }
         #endregion
     }

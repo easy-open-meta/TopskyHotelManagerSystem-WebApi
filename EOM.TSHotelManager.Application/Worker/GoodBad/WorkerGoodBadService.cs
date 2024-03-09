@@ -23,18 +23,13 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 员工奖惩记录接口实现类
     /// </summary>
-    public class WorkerGoodBadService:IWorkerGoodBadService
+    public class WorkerGoodBadService : IWorkerGoodBadService
     {
         /// <summary>
         /// 员工奖惩记录

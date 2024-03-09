@@ -23,14 +23,13 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 房间类型接口实现类
     /// </summary>
-    public class RoomTypeService:IRoomTypeService
+    public class RoomTypeService : IRoomTypeService
     {
         /// <summary>
         /// 客房类型

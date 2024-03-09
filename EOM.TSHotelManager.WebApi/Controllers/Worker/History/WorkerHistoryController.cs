@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerHistory"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddHistoryByWorkerId([FromBody]WorkerHistory workerHistory)
+        public bool AddHistoryByWorkerId([FromBody] WorkerHistory workerHistory)
         {
             return workerHistoryService.AddHistoryByWorkerId(workerHistory);
         }
@@ -42,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="wid"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<WorkerHistory> SelectHistoryByWorkerId([FromQuery]string wid)
+        public List<WorkerHistory> SelectHistoryByWorkerId([FromQuery] string wid)
         {
             return workerHistoryService.SelectHistoryByWorkerId(wid);
         }

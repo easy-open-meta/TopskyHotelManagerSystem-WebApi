@@ -1,59 +1,70 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
-using System.Threading.Tasks;
 using Autofac;
-using Autofac.Core;
-using EOM.Encrypt;
 using EOM.TSHotelManager.EntityFramework;
+using EOM.TSHotelManager.WebApi.Filter;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Text;
 
 namespace EOM.TSHotelManager.WebApi
 {
     public class Startup
     {
+        private readonly IConfiguration _configuration;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors(options =>
-            //{
-            //    options.AddDefaultPolicy(builder =>
-            //    {
-            //        builder
-            //            .AllowAnyOrigin() // 允许任何来源域
-            //            .AllowAnyMethod() // 允许任何HTTP方法
-            //            .AllowAnyHeader()// 允许任何HTTP头部字段
-            //            .AllowCredentials(); 
-            //    });
-            //});
-
-            services.AddControllers().AddJsonOptions(opts =>
+            services.AddAuthentication(options =>
             {
-                opts.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
-                opts.JsonSerializerOptions.PropertyNamingPolicy = null;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer("Bearer", options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = _configuration["Jwt:Issuer"],
+                    ValidAudience = _configuration["Jwt:Audience"], // 设置有效的audience值
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]))
+                };
+            });
+
+            services.AddAuthorization(options =>
+            {
+                // 定义一个名为“ApiAccess”的策略
+                options.AddPolicy("ApiAccess", policy =>
+                {
+                    policy.AuthenticationSchemes.Add("Bearer");
+                    policy.RequireAuthenticatedUser();
+                });
+
+                // 使用上面定义的“ApiAccess”策略作为默认策略
+                options.DefaultPolicy = options.GetPolicy("ApiAccess");
+            });
+
+
+            services.AddControllers(options =>
+            {
+                options.Conventions.Add(new AuthorizeAllControllersConvention());
             }).AddNewtonsoftJson(opt =>
             {
                 //时间格式化响应
@@ -92,9 +103,9 @@ namespace EOM.TSHotelManager.WebApi
                     }
                 });
                 //获取同解决方案下各分层的xml注释，一般获取业务逻辑层、实体类和接口层即可
-                s.IncludeXmlComments(AppContext.BaseDirectory+"EOM.TSHotelManager.Application.xml");
-                s.IncludeXmlComments(AppContext.BaseDirectory+"EOM.TSHotelManager.Common.Core.xml");
-                s.IncludeXmlComments(AppContext.BaseDirectory+"EOM.TSHotelManager.WebApi.xml");
+                s.IncludeXmlComments(AppContext.BaseDirectory + "EOM.TSHotelManager.Application.xml");
+                s.IncludeXmlComments(AppContext.BaseDirectory + "EOM.TSHotelManager.Common.Core.xml");
+                s.IncludeXmlComments(AppContext.BaseDirectory + "EOM.TSHotelManager.WebApi.xml");
                 #endregion
 
                 #region 正式发布时用
@@ -104,7 +115,7 @@ namespace EOM.TSHotelManager.WebApi
                 #endregion
             });
             #endregion
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -118,6 +129,8 @@ namespace EOM.TSHotelManager.WebApi
             app.UseCors();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -41,7 +40,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="vipRule"></param>
         /// <returns></returns>
         [HttpGet]
-        public VipRule SelectVipRule([FromQuery]VipRule vipRule)
+        public VipRule SelectVipRule([FromQuery] VipRule vipRule)
         {
             return vipRuleAppService.SelectVipRule(vipRule);
         }
@@ -52,7 +51,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="vipRule"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddVipRule([FromBody]VipRule vipRule)
+        public bool AddVipRule([FromBody] VipRule vipRule)
         {
             return vipRuleAppService.AddVipRule(vipRule);
         }
@@ -63,7 +62,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="vipRule"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelVipRule([FromBody]VipRule vipRule)
+        public bool DelVipRule([FromBody] VipRule vipRule)
         {
             return vipRuleAppService.DelVipRule(vipRule);
         }
@@ -74,7 +73,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="vipRule"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdVipRule([FromBody]VipRule vipRule)
+        public bool UpdVipRule([FromBody] VipRule vipRule)
         {
             return vipRuleAppService.UpdVipRule(vipRule);
         }

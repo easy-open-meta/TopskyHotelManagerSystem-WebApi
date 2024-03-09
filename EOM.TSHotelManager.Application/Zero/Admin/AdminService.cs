@@ -25,10 +25,11 @@ using CK.Common;
 using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using SqlSugar.DistributedSystem.Snowflake;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -53,16 +54,23 @@ namespace EOM.TSHotelManager.Application
         private readonly EOM.Encrypt.Encrypt encrypt;
 
         /// <summary>
-        /// 
+        /// 配置
+        /// </summary>
+        private readonly IConfiguration configuration;
+
+        /// <summary>
+        /// 构造函数
         /// </summary>
         /// <param name="adminRepository"></param>
         /// <param name="adminTypeRepository"></param>
         /// <param name="encrypt"></param>
-        public AdminService(PgRepository<Admin> adminRepository, PgRepository<AdminType> adminTypeRepository, EOM.Encrypt.Encrypt encrypt)
+        /// <param name="configuration"></param>
+        public AdminService(PgRepository<Admin> adminRepository, PgRepository<AdminType> adminTypeRepository, Encrypt.Encrypt encrypt, IConfiguration configuration)
         {
             this.adminRepository = adminRepository;
             this.adminTypeRepository = adminTypeRepository;
             this.encrypt = encrypt;
+            this.configuration = configuration;
         }
 
         #region 根据超管密码查询员工类型和权限
@@ -75,7 +83,7 @@ namespace EOM.TSHotelManager.Application
         {
             Admin admins = new Admin();
 
-            //admin.AdminPassword = encrypt.Encryption(admin.AdminPassword);
+            //admin.AdminPassword = encrypt.Decryption(admin.AdminPassword);
 
             admins = adminRepository.GetSingle(a => a.AdminAccount == admin.AdminAccount);
 
@@ -85,16 +93,32 @@ namespace EOM.TSHotelManager.Application
                 return admins;
             }
 
-            var frontEncryed = encrypt.Encryption(admins.AdminPassword, EncryptionLevel.Enhanced);
-            var backEncryed = encrypt.Encryption(admin.AdminPassword, EncryptionLevel.Enhanced);
+            var backEncryed = encrypt.Encryption(admins.AdminPassword, EncryptionLevel.Enhanced);
 
-            if (!encrypt.Compare(frontEncryed, backEncryed))
+            if (!encrypt.Compare(admin.AdminPassword, backEncryed))
             {
                 admins = null;
                 return admins;
             }
 
             admins.AdminPassword = "";
+            //附带Token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, admins.AdminAccount)
+                }),
+                Expires = DateTime.Now.AddMinutes(20), // 设置Token过期时间
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Audience = configuration["Jwt:Audience"],
+                Issuer = configuration["Jwt:Issuer"]
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            admins.user_token = tokenHandler.WriteToken(token);
             return admins;
         }
         #endregion

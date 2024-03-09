@@ -1,8 +1,6 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.WebApi.Controllers
@@ -32,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="s"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertSpendInfo([FromBody]Spend s)
+        public bool InsertSpendInfo([FromBody] Spend s)
         {
             return spendService.InsertSpendInfo(s);
         }
@@ -43,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="No"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<Spend> SelectSpendByCustoNo([FromQuery]string No)
+        public List<Spend> SelectSpendByCustoNo([FromQuery] string No)
         {
             return spendService.SelectSpendByCustoNo(No);
         }
@@ -54,7 +52,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="No"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<Spend> SelectSpendByRoomNo([FromQuery]string No)
+        public List<Spend> SelectSpendByRoomNo([FromQuery] string No)
         {
             return spendService.SelectSpendByRoomNo(No);
         }
@@ -65,7 +63,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custoNo"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<Spend> SeletHistorySpendInfoAll([FromQuery]string custoNo)
+        public List<Spend> SeletHistorySpendInfoAll([FromQuery] string custoNo)
         {
             return spendService.SeletHistorySpendInfoAll(custoNo);
         }
@@ -85,7 +83,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Spend> SelectSpendInfoRoomNo([FromQuery]string RoomNo)
+        public List<Spend> SelectSpendInfoRoomNo([FromQuery] string RoomNo)
         {
             return spendService.SelectSpendInfoRoomNo(RoomNo);
         }
@@ -97,7 +95,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custono"></param>
         /// <returns></returns>
         [HttpGet]
-        public object SelectMoneyByRoomNoAndTime([FromQuery]string roomno, string custono)
+        public object SelectMoneyByRoomNoAndTime([FromQuery] string roomno, string custono)
         {
             return spendService.SelectMoneyByRoomNoAndTime(roomno, custono);
         }
@@ -131,7 +129,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="spend"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdSpenInfo([FromBody]Spend spend)
+        public bool UpdSpenInfo([FromBody] Spend spend)
         {
             return spendService.UpdSpenInfo(spend);
         }

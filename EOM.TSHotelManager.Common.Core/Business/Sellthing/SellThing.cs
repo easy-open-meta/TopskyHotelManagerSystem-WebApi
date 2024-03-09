@@ -22,7 +22,6 @@
  *
  *模块说明：商品信息类
  */
-using System;
 //using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EOM.TSHotelManager.Common.Core

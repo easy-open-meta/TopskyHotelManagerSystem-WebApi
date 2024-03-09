@@ -22,8 +22,6 @@
  *
  *模块说明：客户类型类
  */
-using System;
-
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>

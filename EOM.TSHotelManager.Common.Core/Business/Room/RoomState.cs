@@ -22,8 +22,6 @@
  *
  *模块说明：房间状态类
  */
-using System;
-
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>

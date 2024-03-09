@@ -1,10 +1,7 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Linq;
 
 namespace EOM.TSHotelManager.WebApi.Controllers
 {
@@ -32,7 +29,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<SellThing> SelectSellThingAll([FromQuery]SellThing sellThing = null)
+        public List<SellThing> SelectSellThingAll([FromQuery] SellThing sellThing = null)
         {
             return sellService.SelectSellThingAll(sellThing);
         }
@@ -44,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="sellNo"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateSellThing([FromBody]string stock, string sellNo)
+        public bool UpdateSellThing([FromBody] string stock, string sellNo)
         {
             return sellService.UpdateSellThing(stock, sellNo);
         }
@@ -79,7 +76,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="sellNo"></param>
         /// <returns></returns>
         [HttpGet]
-        public bool DeleteSellThingBySellNo([FromQuery]string sellNo)
+        public bool DeleteSellThingBySellNo([FromQuery] string sellNo)
         {
             return sellService.DeleteSellThingBySellNo(sellNo);
         }
@@ -91,7 +88,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="price"></param>
         /// <returns></returns>
         [HttpGet]
-        public SellThing SelectSellThingByNameAndPrice([FromQuery]string name, string price)
+        public SellThing SelectSellThingByNameAndPrice([FromQuery] string name, string price)
         {
             return sellService.SelectSellThingByNameAndPrice(name, price);
         }
@@ -103,7 +100,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="SellNo"></param>
         /// <returns></returns>
         [HttpGet]
-        public SellThing SelectSellInfoBySellNo([FromQuery]string SellNo)
+        public SellThing SelectSellInfoBySellNo([FromQuery] string SellNo)
         {
             return sellService.SelectSellInfoBySellNo(SellNo);
         }
@@ -114,7 +111,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="st"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertSellThing([FromBody]SellThing st)
+        public bool InsertSellThing([FromBody] SellThing st)
         {
             return sellService.InsertSellThing(st);
         }

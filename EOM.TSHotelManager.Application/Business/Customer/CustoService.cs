@@ -21,15 +21,10 @@
  *SOFTWARE.
  *
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using CK.Common;
 using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using Npgsql;
 using SqlSugar;
 
 namespace EOM.TSHotelManager.Application
@@ -37,7 +32,7 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 客户信息接口实现类
     /// </summary>
-    public class CustoService:ICustoService
+    public class CustoService : ICustoService
     {
         /// <summary>
         /// 客户信息
@@ -96,7 +91,7 @@ namespace EOM.TSHotelManager.Application
         /// <returns></returns>
         public bool InsertCustomerInfo(Custo custo)
         {
-            string NewID = encrypt.Encryption(custo.CustoID,EncryptionLevel.Enhanced);
+            string NewID = encrypt.Encryption(custo.CustoID, EncryptionLevel.Enhanced);
             string NewTel = encrypt.Encryption(custo.CustoTel, EncryptionLevel.Enhanced);
             custo.CustoID = NewID;
             custo.CustoTel = NewTel;
@@ -117,7 +112,7 @@ namespace EOM.TSHotelManager.Application
             custo.CustoTel = NewTel;
             return custoRepository.Update(a => new Custo()
             {
-                CustoName  = custo.CustoName,
+                CustoName = custo.CustoName,
                 CustoSex = custo.CustoSex,
                 CustoType = custo.CustoType,
                 CustoBirth = custo.CustoBirth,
@@ -126,7 +121,7 @@ namespace EOM.TSHotelManager.Application
                 CustoTel = custo.CustoTel,
                 PassportType = custo.PassportType,
                 datachg_usr = custo.datachg_usr
-            },a => a.CustoNo == custo.CustoNo);
+            }, a => a.CustoNo == custo.CustoNo);
         }
 
         /// <summary>
@@ -135,7 +130,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="custoNo"></param>
         /// <param name="userType"></param>
         /// <returns></returns>
-        public bool UpdCustomerTypeByCustoNo(string custoNo,int userType)
+        public bool UpdCustomerTypeByCustoNo(string custoNo, int userType)
         {
             return custoRepository.Update(a => new Custo()
             {
@@ -166,7 +161,7 @@ namespace EOM.TSHotelManager.Application
                     });
                 }
             });
-            
+
             custoSpends = custoSpends.OrderBy(a => a.Years).ToList();
             return custoSpends;
         }
@@ -175,7 +170,7 @@ namespace EOM.TSHotelManager.Application
         /// 查询所有客户信息
         /// </summary>
         /// <returns></returns>
-        public OSelectCustoAllDto SelectCustoAll(int? pageIndex,int? pageSize)
+        public OSelectCustoAllDto SelectCustoAll(int? pageIndex, int? pageSize, bool onlyVip = false)
         {
             OSelectCustoAllDto oSelectCustoAllDto = new OSelectCustoAllDto();
 
@@ -196,6 +191,10 @@ namespace EOM.TSHotelManager.Application
             if (pageIndex != 0 && pageSize != 0)
             {
                 custos = custoRepository.AsQueryable().ToPageList((int)pageIndex, (int)pageSize, ref count);
+                if (onlyVip)
+                {
+                    custos = custoRepository.AsQueryable().Where(a => a.CustoType != 0).ToPageList((int)pageIndex, (int)pageSize, ref count);
+                }
             }
             else
             {

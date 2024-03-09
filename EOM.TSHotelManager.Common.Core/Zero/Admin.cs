@@ -96,6 +96,6 @@ namespace EOM.TSHotelManager.Common.Core
         /// </summary>
         [SqlSugar.SugarColumn(IsIgnore = true)]
         public string DeleteNm { get; set; }
-    
+
     }
 }

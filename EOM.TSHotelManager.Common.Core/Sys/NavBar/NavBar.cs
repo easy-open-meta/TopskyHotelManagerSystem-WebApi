@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EOM.TSHotelManager.Common.Core
+﻿namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>
     /// 导航控件实体类
@@ -15,7 +9,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 导航控件ID
         /// </summary>
-        [SqlSugar.SugarColumn(IsIdentity =true)]
+        [SqlSugar.SugarColumn(IsIdentity = true)]
         public int nav_id { get; set; }
         /// <summary>
         /// 导航控件名称

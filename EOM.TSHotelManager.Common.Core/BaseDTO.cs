@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EOM.TSHotelManager.Common.Core
 {
@@ -16,8 +12,8 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 资料创建时间
         /// </summary>
-        [SqlSugar.SugarColumn(/*InsertServerTime = true,*/ IsOnlyIgnoreUpdate = true)]
-        public DateTime? datains_date { get; set; }
+        [SqlSugar.SugarColumn(IsOnlyIgnoreUpdate = true)]
+        public DateTime? datains_date { get; set; } = DateTime.Now;
         /// <summary>
         /// 资料更新人
         /// </summary>
@@ -26,8 +22,12 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 资料更新时间
         /// </summary>
-        [SqlSugar.SugarColumn(/*UpdateServerTime = true,*/IsOnlyIgnoreInsert = true)]
-        public DateTime? datachg_date { get; set; }
-
+        [SqlSugar.SugarColumn(IsOnlyIgnoreInsert = true)]
+        public DateTime? datachg_date { get; set; } = DateTime.Now;
+        /// <summary>
+        /// Token
+        /// </summary>
+        [SqlSugar.SugarColumn(IsIgnore = true)]
+        public string user_token { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="roomNo"></param>
         /// <returns></returns>
         [HttpGet]
-        public Wti SelectWtiInfoByRoomNo([FromQuery]string roomNo)
+        public Wti SelectWtiInfoByRoomNo([FromQuery] string roomNo)
         {
             return this.wtiService.SelectWtiInfoByRoomNo(roomNo);
         }
@@ -44,7 +43,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="enddate"></param>
         /// <returns></returns>
         [HttpGet]
-        public Wti SelectWtiInfoByRoomNoAndTime([FromQuery]string roomno, string usedate, string enddate)
+        public Wti SelectWtiInfoByRoomNoAndTime([FromQuery] string roomno, string usedate, string enddate)
         {
             return this.wtiService.SelectWtiInfoByRoomNoAndTime(roomno, usedate, enddate);
         }
@@ -65,7 +64,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="w"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertWtiInfo([FromBody]Wti w)
+        public bool InsertWtiInfo([FromBody] Wti w)
         {
             return this.wtiService.InsertWtiInfo(w);
         }
@@ -76,7 +75,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="w"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateWtiInfo([FromBody]Wti w)
+        public bool UpdateWtiInfo([FromBody] Wti w)
         {
             return this.wtiService.UpdateWtiInfo(w);
         }
@@ -87,7 +86,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="w"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateWtiInfoByRoomNoAndDateTime([FromBody]Wti w)
+        public bool UpdateWtiInfoByRoomNoAndDateTime([FromBody] Wti w)
         {
             return this.wtiService.UpdateWtiInfoByRoomNoAndDateTime(w);
         }
@@ -107,7 +106,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="enddate"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DeleteWtiInfoByRoomNoAndDateTime([FromBody]string roomno, string usedate, string enddate)
+        public bool DeleteWtiInfoByRoomNoAndDateTime([FromBody] string roomno, string usedate, string enddate)
         {
             return this.wtiService.DeleteWtiInfoByRoomNoAndDateTime(roomno, usedate, enddate);
         }
@@ -117,7 +116,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Wti> ListWtiInfoByRoomNo([FromQuery]string roomno)
+        public List<Wti> ListWtiInfoByRoomNo([FromQuery] string roomno)
         {
             return this.wtiService.ListWtiInfoByRoomNo(roomno);
         }
