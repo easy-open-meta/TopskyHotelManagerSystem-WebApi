@@ -1,8 +1,6 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using EOM.TSHotelManager.WebApi.Filter;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -33,7 +31,8 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpPost]
-        public Admin SelectMangerByPass([FromBody]Admin admin)
+        [AllowAnonymous]
+        public Admin SelectMangerByPass([FromBody] Admin admin)
         {
             return adminService.SelectMangerByPass(admin);
         }
@@ -44,7 +43,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="account"></param>
         /// <returns></returns>
         [HttpGet]
-        public Admin SelectAdminPwdByAccount([FromQuery]string account)
+        public Admin SelectAdminPwdByAccount([FromQuery] string account)
         {
             return adminService.SelectAdminPwdByAccount(account);
         }
@@ -65,7 +64,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateNewPwdByOldPwd([FromBody]Admin admin)
+        public bool UpdateNewPwdByOldPwd([FromBody] Admin admin)
         {
             return adminService.UpdateNewPwdByOldPwd(admin);
         }
@@ -86,7 +85,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddAdmin([FromBody]Admin admin)
+        public bool AddAdmin([FromBody] Admin admin)
         {
             return adminService.AddAdmin(admin);
         }
@@ -97,7 +96,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpGet]
-        public Admin GetAdminInfoByAdminAccount([FromQuery]Admin admin)
+        public Admin GetAdminInfoByAdminAccount([FromQuery] Admin admin)
         {
             return adminService.GetAdminInfoByAdminAccount(admin);
         }
@@ -118,7 +117,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="admins"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdAccount([FromBody]Admin admins)
+        public bool UpdAccount([FromBody] Admin admins)
         {
             return adminService.UpdAccount(admins);
         }

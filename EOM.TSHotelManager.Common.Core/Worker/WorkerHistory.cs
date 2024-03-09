@@ -35,7 +35,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 编号
         /// </summary>
-        [SqlSugar.SugarColumn(IsOnlyIgnoreInsert = true,IsOnlyIgnoreUpdate = true)]
+        [SqlSugar.SugarColumn(IsOnlyIgnoreInsert = true, IsOnlyIgnoreUpdate = true)]
         public int Id { get; set; }
         /// <summary>
         /// 工号

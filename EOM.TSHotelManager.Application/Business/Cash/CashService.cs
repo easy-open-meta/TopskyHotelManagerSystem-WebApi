@@ -21,9 +21,6 @@
  *SOFTWARE.
  *
  */
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
 
@@ -32,7 +29,7 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 资产信息接口实现类
     /// </summary>
-    public class CashService:ICashService
+    public class CashService : ICashService
     {
         /// <summary>
         /// 资产信息
@@ -89,7 +86,7 @@ namespace EOM.TSHotelManager.Application
             cs.ForEach(source =>
             {
                 var dept = depts.FirstOrDefault(a => a.dept_no.Equals(source.CashClub));
-                source.DeptName = dept == null?  "" : dept.dept_name;
+                source.DeptName = dept == null ? "" : dept.dept_name;
                 var worker = workers.FirstOrDefault(a => a.WorkerId.Equals(source.CashPerson));
                 source.PersonName = worker == null ? "" : worker.WorkerName;
 

@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EOM.TSHotelManager.WebApi.Controllers
@@ -30,7 +29,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerPic"></param>
         /// <returns></returns>
         [HttpGet]
-        public WorkerPic WorkerPic([FromQuery]WorkerPic workerPic)
+        public WorkerPic WorkerPic([FromQuery] WorkerPic workerPic)
         {
             return workerPicService.WorkerPic(workerPic);
         }
@@ -41,7 +40,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerPic"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertWorkerPic([FromBody]WorkerPic workerPic)
+        public bool InsertWorkerPic([FromBody] WorkerPic workerPic)
         {
             return workerPicService.InsertWorkerPic(workerPic);
         }
@@ -52,7 +51,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerPic"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DeleteWorkerPic([FromBody]WorkerPic workerPic)
+        public bool DeleteWorkerPic([FromBody] WorkerPic workerPic)
         {
             return workerPicService.DeleteWorkerPic(workerPic);
         }
@@ -63,9 +62,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerPic"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateWorkerPic([FromBody]WorkerPic workerPic)
+        public bool UpdateWorkerPic([FromBody] WorkerPic workerPic)
         {
-            return workerPicService.UpdateWorkerPic(workerPic); 
+            return workerPicService.UpdateWorkerPic(workerPic);
         }
 
     }

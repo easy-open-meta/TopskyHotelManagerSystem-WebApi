@@ -24,15 +24,13 @@
 using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 预约信息接口实现类
     /// </summary>
-    public class ReserService:IReserService
+    public class ReserService : IReserService
     {
         /// <summary>
         /// 预约信息
@@ -98,7 +96,7 @@ namespace EOM.TSHotelManager.Application
             {
                 delete_mk = 1,
                 datachg_usr = string.Empty
-            },a => a.ReserId == reser.ReserId);
+            }, a => a.ReserId == reser.ReserId);
 
         }
 

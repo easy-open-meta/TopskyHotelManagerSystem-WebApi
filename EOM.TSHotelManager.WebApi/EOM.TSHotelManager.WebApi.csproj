@@ -19,12 +19,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="C:\Users\yeung\.nuget\packages\jvncorelib\1.0.1.7\contentFiles\any\netstandard2.1\基础核心类库jvncorelib%28适用全平台%29.md" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="6.4.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
+    <PackageReference Include="jvncorelib" Version="1.0.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.27" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.6" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.7" />
     <PackageReference Include="SqlSugarCoreNoDrive" Version="5.1.3.45" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.2.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.3.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +44,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="CK.Common">
+      <HintPath>..\Library\CK.Common.dll</HintPath>
+    </Reference>
     <Reference Include="EOM.Encrypt">
       <HintPath>..\Library\EOM.Encrypt.dll</HintPath>
     </Reference>

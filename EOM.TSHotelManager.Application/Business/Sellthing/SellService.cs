@@ -21,8 +21,6 @@
  *SOFTWARE.
  *
  */
-using System;
-using System.Collections.Generic;
 using CK.Common;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
@@ -33,7 +31,7 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 商品信息接口实现类
     /// </summary>
-    public class SellService:ISellService
+    public class SellService : ISellService
     {
         /// <summary>
         /// 商品信息
@@ -101,10 +99,10 @@ namespace EOM.TSHotelManager.Application
         /// <returns></returns>
         public bool UpdateSellThing(string stock, string sellNo)
         {
-            return sellThingRepository.Update(a => new SellThing() 
+            return sellThingRepository.Update(a => new SellThing()
             {
                 Stock = Convert.ToInt32(stock),
-            },a => a.SellNo == sellNo);
+            }, a => a.SellNo == sellNo);
         }
 
         /// <summary>
@@ -120,7 +118,7 @@ namespace EOM.TSHotelManager.Application
                 SellPrice = sellThing.SellPrice,
                 Stock = sellThing.Stock,
                 format = sellThing.format,
-            },a => a.SellNo == sellThing.SellNo);
+            }, a => a.SellNo == sellThing.SellNo);
         }
 
         /// <summary>
@@ -135,7 +133,7 @@ namespace EOM.TSHotelManager.Application
             return spendRepository.Update(a => new Spend()
             {
                 delete_mk = 1,
-            },a => a.MoneyState.Equals(SpendConsts.UnSettle) && a.RoomNo == roomNo && a.CustoNo == custoNo
+            }, a => a.MoneyState.Equals(SpendConsts.UnSettle) && a.RoomNo == roomNo && a.CustoNo == custoNo
             && a.SpendName == sellName);
 
         }
@@ -159,7 +157,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="name"></param>
         /// <param name="price"></param>
         /// <returns></returns>
-        public SellThing SelectSellThingByNameAndPrice(string name,string price)
+        public SellThing SelectSellThingByNameAndPrice(string name, string price)
         {
             SellThing sellThing = null;
             sellThing = sellThingRepository.GetSingle(a => a.SellName == name && a.SellPrice == Convert.ToDecimal(price));

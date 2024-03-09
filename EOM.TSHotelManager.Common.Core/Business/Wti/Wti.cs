@@ -35,7 +35,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 信息编号
         /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "WtiNo",IsIdentity =true,IsPrimaryKey =true)]
+        [SqlSugar.SugarColumn(ColumnName = "WtiNo", IsIdentity = true, IsPrimaryKey = true)]
         public int WtiNo { get; set; }
         /// <summary>
         /// 房间编号
@@ -65,7 +65,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 记录员
         /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "Record",DefaultValue = "Admin")]
+        [SqlSugar.SugarColumn(ColumnName = "Record", DefaultValue = "Admin")]
         public string Record { get; set; }
         /// <summary>
         /// 客户编号

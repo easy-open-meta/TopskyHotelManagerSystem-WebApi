@@ -22,15 +22,13 @@
  *
  *模块说明：房间类型类
  */
-using System;
-
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>
     /// 房间类型
     /// </summary>
     [SqlSugar.SugarTable("roomtype")]
-    public class RoomType: BaseDTO
+    public class RoomType : BaseDTO
     {
         /// <summary>
         /// 类型编号
@@ -45,7 +43,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 房间租金
         /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "room_rent",ColumnDataType = "decimal")]
+        [SqlSugar.SugarColumn(ColumnName = "room_rent", ColumnDataType = "decimal")]
         public decimal RoomRent { get; set; }
 
         /// <summary>

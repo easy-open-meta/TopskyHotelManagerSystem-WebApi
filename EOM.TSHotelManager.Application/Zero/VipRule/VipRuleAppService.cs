@@ -23,18 +23,13 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 会员等级规则功能模块接口实现类
     /// </summary>
-    public class VipRuleAppService:IVipRuleAppService
+    public class VipRuleAppService : IVipRuleAppService
     {
         /// <summary>
         /// 会员等级规则
@@ -106,7 +101,7 @@ namespace EOM.TSHotelManager.Application
         /// <returns></returns>
         public bool AddVipRule(VipRule vipRule)
         {
-            return vipRuleRepository.Insert(new VipRule() 
+            return vipRuleRepository.Insert(new VipRule()
             {
                 rule_id = vipRule.rule_id,
                 rule_name = vipRule.rule_name,
@@ -128,7 +123,7 @@ namespace EOM.TSHotelManager.Application
             {
                 delete_mk = 1,
                 datachg_usr = vipRule.datachg_usr,
-            },a => a.rule_id == vipRule.rule_id);
+            }, a => a.rule_id == vipRule.rule_id);
         }
 
         /// <summary>

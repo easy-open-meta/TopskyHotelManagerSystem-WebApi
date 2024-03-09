@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -32,7 +31,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<SexType> SelectSexTypeAll([FromQuery]SexType sexType = null)
+        public List<SexType> SelectSexTypeAll([FromQuery] SexType sexType = null)
         {
             return baseService.SelectSexTypeAll(sexType);
         }
@@ -42,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public SexType SelectSexType([FromQuery]SexType sexType)
+        public SexType SelectSexType([FromQuery] SexType sexType)
         {
             return baseService.SelectSexType(sexType);
         }
@@ -53,7 +52,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="sexType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddSexType([FromBody]SexType sexType)
+        public bool AddSexType([FromBody] SexType sexType)
         {
             return baseService.AddSexType(sexType);
         }
@@ -64,7 +63,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="sexType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelSexType([FromBody]SexType sexType)
+        public bool DelSexType([FromBody] SexType sexType)
         {
             return baseService.DelSexType(sexType);
         }
@@ -75,7 +74,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="sexType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdSexType([FromBody]SexType sexType)
+        public bool UpdSexType([FromBody] SexType sexType)
         {
             return baseService.UpdSexType(sexType);
         }
@@ -89,7 +88,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Position> SelectPositionAll([FromQuery]Position position = null)
+        public List<Position> SelectPositionAll([FromQuery] Position position = null)
         {
             return baseService.SelectPositionAll(position);
         }
@@ -99,7 +98,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public Position SelectPosition([FromQuery]Position position)
+        public Position SelectPosition([FromQuery] Position position)
         {
             return baseService.SelectPosition(position);
         }
@@ -110,7 +109,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="position"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddPosition([FromBody]Position position)
+        public bool AddPosition([FromBody] Position position)
         {
             return baseService.AddPosition(position);
         }
@@ -121,7 +120,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="position"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelPosition([FromBody]Position position)
+        public bool DelPosition([FromBody] Position position)
         {
             return baseService.DelPosition(position);
         }
@@ -132,7 +131,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="position"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdPosition([FromBody]Position position)
+        public bool UpdPosition([FromBody] Position position)
         {
             return baseService.UpdPosition(position);
         }
@@ -146,7 +145,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Nation> SelectNationAll([FromQuery]Nation nation = null)
+        public List<Nation> SelectNationAll([FromQuery] Nation nation = null)
         {
             return baseService.SelectNationAll(nation);
         }
@@ -156,7 +155,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public Nation SelectNation([FromQuery]Nation nation)
+        public Nation SelectNation([FromQuery] Nation nation)
         {
             return baseService.SelectNation(nation);
         }
@@ -167,7 +166,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="nation"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddNation([FromBody]Nation nation)
+        public bool AddNation([FromBody] Nation nation)
         {
             return baseService.AddNation(nation);
         }
@@ -178,7 +177,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="nation"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelNation([FromBody]Nation nation)
+        public bool DelNation([FromBody] Nation nation)
         {
             return baseService.DelNation(nation);
         }
@@ -189,7 +188,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="nation"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdNation([FromBody]Nation nation)
+        public bool UpdNation([FromBody] Nation nation)
         {
             return baseService.UpdNation(nation);
         }
@@ -203,7 +202,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Education> SelectEducationAll([FromQuery]Education education = null)
+        public List<Education> SelectEducationAll([FromQuery] Education education = null)
         {
             return baseService.SelectEducationAll(education);
         }
@@ -213,7 +212,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public Education SelectEducation([FromQuery]Education education)
+        public Education SelectEducation([FromQuery] Education education)
         {
             return baseService.SelectEducation(education);
         }
@@ -224,7 +223,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="education"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddEducation([FromBody]Education education)
+        public bool AddEducation([FromBody] Education education)
         {
             return baseService.AddEducation(education);
         }
@@ -235,7 +234,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="education"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelEducation([FromBody]Education education)
+        public bool DelEducation([FromBody] Education education)
         {
             return baseService.DelEducation(education);
         }
@@ -246,7 +245,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="education"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdEducation([FromBody]Education education)
+        public bool UpdEducation([FromBody] Education education)
         {
             return baseService.UpdEducation(education);
         }
@@ -280,7 +279,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public Dept SelectDept([FromQuery]Dept dept)
+        public Dept SelectDept([FromQuery] Dept dept)
         {
             return baseService.SelectDept(dept);
         }
@@ -291,7 +290,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="dept"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddDept([FromBody]Dept dept)
+        public bool AddDept([FromBody] Dept dept)
         {
             return baseService.AddDept(dept);
         }
@@ -302,7 +301,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="dept"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelDept([FromBody]Dept dept)
+        public bool DelDept([FromBody] Dept dept)
         {
             return baseService.DelDept(dept);
         }
@@ -313,7 +312,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="dept"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdDept([FromBody]Dept dept)
+        public bool UpdDept([FromBody] Dept dept)
         {
             return baseService.UpdDept(dept);
         }
@@ -348,7 +347,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custoType"></param>
         /// <returns></returns>
         [HttpGet]
-        public CustoType SelectCustoTypeByTypeId([FromQuery]CustoType custoType)
+        public CustoType SelectCustoTypeByTypeId([FromQuery] CustoType custoType)
         {
             return baseService.SelectCustoTypeByTypeId(custoType);
         }
@@ -359,7 +358,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custoType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertCustoType([FromBody]CustoType custoType)
+        public bool InsertCustoType([FromBody] CustoType custoType)
         {
             return baseService.InsertCustoType(custoType);
         }
@@ -370,7 +369,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custoType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DeleteCustoType([FromBody]CustoType custoType)
+        public bool DeleteCustoType([FromBody] CustoType custoType)
         {
             return baseService.DeleteCustoType(custoType);
         }
@@ -381,7 +380,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custoType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateCustoType([FromBody]CustoType custoType)
+        public bool UpdateCustoType([FromBody] CustoType custoType)
         {
             return baseService.UpdateCustoType(custoType);
         }
@@ -416,7 +415,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="passPortType"></param>
         /// <returns></returns>
         [HttpGet]
-        public PassPortType SelectPassPortTypeByTypeId([FromQuery]PassPortType passPortType)
+        public PassPortType SelectPassPortTypeByTypeId([FromQuery] PassPortType passPortType)
         {
             return baseService.SelectPassPortTypeByTypeId(passPortType);
         }
@@ -427,7 +426,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="passPortType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertPassPortType([FromBody]PassPortType passPortType)
+        public bool InsertPassPortType([FromBody] PassPortType passPortType)
         {
             return baseService.InsertPassPortType(passPortType);
         }
@@ -438,7 +437,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="portType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DeletePassPortType([FromBody]PassPortType portType)
+        public bool DeletePassPortType([FromBody] PassPortType portType)
         {
             return baseService.DeletePassPortType(portType);
         }
@@ -449,7 +448,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="portType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdatePassPortType([FromBody]PassPortType portType)
+        public bool UpdatePassPortType([FromBody] PassPortType portType)
         {
             return baseService.UpdatePassPortType(portType);
         }
@@ -484,7 +483,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="gBType"></param>
         /// <returns></returns>
         [HttpGet]
-        public GBType SelectGBTypeByTypeId([FromQuery]GBType gBType)
+        public GBType SelectGBTypeByTypeId([FromQuery] GBType gBType)
         {
             return baseService.SelectGBTypeByTypeId(gBType);
         }
@@ -495,7 +494,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="gBType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertGBType([FromBody]GBType gBType)
+        public bool InsertGBType([FromBody] GBType gBType)
         {
             return baseService.InsertGBType(gBType);
         }
@@ -506,7 +505,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="gBType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DeleteGBType([FromBody]GBType gBType)
+        public bool DeleteGBType([FromBody] GBType gBType)
         {
             return baseService.DeleteGBType(gBType);
         }
@@ -517,7 +516,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="gBType"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateGBType([FromBody]GBType gBType)
+        public bool UpdateGBType([FromBody] GBType gBType)
         {
             return baseService.UpdateGBType(gBType);
         }

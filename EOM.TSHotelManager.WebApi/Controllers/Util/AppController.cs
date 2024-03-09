@@ -1,6 +1,6 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +31,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="identityCard"></param>
         /// <returns></returns>
         [HttpGet]
-        public string SelectCardCode([FromQuery]string identityCard)
+        public string SelectCardCode([FromQuery] string identityCard)
         {
             return utilService.SelectCardCode(identityCard);
         }
@@ -41,6 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [AllowAnonymous]
         public Applicationversion CheckBaseVersion()
         {
             return utilService.CheckBaseVersion();
@@ -52,7 +53,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="opr"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddLog([FromBody]OperationLog opr)
+        public bool AddLog([FromBody] OperationLog opr)
         {
             return utilService.AddLog(opr);
         }

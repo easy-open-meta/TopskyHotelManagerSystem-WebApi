@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="stateid"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<Room> SelectRoomByRoomState([FromQuery]int stateid)
+        public List<Room> SelectRoomByRoomState([FromQuery] int stateid)
         {
             return roomService.SelectRoomByRoomState(stateid);
         }
@@ -105,7 +104,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="r"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateRoomInfo([FromBody]Room r)
+        public bool UpdateRoomInfo([FromBody] Room r)
         {
             return roomService.UpdateRoomInfo(r);
         }
@@ -146,7 +145,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public object SelectRoomByRoomPrice([FromQuery]string r)
+        public object SelectRoomByRoomPrice([FromQuery] string r)
         {
             return roomService.SelectRoomByRoomPrice(r);
         }
@@ -188,9 +187,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="stateid"></param>
         /// <returns></returns>
         [HttpGet]
-        public bool UpdateRoomStateByRoomNo([FromQuery]string roomno, int stateid)
+        public bool UpdateRoomStateByRoomNo([FromQuery] string roomno, int stateid)
         {
-            return roomService.UpdateRoomStateByRoomNo(roomno,stateid);
+            return roomService.UpdateRoomStateByRoomNo(roomno, stateid);
         }
 
         /// <summary>
@@ -199,7 +198,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="rn"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertRoom([FromBody]Room rn)
+        public bool InsertRoom([FromBody] Room rn)
         {
             return roomService.InsertRoom(rn);
         }
@@ -230,7 +229,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="roomno"></param>
         /// <returns></returns>
         [HttpGet]
-        public object SelectRoomStateIdByRoomNo([FromQuery]string roomno)
+        public object SelectRoomStateIdByRoomNo([FromQuery] string roomno)
         {
             return roomService.SelectRoomStateIdByRoomNo(roomno);
         }

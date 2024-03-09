@@ -1,6 +1,6 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +31,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="worker"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateWorker([FromBody]Worker worker)
+        public bool UpdateWorker([FromBody] Worker worker)
         {
             return workerService.UpdateWorker(worker);
         }
@@ -42,7 +42,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="worker"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool ManagerWorkerAccount([FromBody]Worker worker)
+        public bool ManagerWorkerAccount([FromBody] Worker worker)
         {
             return workerService.ManagerWorkerAccount(worker);
         }
@@ -54,7 +54,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
 
-        public bool UpdateWorkerPositionAndClub([FromBody]Worker worker)
+        public bool UpdateWorkerPositionAndClub([FromBody] Worker worker)
         {
             return workerService.UpdateWorkerPositionAndClub(worker);
         }
@@ -65,7 +65,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="worker"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddWorker([FromBody]Worker worker)
+        public bool AddWorker([FromBody] Worker worker)
         {
             return workerService.AddWorker(worker);
         }
@@ -97,7 +97,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="workerId"></param>
         /// <returns></returns>
         [HttpGet]
-        public Worker SelectWorkerInfoByWorkerId([FromQuery]string workerId)
+        public Worker SelectWorkerInfoByWorkerId([FromQuery] string workerId)
         {
             return workerService.SelectWorkerInfoByWorkerId(workerId);
         }
@@ -108,7 +108,8 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="worker"></param>
         /// <returns></returns>
         [HttpPost]
-        public Worker SelectWorkerInfoByWorkerIdAndWorkerPwd([FromBody]Worker worker)
+        [AllowAnonymous]
+        public Worker SelectWorkerInfoByWorkerIdAndWorkerPwd([FromBody] Worker worker)
         {
             return workerService.SelectWorkerInfoByWorkerIdAndWorkerPwd(worker);
         }
@@ -119,7 +120,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="worker"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdWorkerPwdByWorkNo([FromBody]Worker worker)
+        public bool UpdWorkerPwdByWorkNo([FromBody] Worker worker)
         {
             return workerService.UpdWorkerPwdByWorkNo(worker);
         }

@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="cash"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddCashInfo([FromBody]Cash cash)
+        public bool AddCashInfo([FromBody] Cash cash)
         {
             return cashService.AddCashInfo(cash);
         }

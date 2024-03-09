@@ -21,22 +21,22 @@
  *SOFTWARE.
  *
  */
-using CK.Common;
 using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using SqlSugar;
-using SqlSugar.DistributedSystem.Snowflake;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 员工信息接口实现类
     /// </summary>
-    public class WorkerService:IWorkerService
+    public class WorkerService : IWorkerService
     {
         /// <summary>
         /// 员工信息
@@ -74,7 +74,12 @@ namespace EOM.TSHotelManager.Application
         private readonly EOM.Encrypt.Encrypt encrypt;
 
         /// <summary>
-        /// 
+        /// 配置
+        /// </summary>
+        private readonly IConfiguration configuration;
+
+        /// <summary>
+        /// 构造函数
         /// </summary>
         /// <param name="workerRepository"></param>
         /// <param name="sexTypeRepository"></param>
@@ -83,7 +88,8 @@ namespace EOM.TSHotelManager.Application
         /// <param name="deptRepository"></param>
         /// <param name="positionRepository"></param>
         /// <param name="encrypt"></param>
-        public WorkerService(PgRepository<Worker> workerRepository, PgRepository<SexType> sexTypeRepository, PgRepository<Education> educationRepository, PgRepository<Nation> nationRepository, PgRepository<Dept> deptRepository, PgRepository<Position> positionRepository, EOM.Encrypt.Encrypt encrypt)
+        /// <param name="configuration"></param>
+        public WorkerService(PgRepository<Worker> workerRepository, PgRepository<SexType> sexTypeRepository, PgRepository<Education> educationRepository, PgRepository<Nation> nationRepository, PgRepository<Dept> deptRepository, PgRepository<Position> positionRepository, Encrypt.Encrypt encrypt, IConfiguration configuration)
         {
             this.workerRepository = workerRepository;
             this.sexTypeRepository = sexTypeRepository;
@@ -92,6 +98,7 @@ namespace EOM.TSHotelManager.Application
             this.deptRepository = deptRepository;
             this.positionRepository = positionRepository;
             this.encrypt = encrypt;
+            this.configuration = configuration;
         }
 
         #region 修改员工信息
@@ -106,7 +113,7 @@ namespace EOM.TSHotelManager.Application
             var sourceTelStr = string.Empty;
             if (!string.IsNullOrEmpty(worker.WorkerTel))
             {
-                sourceTelStr = encrypt.Encryption(worker.WorkerTel,EncryptionLevel.Enhanced);
+                sourceTelStr = encrypt.Encryption(worker.WorkerTel, EncryptionLevel.Enhanced);
             }
             //加密身份证
             var sourceIdStr = string.Empty;
@@ -124,11 +131,11 @@ namespace EOM.TSHotelManager.Application
                 WorkerFace = worker.WorkerFace,
                 WorkerEducation = worker.WorkerEducation,
                 WorkerNation = worker.WorkerNation,
-                CardId= worker.CardId,
-                WorkerSex  = worker.WorkerSex,
+                CardId = worker.CardId,
+                WorkerSex = worker.WorkerSex,
                 WorkerBirthday = worker.WorkerBirthday,
                 datachg_usr = worker.datachg_usr
-            },a => a.WorkerId.Equals(worker.WorkerId));
+            }, a => a.WorkerId.Equals(worker.WorkerId));
 
         }
         #endregion
@@ -232,7 +239,7 @@ namespace EOM.TSHotelManager.Application
                 var position = positions.FirstOrDefault(a => a.position_no == source.WorkerPosition);
                 source.PositionName = string.IsNullOrEmpty(position.position_name) ? "" : position.position_name;
             });
-            
+
             return workers;
         }
 
@@ -241,9 +248,9 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="deptNo"></param>
         /// <returns></returns>
-        public bool  CheckWorkerBydepartment(string deptNo)
+        public bool CheckWorkerBydepartment(string deptNo)
         {
-            var workers = workerRepository.Count(a=> a.WorkerClub.Equals(deptNo));
+            var workers = workerRepository.Count(a => a.WorkerClub.Equals(deptNo));
 
             return workers > 0 ? true : false;
         }
@@ -324,6 +331,25 @@ namespace EOM.TSHotelManager.Application
             //职位
             var position = positionRepository.GetSingle(a => a.position_no == w.WorkerPosition);
             w.PositionName = string.IsNullOrEmpty(position.position_name) ? "" : position.position_name;
+
+            //附带Token
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, w.WorkerId)
+                }),
+                Expires = DateTime.Now.AddMinutes(20), // 设置Token过期时间
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
+                Audience = configuration["Jwt:Audience"],
+                Issuer = configuration["Jwt:Issuer"]
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            w.user_token = tokenHandler.WriteToken(token);
+
             return w;
         }
         #endregion
@@ -340,7 +366,7 @@ namespace EOM.TSHotelManager.Application
             {
                 WorkerPwd = NewPwd,
                 datachg_usr = worker.datachg_usr
-            },a => a.WorkerId == worker.WorkerId);
+            }, a => a.WorkerId == worker.WorkerId);
         }
 
     }

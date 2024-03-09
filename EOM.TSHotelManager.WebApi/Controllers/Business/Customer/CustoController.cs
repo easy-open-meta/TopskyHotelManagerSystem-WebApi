@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custo"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertCustomerInfo([FromBody]Custo custo)
+        public bool InsertCustomerInfo([FromBody] Custo custo)
         {
             return customerService.InsertCustomerInfo(custo);
         }
@@ -42,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="custo"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdCustomerInfoByCustoNo([FromBody]Custo custo)
+        public bool UpdCustomerInfoByCustoNo([FromBody] Custo custo)
         {
             return customerService.UpdCustomerInfoByCustoNo(custo);
         }
@@ -54,7 +53,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="userType"></param>
         /// <returns></returns>
         [HttpGet]
-        public bool UpdCustomerTypeByCustoNo([FromQuery]string custoNo,int userType)
+        public bool UpdCustomerTypeByCustoNo([FromQuery] string custoNo, int userType)
         {
             return customerService.UpdCustomerTypeByCustoNo(custoNo, userType);
         }
@@ -74,9 +73,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public OSelectCustoAllDto SelectCustoAll([FromQuery] int pageIndex, int pageSize)
+        public OSelectCustoAllDto SelectCustoAll([FromQuery] int pageIndex, int pageSize, bool onlyVip = false)
         {
-            return customerService.SelectCustoAll(pageIndex,pageSize);
+            return customerService.SelectCustoAll(pageIndex, pageSize, onlyVip);
         }
 
         /// <summary>
@@ -84,7 +83,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public List<Custo> SelectCustoByInfo([FromBody]Custo custo)
+        public List<Custo> SelectCustoByInfo([FromBody] Custo custo)
         {
             return customerService.SelectCustoByInfo(custo);
         }

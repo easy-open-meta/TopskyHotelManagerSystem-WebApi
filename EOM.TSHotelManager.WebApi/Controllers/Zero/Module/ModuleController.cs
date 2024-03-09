@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -41,7 +40,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="admin"></param>
         /// <returns></returns>
         [HttpPost]
-        public List<ModuleZero> GetAllModuleByAdmin([FromBody]Admin admin)
+        public List<ModuleZero> GetAllModuleByAdmin([FromBody] Admin admin)
         {
             return adminModuleZeroService.GetAllModuleByAdmin(admin);
         }
@@ -52,7 +51,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="moduleZeros"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddModuleZeroList([FromBody]List<ModuleZero> moduleZeros)
+        public bool AddModuleZeroList([FromBody] List<ModuleZero> moduleZeros)
         {
             return adminModuleZeroService.AddModuleZeroList(moduleZeros);
         }
@@ -63,7 +62,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="moduleZero"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DelModuleZeroList([FromBody]ModuleZero moduleZero)
+        public bool DelModuleZeroList([FromBody] ModuleZero moduleZero)
         {
             return adminModuleZeroService.DelModuleZeroList(moduleZero);
         }

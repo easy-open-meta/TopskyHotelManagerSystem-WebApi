@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -31,7 +30,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="goodBad"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool AddGoodBad([FromBody]WorkerGoodBad goodBad)
+        public bool AddGoodBad([FromBody] WorkerGoodBad goodBad)
         {
             return workerGoodBadService.AddGoodBad(goodBad);
         }
@@ -42,7 +41,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="wn"></param>
         /// <returns></returns>
         [HttpGet]
-        public List<WorkerGoodBad> SelectAllGoodBadByWorkNo([FromQuery]string wn)
+        public List<WorkerGoodBad> SelectAllGoodBadByWorkNo([FromQuery] string wn)
         {
             return workerGoodBadService.SelectAllGoodBadByWorkNo(wn);
         }

@@ -1,9 +1,7 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace EOM.TSHotelManager.WebApi.Controllers
 {
@@ -42,7 +40,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="no"></param>
         /// <returns></returns>
         [HttpGet]
-        public Reser SelectReserInfoByRoomNo([FromQuery]string no)
+        public Reser SelectReserInfoByRoomNo([FromQuery] string no)
         {
             return reserService.SelectReserInfoByRoomNo(no);
         }
@@ -53,7 +51,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="reser"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool DeleteReserInfo([FromBody]Reser reser)
+        public bool DeleteReserInfo([FromBody] Reser reser)
         {
             return reserService.DeleteReserInfo(reser);
         }
@@ -64,7 +62,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="r"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InserReserInfo([FromBody]Reser r)
+        public bool InserReserInfo([FromBody] Reser r)
         {
             return reserService.InserReserInfo(r);
         }

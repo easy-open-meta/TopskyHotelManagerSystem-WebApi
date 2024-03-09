@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EOM.TSHotelManager.Common.Core
+﻿namespace EOM.TSHotelManager.Common.Core
 {
 
     /// <summary>
@@ -16,7 +10,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 模块ID
         /// </summary>
-        [SqlSugar.SugarColumn(IsIdentity = true,ColumnName = "module_id")]
+        [SqlSugar.SugarColumn(IsIdentity = true, ColumnName = "module_id")]
         public int module_id { get; set; }
         /// <summary>
         /// 管理员账号

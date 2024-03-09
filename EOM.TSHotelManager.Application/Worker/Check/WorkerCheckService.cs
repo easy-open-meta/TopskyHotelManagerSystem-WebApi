@@ -23,16 +23,13 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 员工打卡接口实现类
     /// </summary>
-    public class WorkerCheckService:IWorkerCheckService
+    public class WorkerCheckService : IWorkerCheckService
     {
         /// <summary>
         /// 员工打卡

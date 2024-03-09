@@ -23,15 +23,13 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 公告信息接口实现类
     /// </summary>
-    public class NoticeService:INoticeService
+    public class NoticeService : INoticeService
     {
         /// <summary>
         /// 公告

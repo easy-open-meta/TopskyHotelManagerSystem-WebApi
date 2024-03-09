@@ -1,17 +1,12 @@
 ﻿using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EOM.TSHotelManager.Application
 {
     /// <summary>
     /// 导航控件模块
     /// </summary>
-    public class NavBarService:INavBarService
+    public class NavBarService : INavBarService
     {
         /// <summary>
         /// 导航控件

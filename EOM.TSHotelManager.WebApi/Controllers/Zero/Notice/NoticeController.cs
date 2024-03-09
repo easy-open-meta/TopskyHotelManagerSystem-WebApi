@@ -1,6 +1,5 @@
 ﻿using EOM.TSHotelManager.Application;
 using EOM.TSHotelManager.Common.Core;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -43,7 +42,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="noticeId"></param>
         /// <returns></returns>
         [HttpGet]
-        public Notice SelectNoticeByNoticeNo([FromQuery]string noticeId)
+        public Notice SelectNoticeByNoticeNo([FromQuery] string noticeId)
         {
             return noticeService.SelectNoticeByNoticeNo(noticeId);
         }
@@ -55,7 +54,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="notice"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertNotice([FromBody]Notice notice)
+        public bool InsertNotice([FromBody] Notice notice)
         {
             return noticeService.InsertNotice(notice);
         }
