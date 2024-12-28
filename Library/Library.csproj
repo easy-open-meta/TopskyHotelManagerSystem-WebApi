@@ -6,12 +6,4 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="kse.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="kse.dll" />
-  </ItemGroup>
-
 </Project>

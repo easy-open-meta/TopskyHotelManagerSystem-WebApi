@@ -40,12 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="jvncorelib.EncryptorLib">
-      <HintPath>..\Library\jvncorelib.EncryptorLib.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

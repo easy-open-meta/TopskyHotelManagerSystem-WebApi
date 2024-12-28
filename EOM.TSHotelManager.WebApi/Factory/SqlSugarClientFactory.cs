@@ -19,7 +19,7 @@ namespace EOM.TSHotelManager.WebApi
             // 读取默认数据库名称
             dbName ??= _configuration["DefaultDatabase"];
 
-            var connectionString = _configuration.GetConnectionString(dbName+ "ConnectStr");
+            var connectionString = _configuration.GetConnectionString(dbName + "ConnectStr");
             var dbType = GetDbType(dbName);
 
             ConnectionConfig config = new ConnectionConfig
