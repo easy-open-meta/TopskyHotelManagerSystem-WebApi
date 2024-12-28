@@ -32,9 +32,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public Admin SelectMangerByPass([FromBody] Admin admin)
+        public Admin SelectManagerByPass([FromBody] Admin admin)
         {
-            return adminService.SelectMangerByPass(admin);
+            return adminService.SelectManagerByPass(admin);
         }
 
         /// <summary>

@@ -52,6 +52,11 @@ namespace EOM.TSHotelManager.Common.Core
     public class OperationLog : BaseDTO
     {
         /// <summary>
+        /// 日志ID
+        /// </summary>
+        [SqlSugar.SugarColumn(ColumnName = "OperationId", IsIdentity = true, IsPrimaryKey = true)]
+        public int OperationId { get; set; }
+        /// <summary>
         /// 操作时间
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "OperationTime")]

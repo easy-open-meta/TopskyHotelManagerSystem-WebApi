@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EOM.TSHotelManager.Common.Core", "EOM.TSHotelManager.Common.Core\EOM.TSHotelManager.Common.Core.csproj", "{D99F4527-C620-4073-92B1-254A6C7FA363}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EOM.TSHotelManager.Common.Util", "EOM.TSHotelManager.Common.Util\EOM.TSHotelManager.Common.Util.csproj", "{4D8B62E1-2D40-47E6-912D-D7B08F3F031A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EOM.TSHotelManager.Shared", "EOM.TSHotelManager.Shared\EOM.TSHotelManager.Shared.csproj", "{1DC1D6E4-9FEB-4AD3-B1A4-0C20241C6D85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{D99F4527-C620-4073-92B1-254A6C7FA363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D99F4527-C620-4073-92B1-254A6C7FA363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D99F4527-C620-4073-92B1-254A6C7FA363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8B62E1-2D40-47E6-912D-D7B08F3F031A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8B62E1-2D40-47E6-912D-D7B08F3F031A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8B62E1-2D40-47E6-912D-D7B08F3F031A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8B62E1-2D40-47E6-912D-D7B08F3F031A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC1D6E4-9FEB-4AD3-B1A4-0C20241C6D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC1D6E4-9FEB-4AD3-B1A4-0C20241C6D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC1D6E4-9FEB-4AD3-B1A4-0C20241C6D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC1D6E4-9FEB-4AD3-B1A4-0C20241C6D85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

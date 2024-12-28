@@ -23,6 +23,7 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -34,17 +35,17 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 员工奖惩记录
         /// </summary>
-        private readonly PgRepository<WorkerGoodBad> workerGoogBadRepository;
+        private readonly GenericRepository<WorkerGoodBad> workerGoogBadRepository;
 
         /// <summary>
         /// 管理员记录
         /// </summary>
-        private readonly PgRepository<Admin> adminRepository;
+        private readonly GenericRepository<Admin> adminRepository;
 
         /// <summary>
         /// 奖惩类型
         /// </summary>
-        private readonly PgRepository<GBType> goodbadTypeRepository;
+        private readonly GenericRepository<GBType> goodbadTypeRepository;
 
         /// <summary>
         /// 
@@ -52,7 +53,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="workerGoogBadRepository"></param>
         /// <param name="adminRepository"></param>
         /// <param name="goodbadTypeRepository"></param>
-        public WorkerGoodBadService(PgRepository<WorkerGoodBad> workerGoogBadRepository, PgRepository<Admin> adminRepository, PgRepository<GBType> goodbadTypeRepository)
+        public WorkerGoodBadService(GenericRepository<WorkerGoodBad> workerGoogBadRepository, GenericRepository<Admin> adminRepository, GenericRepository<GBType> goodbadTypeRepository)
         {
             this.workerGoogBadRepository = workerGoogBadRepository;
             this.adminRepository = adminRepository;
@@ -87,11 +88,11 @@ namespace EOM.TSHotelManager.Application
             {
                 //奖惩类型
                 var gbType = gBTypes.FirstOrDefault(a => a.GBTypeId == source.GBType);
-                source.TypeName = string.IsNullOrEmpty(gbType.GBName) ? "" : gbType.GBName;
+                source.TypeName = gbType.GBName.IsNullOrEmpty() ? "" : gbType.GBName;
 
                 //操作人
                 var admin = admins.FirstOrDefault(a => a.AdminAccount == source.GBOperation);
-                source.OperationName = string.IsNullOrEmpty(admin.AdminName) ? "" : admin.AdminName;
+                source.OperationName = admin.AdminName.IsNullOrEmpty() ? "" : admin.AdminName;
             });
             return gb;
         }

@@ -34,19 +34,19 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 会员等级规则
         /// </summary>
-        private readonly PgRepository<VipRule> vipRuleRepository;
+        private readonly GenericRepository<VipRule> vipRuleRepository;
 
         /// <summary>
         /// 客户类型
         /// </summary>
-        private readonly PgRepository<CustoType> custoTypeRepository;
+        private readonly GenericRepository<CustoType> custoTypeRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="vipRuleRepository"></param>
         /// <param name="custoTypeRepository"></param>
-        public VipRuleAppService(PgRepository<VipRule> vipRuleRepository, PgRepository<CustoType> custoTypeRepository)
+        public VipRuleAppService(GenericRepository<VipRule> vipRuleRepository, GenericRepository<CustoType> custoTypeRepository)
         {
             this.vipRuleRepository = vipRuleRepository;
             this.custoTypeRepository = custoTypeRepository;

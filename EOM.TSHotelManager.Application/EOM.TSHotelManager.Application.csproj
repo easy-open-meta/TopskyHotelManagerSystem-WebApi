@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -22,17 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EOM.TSHotelManager.Common.Core\EOM.TSHotelManager.Common.Core.csproj" />
-    <ProjectReference Include="..\EOM.TSHotelManager.EntityFramework\EOM.TSHotelManager.EntityFramework.csproj" />
+    <PackageReference Include="jvncorelib" Version="1.0.1.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="CK.Common">
-      <HintPath>..\Library\CK.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="EOM.Encrypt">
-      <HintPath>..\Library\EOM.Encrypt.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\EOM.TSHotelManager.Common.Core\EOM.TSHotelManager.Common.Core.csproj" />
+    <ProjectReference Include="..\EOM.TSHotelManager.EntityFramework\EOM.TSHotelManager.EntityFramework.csproj" />
+	<ProjectReference Include="..\EOM.TSHotelManager.Shared\EOM.TSHotelManager.Shared.csproj" />
   </ItemGroup>
 
 </Project>

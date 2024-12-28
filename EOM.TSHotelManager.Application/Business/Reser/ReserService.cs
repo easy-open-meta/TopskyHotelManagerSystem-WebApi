@@ -21,9 +21,9 @@
  *SOFTWARE.
  *
  */
-using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EncryptorLib;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -35,19 +35,19 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 预约信息
         /// </summary>
-        private readonly PgRepository<Reser> reserRepository;
+        private readonly GenericRepository<Reser> reserRepository;
 
         /// <summary>
         /// 加密
         /// </summary>
-        private readonly EOM.Encrypt.Encrypt encrypt;
+        private readonly jvncorelib.EncryptorLib.EncryptLib encrypt;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="reserRepository"></param>
         /// <param name="encrypt"></param>
-        public ReserService(PgRepository<Reser> reserRepository, EOM.Encrypt.Encrypt encrypt)
+        public ReserService(GenericRepository<Reser> reserRepository, jvncorelib.EncryptorLib.EncryptLib encrypt)
         {
             this.reserRepository = reserRepository;
             this.encrypt = encrypt;

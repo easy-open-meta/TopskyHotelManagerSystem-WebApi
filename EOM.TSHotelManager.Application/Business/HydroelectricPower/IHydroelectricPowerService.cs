@@ -28,7 +28,7 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 水电信息接口
     /// </summary>
-    public interface IWtiService
+    public interface IHydroelectricPowerService
     {
         #region 根据房间编号查询水电费信息
         /// <summary>
@@ -36,7 +36,7 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="roomNo"></param>
         /// <returns></returns>
-        Wti SelectWtiInfoByRoomNo(string roomNo);
+        HydroelectricPower SelectWtiInfoByRoomNo(string roomNo);
         #endregion
 
         #region 根据房间编号、使用时间查询水电费信息
@@ -47,7 +47,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="usedate"></param>
         /// <param name="enddate"></param>
         /// <returns></returns>
-        Wti SelectWtiInfoByRoomNoAndTime(string roomno, string usedate, string enddate);
+        HydroelectricPower SelectWtiInfoByRoomNoAndTime(string roomno, string usedate, string enddate);
         #endregion
 
         #region 获取所有水电费信息
@@ -55,7 +55,7 @@ namespace EOM.TSHotelManager.Application
         /// 获取所有水电费信息
         /// </summary>
         /// <returns></returns>
-        List<Wti> SelectWtiInfoAll();
+        List<HydroelectricPower> SelectWtiInfoAll();
         #endregion
 
         #region 添加水电费信息
@@ -64,7 +64,7 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        bool InsertWtiInfo(Wti w);
+        bool InsertWtiInfo(HydroelectricPower w);
         #endregion
 
         #region 修改水电费信息(根据房间编号)
@@ -73,7 +73,7 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        bool UpdateWtiInfo(Wti w);
+        bool UpdateWtiInfo(HydroelectricPower w);
         #endregion
 
         #region 根据房间信息、使用时间修改水电费
@@ -82,7 +82,7 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        bool UpdateWtiInfoByRoomNoAndDateTime(Wti w);
+        bool UpdateWtiInfoByRoomNoAndDateTime(HydroelectricPower w);
         #endregion
 
         #region 删除水电费信息:根据房间编号
@@ -110,7 +110,7 @@ namespace EOM.TSHotelManager.Application
         /// 获取所有水电费信息
         /// </summary>
         /// <returns></returns>
-        List<Wti> ListWtiInfoByRoomNo(string roomno);
+        List<HydroelectricPower> ListWtiInfoByRoomNo(string roomno);
         #endregion
     }
 }

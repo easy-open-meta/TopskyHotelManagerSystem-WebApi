@@ -2,7 +2,6 @@
 using EOM.TSHotelManager.Common.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace EOM.TSHotelManager.WebApi.Controllers
 {
@@ -63,9 +62,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<OperationLog> SelectOperationlogAll()
+        public OSelectAllDto<OperationLog> SelectOperationlogAll([FromQuery] int? pageIndex, int? pageSize)
         {
-            return utilService.SelectOperationlogAll();
+            return utilService.SelectOperationlogAll(pageIndex, pageSize);
         }
     }
 }

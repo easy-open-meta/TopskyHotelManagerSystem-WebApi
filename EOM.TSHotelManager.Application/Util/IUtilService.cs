@@ -31,6 +31,6 @@ namespace EOM.TSHotelManager.Application
         /// 查询所有操作日志
         /// </summary>
         /// <returns></returns>
-        List<OperationLog> SelectOperationlogAll();
+        OSelectAllDto<OperationLog> SelectOperationlogAll(int? pageIndex, int? pageSize);
     }
 }

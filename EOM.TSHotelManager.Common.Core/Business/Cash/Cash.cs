@@ -22,6 +22,7 @@
  *
  *模块说明：资产类
  */
+using EOM.TSHotelManager.Common.Util;
 using System;
 namespace EOM.TSHotelManager.Common.Core
 {
@@ -34,23 +35,28 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 资产编号
         /// </summary>
+        [NeedValid]
         public string CashNo { get; set; }
         /// <summary>
         /// 资产名称
         /// </summary>
+        [NeedValid]
         public string CashName { get; set; }
         /// <summary>
         /// 资产总值
         /// </summary>
+        [NeedValid]
         public decimal CashPrice { get; set; }
         /// <summary>
         /// 资产总值描述
         /// </summary>
         [SqlSugar.SugarColumn(IsIgnore = true)]
+        [NeedValid]
         public string CashPriceStr { get; set; }
         /// <summary>
         /// 所属部门
         /// </summary>
+        [NeedValid]
         public string CashClub { get; set; }
         /// <summary>
         /// 所属部门描述
@@ -60,14 +66,17 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 入库时间
         /// </summary>
+        [NeedValid]
         public DateTime CashTime { get; set; }
         /// <summary>
         /// 资产来源
         /// </summary>
+        [NeedValid]
         public string CashSource { get; set; }
         /// <summary>
         /// 资产经办人
         /// </summary>
+        [NeedValid]
         public string CashPerson { get; set; }
         /// <summary>
         /// 资产经办人

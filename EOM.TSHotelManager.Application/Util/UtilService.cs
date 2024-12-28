@@ -11,17 +11,17 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 卡片代码
         /// </summary>
-        private readonly PgRepository<Cardcodes> cardCodesRepository;
+        private readonly GenericRepository<Cardcodes> cardCodesRepository;
 
         /// <summary>
         /// 应用检测
         /// </summary>
-        private readonly PgRepository<Applicationversion> applicationRepository;
+        private readonly GenericRepository<Applicationversion> applicationRepository;
 
         /// <summary>
         /// 操作日志
         /// </summary>
-        private readonly PgRepository<OperationLog> operationLogRepository;
+        private readonly GenericRepository<OperationLog> operationLogRepository;
 
         /// <summary>
         /// 
@@ -29,7 +29,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="cardCodesRepository"></param>
         /// <param name="applicationRepository"></param>
         /// <param name="operationLogRepository"></param>
-        public UtilService(PgRepository<Cardcodes> cardCodesRepository, PgRepository<Applicationversion> applicationRepository, PgRepository<OperationLog> operationLogRepository)
+        public UtilService(GenericRepository<Cardcodes> cardCodesRepository, GenericRepository<Applicationversion> applicationRepository, GenericRepository<OperationLog> operationLogRepository)
         {
             this.cardCodesRepository = cardCodesRepository;
             this.applicationRepository = applicationRepository;
@@ -73,14 +73,25 @@ namespace EOM.TSHotelManager.Application
         /// 查询所有操作日志
         /// </summary>
         /// <returns></returns>
-        public List<OperationLog> SelectOperationlogAll()
+        public OSelectAllDto<OperationLog> SelectOperationlogAll(int? pageIndex, int? pageSize)
         {
-            List<OperationLog> operationLogs = new List<OperationLog>();
-            operationLogs = operationLogRepository.GetList(a => a.delete_mk != 1).OrderByDescending(a => a.OperationTime).ToList();
-            operationLogs.ForEach(source =>
+            OSelectAllDto<OperationLog> operationLogs = new OSelectAllDto<OperationLog>();
+            var count = 0;
+            if (pageIndex != 0 && pageSize != 0)
+            {
+                operationLogs.listSource = operationLogRepository.AsQueryable().OrderByDescending(a => a.OperationTime).ToPageList((int)pageIndex, (int)pageSize, ref count);
+            }
+            else
+            {
+                operationLogs.listSource = operationLogRepository.AsQueryable().OrderByDescending(a => a.OperationTime).ToList();
+            }
+
+            operationLogs.listSource.ForEach(source =>
             {
                 source.OperationLevelNm = source.OperationLevel == RecordLevel.Normal ? "常规操作" : source.OperationLevel == RecordLevel.Warning ? "敏感操作" : "严重操作";
             });
+            operationLogs.total = count;
+
             return operationLogs;
         }
 

@@ -29,9 +29,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<RoomType> SelectRoomTypesAll()
+        public List<RoomType> SelectRoomTypesAll([FromQuery] int? isDelete)
         {
-            return roomTypeService.SelectRoomTypesAll();
+            return roomTypeService.SelectRoomTypesAll(isDelete);
         }
 
         /// <summary>
@@ -45,5 +45,48 @@ namespace EOM.TSHotelManager.WebApi.Controllers
             return roomTypeService.SelectRoomTypeByRoomNo(no);
         }
 
+        /// <summary>
+        /// 根据房间类型查询类型配置
+        /// </summary>
+        /// <param name="roomTypeId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public RoomType SelectRoomTypeByType([FromQuery] int roomTypeId)
+        {
+            return roomTypeService.SelectRoomTypeByType(roomTypeId);
+        }
+
+        /// <summary>
+        /// 添加房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public bool InsertRoomType([FromBody] RoomType roomType)
+        {
+            return roomTypeService.InsertRoomType(roomType);
+        }
+
+        /// <summary>
+        /// 更新房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public bool UpdateRoomType([FromBody] RoomType roomType)
+        {
+            return roomTypeService.UpdateRoomType(roomType);
+        }
+
+        /// <summary>
+        /// 删除房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public bool DeleteRoomType([FromBody] RoomType roomType)
+        {
+            return roomTypeService.DeleteRoomType(roomType);
+        }
     }
 }

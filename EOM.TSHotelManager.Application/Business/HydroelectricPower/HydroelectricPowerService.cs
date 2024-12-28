@@ -29,18 +29,18 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 水电信息接口实现类
     /// </summary>
-    public class WtiService : IWtiService
+    public class HydroelectricPowerService : IHydroelectricPowerService
     {
         /// <summary>
         /// 水电信息
         /// </summary>
-        private readonly PgRepository<Wti> wtiRepository;
+        private readonly GenericRepository<HydroelectricPower> wtiRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="wtiRepository"></param>
-        public WtiService(PgRepository<Wti> wtiRepository)
+        public HydroelectricPowerService(GenericRepository<HydroelectricPower> wtiRepository)
         {
             this.wtiRepository = wtiRepository;
         }
@@ -51,9 +51,9 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="roomNo"></param>
         /// <returns></returns>
-        public Wti SelectWtiInfoByRoomNo(string roomNo)
+        public HydroelectricPower SelectWtiInfoByRoomNo(string roomNo)
         {
-            Wti w = new Wti();
+            HydroelectricPower w = new HydroelectricPower();
             w = wtiRepository.GetSingle(a => a.RoomNo.Contains(roomNo) && a.delete_mk != 1);
             return w;
         }
@@ -67,9 +67,9 @@ namespace EOM.TSHotelManager.Application
         /// <param name="usedate"></param>
         /// <param name="enddate"></param>
         /// <returns></returns>
-        public Wti SelectWtiInfoByRoomNoAndTime(string roomno, string usedate, string enddate)
+        public HydroelectricPower SelectWtiInfoByRoomNoAndTime(string roomno, string usedate, string enddate)
         {
-            Wti w = null;
+            HydroelectricPower w = null;
             w = wtiRepository.GetSingle(a => a.RoomNo == roomno && a.UseDate >= Convert.ToDateTime(usedate) && a.EndDate >= Convert.ToDateTime(enddate));
             return w;
         }
@@ -80,9 +80,9 @@ namespace EOM.TSHotelManager.Application
         /// 获取所有水电费信息
         /// </summary>
         /// <returns></returns>
-        public List<Wti> SelectWtiInfoAll()
+        public List<HydroelectricPower> SelectWtiInfoAll()
         {
-            List<Wti> wti = new List<Wti>();
+            List<HydroelectricPower> wti = new List<HydroelectricPower>();
             wti = wtiRepository.GetList(a => a.delete_mk != 1);
             return wti;
         }
@@ -93,9 +93,9 @@ namespace EOM.TSHotelManager.Application
         /// 获取所有水电费信息
         /// </summary>
         /// <returns></returns>
-        public List<Wti> ListWtiInfoByRoomNo(string roomno)
+        public List<HydroelectricPower> ListWtiInfoByRoomNo(string roomno)
         {
-            List<Wti> wti = new List<Wti>();
+            List<HydroelectricPower> wti = new List<HydroelectricPower>();
             wti = wtiRepository.GetList(a => a.delete_mk != 1 && a.RoomNo.Equals(roomno));
             return wti;
         }
@@ -107,7 +107,7 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        public bool InsertWtiInfo(Wti w)
+        public bool InsertWtiInfo(HydroelectricPower w)
         {
             return wtiRepository.Insert(w);
         }
@@ -119,9 +119,9 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        public bool UpdateWtiInfo(Wti w)
+        public bool UpdateWtiInfo(HydroelectricPower w)
         {
-            return wtiRepository.Update(a => new Wti()
+            return wtiRepository.Update(a => new HydroelectricPower()
             {
                 UseDate = w.UseDate,
                 EndDate = w.EndDate,
@@ -142,9 +142,9 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
-        public bool UpdateWtiInfoByRoomNoAndDateTime(Wti w)
+        public bool UpdateWtiInfoByRoomNoAndDateTime(HydroelectricPower w)
         {
-            return wtiRepository.Update(a => new Wti()
+            return wtiRepository.Update(a => new HydroelectricPower()
             {
                 WaterUse = w.WaterUse,
                 PowerUse = w.PowerUse,
@@ -165,7 +165,7 @@ namespace EOM.TSHotelManager.Application
         //    {
         //        delete_mk = 1,
         //        datachg_usr = string.Empty,
-        //        datachg_date = DateTime.Now
+        //        datachg_date = Convert.ToDateTime(DateTime.Now)
         //    }, a => a.WtiNo == roomno);
         //}
         #endregion
@@ -182,7 +182,7 @@ namespace EOM.TSHotelManager.Application
         {
             //string sql = "delete from WTINFO where RoomNo='{0}' and UseDate='{1}' and EndDate='{2}'";
             //sql = string.Format(sql, roomno, usedate, enddate);
-            return wtiRepository.Update(a => new Wti()
+            return wtiRepository.Update(a => new HydroelectricPower()
             {
                 delete_mk = 1
             }, a => a.RoomNo == roomno && a.UseDate >= Convert.ToDateTime(usedate) && a.EndDate >= Convert.ToDateTime(enddate));

@@ -34,13 +34,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 员工履历
         /// </summary>
-        private readonly PgRepository<WorkerHistory> workerHistoryRepository;
+        private readonly GenericRepository<WorkerHistory> workerHistoryRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="workerHistoryRepository"></param>
-        public WorkerHistoryService(PgRepository<WorkerHistory> workerHistoryRepository)
+        public WorkerHistoryService(GenericRepository<WorkerHistory> workerHistoryRepository)
         {
             this.workerHistoryRepository = workerHistoryRepository;
         }

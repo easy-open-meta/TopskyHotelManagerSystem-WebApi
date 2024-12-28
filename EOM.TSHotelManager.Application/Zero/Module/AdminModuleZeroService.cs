@@ -11,13 +11,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 模块权限
         /// </summary>
-        private readonly PgRepository<ModuleZero> moduleZeroRepository;
+        private readonly GenericRepository<ModuleZero> moduleZeroRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="moduleZeroRepository"></param>
-        public AdminModuleZeroService(PgRepository<ModuleZero> moduleZeroRepository)
+        public AdminModuleZeroService(GenericRepository<ModuleZero> moduleZeroRepository)
         {
             this.moduleZeroRepository = moduleZeroRepository;
         }

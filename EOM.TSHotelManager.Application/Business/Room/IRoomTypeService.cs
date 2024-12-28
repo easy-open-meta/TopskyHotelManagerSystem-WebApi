@@ -34,7 +34,7 @@ namespace EOM.TSHotelManager.Application
         /// 获取所有房间类型
         /// </summary>
         /// <returns></returns>
-        List<RoomType> SelectRoomTypesAll();
+        List<RoomType> SelectRoomTypesAll(int? isDelete);
 
         /// <summary>
         /// 根据房间编号查询房间类型名称
@@ -42,5 +42,33 @@ namespace EOM.TSHotelManager.Application
         /// <param name="no"></param>
         /// <returns></returns>
         RoomType SelectRoomTypeByRoomNo(string no);
+
+        /// <summary>
+        /// 根据房间类型查询类型配置
+        /// </summary>
+        /// <param name="roomTypeId"></param>
+        /// <returns></returns>
+        RoomType SelectRoomTypeByType(int roomTypeId);
+
+        /// <summary>
+        /// 添加房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        bool InsertRoomType(RoomType roomType);
+
+        /// <summary>
+        /// 更新房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        bool UpdateRoomType(RoomType roomType);
+
+        /// <summary>
+        /// 删除房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        bool DeleteRoomType(RoomType roomType);
     }
 }

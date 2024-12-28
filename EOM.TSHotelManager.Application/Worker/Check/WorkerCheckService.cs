@@ -34,13 +34,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 员工打卡
         /// </summary>
-        private readonly PgRepository<WorkerCheck> workerCheckRepository;
+        private readonly GenericRepository<WorkerCheck> workerCheckRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="workerCheckRepository"></param>
-        public WorkerCheckService(PgRepository<WorkerCheck> workerCheckRepository)
+        public WorkerCheckService(GenericRepository<WorkerCheck> workerCheckRepository)
         {
             this.workerCheckRepository = workerCheckRepository;
         }
@@ -82,7 +82,7 @@ namespace EOM.TSHotelManager.Application
         {
             //string sql = "select Count(*) from WORKERCHECK where WorkerNo = '"+wkn+ "' and DATEDIFF(CURRENT_DATE(),workercheck.CheckTime)";
             var listCheckInfo = workerCheckRepository.GetList(a => a.WorkerNo == wkn && a.delete_mk != 1);
-            var count = listCheckInfo.Where(a => a.CheckTime.ToShortDateString() == DateTime.Now.ToShortDateString()).Count() > 0 ? 1 : 0;
+            var count = listCheckInfo.Where(a => a.CheckTime.ToShortDateString() == Convert.ToDateTime(DateTime.Now).ToShortDateString()).Count() > 0 ? 1 : 0;
             return count;
         }
 

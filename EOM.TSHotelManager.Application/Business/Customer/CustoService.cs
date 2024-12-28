@@ -21,10 +21,9 @@
  *SOFTWARE.
  *
  */
-using CK.Common;
-using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 using SqlSugar;
 
 namespace EOM.TSHotelManager.Application
@@ -37,32 +36,32 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 客户信息
         /// </summary>
-        private readonly PgRepository<Custo> custoRepository;
+        private readonly GenericRepository<Custo> custoRepository;
 
         /// <summary>
         /// 消费情况
         /// </summary>
-        private readonly PgRepository<Spend> spendRepository;
+        private readonly GenericRepository<Spend> spendRepository;
 
         /// <summary>
         /// 性别类型
         /// </summary>
-        private readonly PgRepository<SexType> sexTypeRepository;
+        private readonly GenericRepository<SexType> sexTypeRepository;
 
         /// <summary>
         /// 证件类型
         /// </summary>
-        private readonly PgRepository<PassPortType> passPortTypeRepository;
+        private readonly GenericRepository<PassPortType> passPortTypeRepository;
 
         /// <summary>
         /// 客户类型
         /// </summary>
-        private readonly PgRepository<CustoType> custoTypeRepository;
+        private readonly GenericRepository<CustoType> custoTypeRepository;
 
         /// <summary>
         /// 加密
         /// </summary>
-        private readonly EOM.Encrypt.Encrypt encrypt;
+        private readonly jvncorelib.EncryptorLib.EncryptLib encrypt;
 
         /// <summary>
         /// 
@@ -73,7 +72,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="passPortTypeRepository"></param>
         /// <param name="custoTypeRepository"></param>
         /// <param name="encrypt"></param>
-        public CustoService(PgRepository<Custo> custoRepository, PgRepository<Spend> spendRepository, PgRepository<SexType> sexTypeRepository, PgRepository<PassPortType> passPortTypeRepository, PgRepository<CustoType> custoTypeRepository, EOM.Encrypt.Encrypt encrypt)
+        public CustoService(GenericRepository<Custo> custoRepository, GenericRepository<Spend> spendRepository, GenericRepository<SexType> sexTypeRepository, GenericRepository<PassPortType> passPortTypeRepository, GenericRepository<CustoType> custoTypeRepository, jvncorelib.EncryptorLib.EncryptLib encrypt)
         {
             this.custoRepository = custoRepository;
             this.spendRepository = spendRepository;
@@ -91,8 +90,8 @@ namespace EOM.TSHotelManager.Application
         /// <returns></returns>
         public bool InsertCustomerInfo(Custo custo)
         {
-            string NewID = encrypt.Encryption(custo.CustoID, EncryptionLevel.Enhanced);
-            string NewTel = encrypt.Encryption(custo.CustoTel, EncryptionLevel.Enhanced);
+            string NewID = encrypt.Encryption(custo.CustoID, jvncorelib.EncryptorLib.EncryptionLevel.Enhanced);
+            string NewTel = encrypt.Encryption(custo.CustoTel, jvncorelib.EncryptorLib.EncryptionLevel.Enhanced);
             custo.CustoID = NewID;
             custo.CustoTel = NewTel;
             return custoRepository.Insert(custo);
@@ -170,9 +169,9 @@ namespace EOM.TSHotelManager.Application
         /// 查询所有客户信息
         /// </summary>
         /// <returns></returns>
-        public OSelectCustoAllDto SelectCustoAll(int? pageIndex, int? pageSize, bool onlyVip = false)
+        public OSelectAllDto<Custo> SelectCustoAll(int? pageIndex, int? pageSize, bool onlyVip = false)
         {
-            OSelectCustoAllDto oSelectCustoAllDto = new OSelectCustoAllDto();
+            OSelectAllDto<Custo> oSelectCustoAllDto = new OSelectAllDto<Custo>();
 
             //查询出所有性别类型
             List<SexType> sexTypes = new List<SexType>();
@@ -204,20 +203,20 @@ namespace EOM.TSHotelManager.Application
             custos.ForEach(source =>
             {
                 //解密身份证号码
-                var sourceStr = source.CustoID.Contains("·") ? encrypt.Decryption(source.CustoID) : source.CustoID;
+                var sourceStr = source.CustoID.Contains('·') ? encrypt.Decryption(source.CustoID) : source.CustoID;
                 source.CustoID = sourceStr;
                 //解密联系方式
-                var sourceTelStr = source.CustoTel.Contains("·") ? encrypt.Decryption(source.CustoTel) : source.CustoTel;
+                var sourceTelStr = source.CustoTel.Contains('·') ? encrypt.Decryption(source.CustoTel) : source.CustoTel;
                 source.CustoTel = sourceTelStr;
                 //性别类型
                 var sexType = sexTypes.FirstOrDefault(a => a.sexId == source.CustoSex);
-                source.SexName = string.IsNullOrEmpty(sexType.sexName) ? "" : sexType.sexName;
+                source.SexName = sexType.sexName.IsNullOrEmpty() ? "" : sexType.sexName;
                 //证件类型
                 var passPortType = passPortTypes.FirstOrDefault(a => a.PassportId == source.PassportType);
-                source.PassportName = string.IsNullOrEmpty(passPortType.PassportName) ? "" : passPortType.PassportName;
+                source.PassportName = passPortType.PassportName.IsNullOrEmpty() ? "" : passPortType.PassportName;
                 //客户类型
                 var custoType = custoTypes.FirstOrDefault(a => a.UserType == source.CustoType);
-                source.typeName = string.IsNullOrEmpty(custoType.TypeName) ? "" : custoType.TypeName;
+                source.typeName = custoType.TypeName.IsNullOrEmpty() ? "" : custoType.TypeName;
             });
 
             oSelectCustoAllDto.listSource = custos;
@@ -261,13 +260,13 @@ namespace EOM.TSHotelManager.Application
                 source.CustoTel = sourceTelStr;
                 //性别类型
                 var sexType = sexTypes.FirstOrDefault(a => a.sexId == source.CustoSex);
-                source.SexName = string.IsNullOrEmpty(sexType.sexName) ? "" : sexType.sexName;
+                source.SexName = sexType.sexName.IsNullOrEmpty() ? "" : sexType.sexName;
                 //证件类型
                 var passPortType = passPortTypes.FirstOrDefault(a => a.PassportId == source.PassportType);
-                source.PassportName = string.IsNullOrEmpty(passPortType.PassportName) ? "" : passPortType.PassportName;
+                source.PassportName = passPortType.PassportName.IsNullOrEmpty() ? "" : passPortType.PassportName;
                 //客户类型
                 var custoType = custoTypes.FirstOrDefault(a => a.UserType == source.CustoType);
-                source.typeName = string.IsNullOrEmpty(custoType.TypeName) ? "" : custoType.TypeName;
+                source.typeName = custoType.TypeName.IsNullOrEmpty() ? "" : custoType.TypeName;
             });
             return custos;
         }
@@ -286,13 +285,13 @@ namespace EOM.TSHotelManager.Application
             }
             //性别类型
             var sexType = sexTypeRepository.GetSingle(a => a.sexId == c.CustoSex);
-            c.SexName = string.IsNullOrEmpty(sexType.sexName) ? "" : sexType.sexName;
+            c.SexName = sexType.sexName.IsNullOrEmpty() ? "" : sexType.sexName;
             //证件类型
             var passPortType = passPortTypeRepository.GetSingle(a => a.PassportId == c.PassportType);
-            c.PassportName = string.IsNullOrEmpty(passPortType.PassportName) ? "" : passPortType.PassportName;
+            c.PassportName = passPortType.PassportName.IsNullOrEmpty() ? "" : passPortType.PassportName;
             //客户类型
             var custoType = custoTypeRepository.GetSingle(a => a.UserType == c.CustoType);
-            c.typeName = string.IsNullOrEmpty(custoType.TypeName) ? "" : custoType.TypeName;
+            c.typeName = custoType.TypeName.IsNullOrEmpty() ? "" : custoType.TypeName;
             //解密身份证号码
             var sourceStr = c.CustoID.Contains("·") ? encrypt.Decryption(c.CustoID) : c.CustoID;
             c.CustoID = sourceStr;

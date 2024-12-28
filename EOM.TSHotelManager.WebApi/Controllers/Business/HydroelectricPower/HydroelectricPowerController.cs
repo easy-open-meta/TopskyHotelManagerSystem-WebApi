@@ -8,20 +8,20 @@ namespace EOM.TSHotelManager.WebApi.Controllers
     /// <summary>
     /// 水电信息控制器
     /// </summary>
-    public class WtiController : ControllerBase
+    public class HydroelectricPowerController : ControllerBase
     {
         /// <summary>
         /// 水电信息
         /// </summary>
-        private readonly IWtiService wtiService;
+        private readonly IHydroelectricPowerService hydroelectricPowerService;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="wtiService"></param>
-        public WtiController(IWtiService wtiService)
+        /// <param name="hydroelectricPowerService"></param>
+        public HydroelectricPowerController(IHydroelectricPowerService hydroelectricPowerService)
         {
-            this.wtiService = wtiService;
+            this.hydroelectricPowerService = hydroelectricPowerService;
         }
 
         /// <summary>
@@ -30,9 +30,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="roomNo"></param>
         /// <returns></returns>
         [HttpGet]
-        public Wti SelectWtiInfoByRoomNo([FromQuery] string roomNo)
+        public HydroelectricPower SelectWtiInfoByRoomNo([FromQuery] string roomNo)
         {
-            return this.wtiService.SelectWtiInfoByRoomNo(roomNo);
+            return this.hydroelectricPowerService.SelectWtiInfoByRoomNo(roomNo);
         }
 
         /// <summary>
@@ -43,9 +43,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="enddate"></param>
         /// <returns></returns>
         [HttpGet]
-        public Wti SelectWtiInfoByRoomNoAndTime([FromQuery] string roomno, string usedate, string enddate)
+        public HydroelectricPower SelectWtiInfoByRoomNoAndTime([FromQuery] string roomno, string usedate, string enddate)
         {
-            return this.wtiService.SelectWtiInfoByRoomNoAndTime(roomno, usedate, enddate);
+            return this.hydroelectricPowerService.SelectWtiInfoByRoomNoAndTime(roomno, usedate, enddate);
         }
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Wti> SelectWtiInfoAll()
+        public List<HydroelectricPower> SelectWtiInfoAll()
         {
-            return this.wtiService.SelectWtiInfoAll();
+            return this.hydroelectricPowerService.SelectWtiInfoAll();
         }
 
         /// <summary>
@@ -64,9 +64,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="w"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool InsertWtiInfo([FromBody] Wti w)
+        public bool InsertWtiInfo([FromBody] HydroelectricPower w)
         {
-            return this.wtiService.InsertWtiInfo(w);
+            return this.hydroelectricPowerService.InsertWtiInfo(w);
         }
 
         /// <summary>
@@ -75,9 +75,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="w"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateWtiInfo([FromBody] Wti w)
+        public bool UpdateWtiInfo([FromBody] HydroelectricPower w)
         {
-            return this.wtiService.UpdateWtiInfo(w);
+            return this.hydroelectricPowerService.UpdateWtiInfo(w);
         }
 
         /// <summary>
@@ -86,17 +86,10 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// <param name="w"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool UpdateWtiInfoByRoomNoAndDateTime([FromBody] Wti w)
+        public bool UpdateWtiInfoByRoomNoAndDateTime([FromBody] HydroelectricPower w)
         {
-            return this.wtiService.UpdateWtiInfoByRoomNoAndDateTime(w);
+            return this.hydroelectricPowerService.UpdateWtiInfoByRoomNoAndDateTime(w);
         }
-
-        /// <summary>
-        /// 删除水电费信息:根据房间编号
-        /// </summary>
-        /// <param name="roomno"></param>
-        /// <returns></returns>
-        //bool DeleteWtiInfo(string roomno);
 
         /// <summary>
         /// 根据房间编号、使用时间删除水电费信息
@@ -108,7 +101,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         [HttpPost]
         public bool DeleteWtiInfoByRoomNoAndDateTime([FromBody] string roomno, string usedate, string enddate)
         {
-            return this.wtiService.DeleteWtiInfoByRoomNoAndDateTime(roomno, usedate, enddate);
+            return this.hydroelectricPowerService.DeleteWtiInfoByRoomNoAndDateTime(roomno, usedate, enddate);
         }
 
         /// <summary>
@@ -116,9 +109,9 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<Wti> ListWtiInfoByRoomNo([FromQuery] string roomno)
+        public List<HydroelectricPower> ListWtiInfoByRoomNo([FromQuery] string roomno)
         {
-            return this.wtiService.ListWtiInfoByRoomNo(roomno);
+            return this.hydroelectricPowerService.ListWtiInfoByRoomNo(roomno);
         }
 
     }

@@ -21,11 +21,10 @@
  *SOFTWARE.
  *
  */
-using CK.Common;
-using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using Microsoft.Extensions.Configuration;
+using EOM.TSHotelManager.Shared;
+using jvncorelib.EncryptorLib;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -41,22 +40,22 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 管理员
         /// </summary>
-        private readonly PgRepository<Admin> adminRepository;
+        private readonly GenericRepository<Admin> adminRepository;
 
         /// <summary>
         /// 管理员类型
         /// </summary>
-        private readonly PgRepository<AdminType> adminTypeRepository;
+        private readonly GenericRepository<AdminType> adminTypeRepository;
 
         /// <summary>
         /// 加密
         /// </summary>
-        private readonly EOM.Encrypt.Encrypt encrypt;
+        private readonly jvncorelib.EncryptorLib.EncryptLib encrypt;
 
         /// <summary>
-        /// 配置
+        /// JWT加密
         /// </summary>
-        private readonly IConfiguration configuration;
+        private readonly IJwtConfigFactory _jwtConfigFactory;
 
         /// <summary>
         /// 构造函数
@@ -64,13 +63,13 @@ namespace EOM.TSHotelManager.Application
         /// <param name="adminRepository"></param>
         /// <param name="adminTypeRepository"></param>
         /// <param name="encrypt"></param>
-        /// <param name="configuration"></param>
-        public AdminService(PgRepository<Admin> adminRepository, PgRepository<AdminType> adminTypeRepository, Encrypt.Encrypt encrypt, IConfiguration configuration)
+        /// <param name="_jwtConfigFactory"></param>
+        public AdminService(GenericRepository<Admin> adminRepository, GenericRepository<AdminType> adminTypeRepository, EncryptLib encrypt, IJwtConfigFactory _jwtConfigFactory)
         {
             this.adminRepository = adminRepository;
             this.adminTypeRepository = adminTypeRepository;
             this.encrypt = encrypt;
-            this.configuration = configuration;
+            this._jwtConfigFactory = _jwtConfigFactory;
         }
 
         #region 根据超管密码查询员工类型和权限
@@ -79,47 +78,60 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
-        public Admin SelectMangerByPass(Admin admin)
+        public Admin SelectManagerByPass(Admin admin)
         {
-            Admin admins = new Admin();
-
-            //admin.AdminPassword = encrypt.Decryption(admin.AdminPassword);
-
-            admins = adminRepository.GetSingle(a => a.AdminAccount == admin.AdminAccount);
-
-            if (admins.IsNullOrEmpty())
+            if (admin == null)
             {
-                admins = null;
-                return admins;
+                throw new ArgumentNullException(nameof(admin));
             }
 
-            var backEncryed = encrypt.Encryption(admins.AdminPassword, EncryptionLevel.Enhanced);
+            var existingAdmin = adminRepository.GetSingle(a => a.AdminAccount == admin.AdminAccount);
 
-            if (!encrypt.Compare(admin.AdminPassword, backEncryed))
+            if (existingAdmin == null)
             {
-                admins = null;
-                return admins;
+                return null;
             }
 
-            admins.AdminPassword = "";
-            //附带Token
+            string existingAdminPassword = existingAdmin.AdminPassword;
+
+            if (existingAdminPassword.Contains("·"))
+            {
+                if (!encrypt.Compare(admin.AdminPassword, existingAdminPassword))
+                {
+                    return null;
+                }
+            }
+            else if (!admin.AdminPassword.Equals(existingAdminPassword))
+            {
+                return null;
+            }
+
+            if (admin.DeleteMk == 1)
+            {
+                return null;
+            }
+
+            existingAdmin.AdminPassword = string.Empty;
+
+            var jwtConfig = _jwtConfigFactory.GetJwtConfig();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(jwtConfig.Key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, admins.AdminAccount)
+                    new Claim(ClaimTypes.Name, admin.AdminAccount)
                 }),
-                Expires = DateTime.Now.AddMinutes(20), // 设置Token过期时间
+                Expires = DateTime.Now.AddMinutes(jwtConfig.ExpiryMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                Audience = configuration["Jwt:Audience"],
-                Issuer = configuration["Jwt:Issuer"]
+                Audience = jwtConfig.Audience,
+                Issuer = jwtConfig.Issuer
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            admins.user_token = tokenHandler.WriteToken(token);
-            return admins;
+            existingAdmin.user_token = tokenHandler.WriteToken(token);
+
+            return existingAdmin;
         }
         #endregion
 
@@ -133,7 +145,6 @@ namespace EOM.TSHotelManager.Application
         {
             Admin admin = new Admin();
             admin = adminRepository.GetSingle(a => a.AdminAccount == account);
-            //admin.AdminPassword = admin.AdminPassword.Contains(":")  encrypt.DeEncryptStr(admin.AdminPassword) : admin.AdminPassword;
             return admin;
         }
         #endregion

@@ -23,6 +23,7 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -34,13 +35,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 商品消费
         /// </summary>
-        private readonly PgRepository<Spend> spendRepository;
+        private readonly GenericRepository<Spend> spendRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="spendRepository"></param>
-        public SpendService(PgRepository<Spend> spendRepository)
+        public SpendService(GenericRepository<Spend> spendRepository)
         {
             this.spendRepository = spendRepository;
         }
@@ -69,13 +70,13 @@ namespace EOM.TSHotelManager.Application
             ls = spendRepository.GetList(a => a.CustoNo == No && a.MoneyState.Equals(SpendConsts.UnSettle) && a.delete_mk != 1);
             ls.ForEach(source =>
             {
-                source.SpendStateNm = string.IsNullOrEmpty(source.MoneyState) ? ""
+                source.SpendStateNm = source.MoneyState.IsNullOrEmpty() ? ""
                 : source.MoneyState.Equals(SpendConsts.Settled) ? "已结算" : "未结算";
 
-                source.SpendPriceStr = string.IsNullOrEmpty(source.SpendPrice + "") ? ""
+                source.SpendPriceStr = (source.SpendPrice + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendPrice.ToString()).ToString("#,##0.00").ToString();
 
-                source.SpendMoneyStr = string.IsNullOrEmpty(source.SpendMoney + "") ? ""
+                source.SpendMoneyStr = (source.SpendMoney + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendMoney.ToString()).ToString("#,##0.00").ToString();
             });
             return ls;
@@ -94,13 +95,13 @@ namespace EOM.TSHotelManager.Application
             ls = spendRepository.GetList(a => a.CustoNo == custoNo && a.MoneyState.Equals(SpendConsts.Settled) && a.delete_mk != 1);
             ls.ForEach(source =>
             {
-                source.SpendStateNm = string.IsNullOrEmpty(source.MoneyState) ? ""
+                source.SpendStateNm = source.MoneyState.IsNullOrEmpty() ? ""
                 : source.MoneyState.Equals(SpendConsts.Settled) ? "已结算" : "未结算";
 
-                source.SpendPriceStr = string.IsNullOrEmpty(source.SpendPrice + "") ? ""
+                source.SpendPriceStr = (source.SpendPrice + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendPrice.ToString()).ToString("#,##0.00").ToString();
 
-                source.SpendMoneyStr = string.IsNullOrEmpty(source.SpendMoney + "") ? ""
+                source.SpendMoneyStr = (source.SpendMoney + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendMoney.ToString()).ToString("#,##0.00").ToString();
             });
             return ls;
@@ -119,13 +120,13 @@ namespace EOM.TSHotelManager.Application
             ls = spendRepository.GetList(a => a.RoomNo == No && a.MoneyState.Equals(SpendConsts.UnSettle) && a.delete_mk != 1);
             ls.ForEach(source =>
             {
-                source.SpendStateNm = string.IsNullOrEmpty(source.MoneyState) ? ""
+                source.SpendStateNm = source.MoneyState.IsNullOrEmpty() ? ""
                 : source.MoneyState.Equals(SpendConsts.Settled) ? "已结算" : "未结算";
 
-                source.SpendPriceStr = string.IsNullOrEmpty(source.SpendPrice + "") ? ""
+                source.SpendPriceStr = (source.SpendPrice + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendPrice.ToString()).ToString("#,##0.00").ToString();
 
-                source.SpendMoneyStr = string.IsNullOrEmpty(source.SpendMoney + "") ? ""
+                source.SpendMoneyStr = (source.SpendMoney + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendMoney.ToString()).ToString("#,##0.00").ToString();
             });
             return ls;
@@ -143,13 +144,13 @@ namespace EOM.TSHotelManager.Application
             ls = spendRepository.GetList(a => a.delete_mk != 1).OrderByDescending(a => a.SpendTime).ToList();
             ls.ForEach(source =>
             {
-                source.SpendStateNm = string.IsNullOrEmpty(source.MoneyState) ? ""
+                source.SpendStateNm = source.MoneyState.IsNullOrEmpty() ? ""
                 : source.MoneyState.Equals(SpendConsts.Settled) ? "已结算" : "未结算";
 
-                source.SpendPriceStr = string.IsNullOrEmpty(source.SpendPrice + "") ? ""
+                source.SpendPriceStr = (source.SpendPrice + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendPrice.ToString()).ToString("#,##0.00").ToString();
 
-                source.SpendMoneyStr = string.IsNullOrEmpty(source.SpendMoney + "") ? ""
+                source.SpendMoneyStr = (source.SpendMoney + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendMoney.ToString()).ToString("#,##0.00").ToString();
             });
             return ls;
@@ -167,13 +168,13 @@ namespace EOM.TSHotelManager.Application
             ls = spendRepository.GetList(a => a.RoomNo == RoomNo && a.delete_mk != 1 && a.MoneyState.Equals(SpendConsts.UnSettle));
             ls.ForEach(source =>
             {
-                source.SpendStateNm = string.IsNullOrEmpty(source.MoneyState) ? ""
+                source.SpendStateNm = source.MoneyState.IsNullOrEmpty() ? ""
                 : source.MoneyState.Equals(SpendConsts.Settled) ? "已结算" : "未结算";
 
-                source.SpendPriceStr = string.IsNullOrEmpty(source.SpendPrice + "") ? ""
+                source.SpendPriceStr = (source.SpendPrice + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendPrice.ToString()).ToString("#,##0.00").ToString();
 
-                source.SpendMoneyStr = string.IsNullOrEmpty(source.SpendMoney + "") ? ""
+                source.SpendMoneyStr = (source.SpendMoney + "").IsNullOrEmpty() ? ""
                 : Decimal.Parse(source.SpendMoney.ToString()).ToString("#,##0.00").ToString();
             });
             return ls;
@@ -205,7 +206,7 @@ namespace EOM.TSHotelManager.Application
             return spendRepository.Update(a => new Spend()
             {
                 MoneyState = SpendConsts.Settled
-            }, a => a.RoomNo == roomno && a.SpendTime >= Convert.ToDateTime(checktime) && a.SpendTime <= DateTime.Now);
+            }, a => a.RoomNo == roomno && a.SpendTime >= Convert.ToDateTime(checktime) && a.SpendTime <= Convert.ToDateTime(DateTime.Now));
         }
         #endregion
 
@@ -225,8 +226,8 @@ namespace EOM.TSHotelManager.Application
             {
                 RoomNo = spend.RoomNo,
                 datachg_usr = spend.datachg_usr
-            }, a => listSpendId.Contains(a.SpendName) && a.CustoNo.Equals(spend.CustoNo) && a.SpendTime >= DateTime.Now
-             && a.SpendTime <= DateTime.Now);
+            }, a => listSpendId.Contains(a.SpendName) && a.CustoNo.Equals(spend.CustoNo) && a.SpendTime >= Convert.ToDateTime(DateTime.Now)
+             && a.SpendTime <= Convert.ToDateTime(DateTime.Now));
 
 
         }

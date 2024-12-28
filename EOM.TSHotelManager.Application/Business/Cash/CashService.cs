@@ -34,17 +34,17 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 资产信息
         /// </summary>
-        private readonly PgRepository<Cash> cashRepository;
+        private readonly GenericRepository<Cash> cashRepository;
 
         /// <summary>
         /// 部门
         /// </summary>
-        private readonly PgRepository<Dept> deptRepository;
+        private readonly GenericRepository<Dept> deptRepository;
 
         /// <summary>
         /// 员工
         /// </summary>
-        private readonly PgRepository<Worker> workerRepository;
+        private readonly GenericRepository<Worker> workerRepository;
 
         /// <summary>
         /// 
@@ -52,7 +52,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="cashRepository"></param>
         /// <param name="deptRepository"></param>
         /// <param name="workerRepository"></param>
-        public CashService(PgRepository<Cash> cashRepository, PgRepository<Dept> deptRepository, PgRepository<Worker> workerRepository)
+        public CashService(GenericRepository<Cash> cashRepository, GenericRepository<Dept> deptRepository, GenericRepository<Worker> workerRepository)
         {
             this.cashRepository = cashRepository;
             this.deptRepository = deptRepository;

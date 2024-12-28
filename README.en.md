@@ -1,14 +1,15 @@
 <h1 align="center"><img src="https://foruda.gitee.com/avatar/1677165732744604624/7158691_java-and-net_1677165732.png!avatar100" alt="Organization logo.png" /></h1>
 <h1 align="center">TopskyHotelManagerSystem-WebApi</h1>
 <p align="center">
-	<a href='https://github.com/easy-open-meta/TopskyHotelManagerSystem-WebApi/stargazers'><img src='https://img.shields.io/github/stars/easy-open-meta/TopskyHotelManagerSystem-WebApi?style=social' alt='star'></img></a>
-        <a href='https://github.com/easy-open-meta/TopskyHotelManagerSystem-WebApi/forks'><img src='https://img.shields.io/github/forks/easy-open-meta/TopskyHotelManagerSystem-WebApi' alt='fork'></img></a>
+	<a href='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/stargazers'><img src='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/badge/star.svg?theme=white' alt='star'></img></a>
+        <a href='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/fork'><img src='https://gitee.com/java-and-net/topsky-hotel-manager-system-web-api/badge/fork.svg?theme=white' alt='fork'></img></a>
         <a href='https://img.shields.io/badge/license-MIT-000000.svg'><img src="https://img.shields.io/badge/license-MIT-000000.svg" alt=""></img></a>
         <a href='https://img.shields.io/badge/language-C#-red.svg'><img src="https://img.shields.io/badge/language-CSharp-red.svg" alt=""></img></a>
 </p>
 <div align="center">
 	<p><a href="./README.md">中文文档</a> | English Document</p>
 </div>
+
 
 
 ### :pray: Thanks to the following open source projects:
@@ -19,10 +20,9 @@
 
 ### :exclamation: About this project:
 
-This project is a TS hotel management system backend API project built on .Net6, mainly for the 2.0 upgrade, welcome to Star & Fork.
+This project is a TS hotel management system backend API project built on .Net8, mainly for the 2.0 upgrade, welcome to Star & Fork.
 
 1. All development should comply with the MIT open source license.
-
 2. If you find bugs, feel free to raise an issue!
 
 ### :thought_balloon: Development purpose:
@@ -35,17 +35,17 @@ Operating System: Windows 11(x64)
 
 Development Tool: Microsoft Visual Studio 2022 (latest version of the system)
 
-Database: PostgreSQL v13
+Database: PostgreSQL v16
 
-Database Management Tool: Navicat 16
+Database Management Tool: DbGate
 
 Programming Language: C# language, LINQ language
 
 Development Platform: .Net
 
-Development Framework: .Net 6
+Development Framework: .Net 8
 
-Development Technology: .NET 6 WebAPI
+Development Technology: .NET 8 WebAPI
 
 ### :open_file_folder: System structure:
 
@@ -80,9 +80,9 @@ TopskyHotelManagerSystem
 
 **Bin (Database, providing database management support)**
 
-**Coffee and Network (late maintenance and development)**
+**Easy-Open-Meta (late maintenance and development)**
 
-### :computer: Project deployment (before executing the steps below, you need to install .NET 6 SDK and Runtime):
+### :computer: Project deployment (before executing the steps below, you need to install .NET 8 SDK and Runtime):
 
 **Download and install Microsoft Visual Studio Professional 2022 or above version, unzip the Zip package, and run the file with .sln suffix to start.**
 

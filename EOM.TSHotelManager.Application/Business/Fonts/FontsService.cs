@@ -34,13 +34,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 跑马灯
         /// </summary>
-        private readonly PgRepository<Fonts> fontsRepository;
+        private readonly GenericRepository<Fonts> fontsRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="fontsRepository"></param>
-        public FontsService(PgRepository<Fonts> fontsRepository)
+        public FontsService(GenericRepository<Fonts> fontsRepository)
         {
             this.fontsRepository = fontsRepository;
         }

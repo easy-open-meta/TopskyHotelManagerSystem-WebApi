@@ -73,7 +73,7 @@ namespace EOM.TSHotelManager.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public OSelectCustoAllDto SelectCustoAll([FromQuery] int pageIndex, int pageSize, bool onlyVip = false)
+        public OSelectAllDto<Custo> SelectCustoAll([FromQuery] int pageIndex, int pageSize, bool onlyVip = false)
         {
             return customerService.SelectCustoAll(pageIndex, pageSize, onlyVip);
         }

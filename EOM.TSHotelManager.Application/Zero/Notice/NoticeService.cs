@@ -34,13 +34,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 公告
         /// </summary>
-        private readonly PgRepository<Notice> noticeRepository;
+        private readonly GenericRepository<Notice> noticeRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="noticeRepository"></param>
-        public NoticeService(PgRepository<Notice> noticeRepository)
+        public NoticeService(GenericRepository<Notice> noticeRepository)
         {
             this.noticeRepository = noticeRepository;
         }

@@ -34,13 +34,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 监管统计
         /// </summary>
-        private readonly PgRepository<CheckInfo> checkInfoRepository;
+        private readonly GenericRepository<CheckInfo> checkInfoRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="checkInfoRepository"></param>
-        public CheckInfoService(PgRepository<CheckInfo> checkInfoRepository)
+        public CheckInfoService(GenericRepository<CheckInfo> checkInfoRepository)
         {
             this.checkInfoRepository = checkInfoRepository;
         }

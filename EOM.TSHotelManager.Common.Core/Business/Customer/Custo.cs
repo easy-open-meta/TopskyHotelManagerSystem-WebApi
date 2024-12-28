@@ -22,6 +22,7 @@
  *
  *模块说明：客户信息类
  */
+using EOM.TSHotelManager.Common.Util;
 using System;
 
 namespace EOM.TSHotelManager.Common.Core
@@ -40,11 +41,13 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 客户编号
         /// </summary>
+        [UIDisplay("客户编号")]
         [SqlSugar.SugarColumn(ColumnName = "custo_no", IsPrimaryKey = true)]
         public string CustoNo { get; set; }
         /// <summary>
         /// 客户名称
         /// </summary>
+        [UIDisplay("客户名称")]
         [SqlSugar.SugarColumn(ColumnName = "custo_name", IsNullable = false)]
         public string CustoName { get; set; }
         /// <summary>
@@ -53,50 +56,57 @@ namespace EOM.TSHotelManager.Common.Core
         [SqlSugar.SugarColumn(ColumnName = "custo_sex", IsNullable = true)]
         public int CustoSex { get; set; }
         /// <summary>
-        /// 客户电话
-        /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "custo_tel", IsNullable = false)]
-        public string CustoTel { get; set; }
-        /// <summary>
         /// 证件类型
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "passport_type", IsNullable = false)]
         public int PassportType { get; set; }
         /// <summary>
-        /// 证件号码
+        /// 性别
         /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "passport_id", IsNullable = false)]
-        public string CustoID { get; set; }
+        [UIDisplay("性别")]
+        [SqlSugar.SugarColumn(IsIgnore = true)]
+        public string SexName { get; set; }
         /// <summary>
-        /// 居住地址
+        /// 客户电话
         /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "custo_address", IsNullable = true)]
-        public string CustoAdress { get; set; }
+        [UIDisplay("联系方式")]
+        [SqlSugar.SugarColumn(ColumnName = "custo_tel", IsNullable = false)]
+        public string CustoTel { get; set; }
         /// <summary>
         /// 出生日期
         /// </summary>
+        [UIDisplay("出生日期")]
         [SqlSugar.SugarColumn(ColumnName = "custo_birth", IsNullable = true)]
         public DateTime CustoBirth { get; set; }
         /// <summary>
         /// 客户类型
         /// </summary>
-        [SqlSugar.SugarColumn(ColumnName = "custo_type", IsNullable = false)]
-        public int CustoType { get; set; }
-        /// <summary>
-        /// 客户类型
-        /// </summary>
+        [UIDisplay("客户类型")]
         [SqlSugar.SugarColumn(IsIgnore = true)]
         public string typeName { get; set; }
         /// <summary>
         /// 证件类型
         /// </summary>
+        [UIDisplay("证件类型")]
         [SqlSugar.SugarColumn(IsIgnore = true)]
         public string PassportName { get; set; }
         /// <summary>
-        /// 性别
+        /// 证件号码
         /// </summary>
-        [SqlSugar.SugarColumn(IsIgnore = true)]
-        public string SexName { get; set; }
+        [UIDisplay("证件号码")]
+        [SqlSugar.SugarColumn(ColumnName = "passport_id", IsNullable = false)]
+        public string CustoID { get; set; }
+        /// <summary>
+        /// 居住地址
+        /// </summary>
+        [UIDisplay("客户地址")]
+        [SqlSugar.SugarColumn(ColumnName = "custo_address", IsNullable = true)]
+        public string CustoAdress { get; set; }
+        /// <summary>
+        /// 客户类型
+        /// </summary>
+        [SqlSugar.SugarColumn(ColumnName = "custo_type", IsNullable = false)]
+        public int CustoType { get; set; }
         /// <summary>
         /// 删除标记
         /// </summary>

@@ -21,10 +21,11 @@
  *SOFTWARE.
  *
  */
-using EOM.Encrypt;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
-using Microsoft.Extensions.Configuration;
+using EOM.TSHotelManager.Shared;
+using jvncorelib.EncryptorLib;
+using jvncorelib.EntityLib;
 using Microsoft.IdentityModel.Tokens;
 using SqlSugar;
 using System.IdentityModel.Tokens.Jwt;
@@ -36,70 +37,58 @@ namespace EOM.TSHotelManager.Application
     /// <summary>
     /// 员工信息接口实现类
     /// </summary>
-    public class WorkerService : IWorkerService
+    /// <remarks>
+    /// 构造函数
+    /// </remarks>
+    /// <param name="workerRepository"></param>
+    /// <param name="sexTypeRepository"></param>
+    /// <param name="educationRepository"></param>
+    /// <param name="nationRepository"></param>
+    /// <param name="deptRepository"></param>
+    /// <param name="positionRepository"></param>
+    /// <param name="encrypt"></param>
+    /// <param name="jwtConfigFactory"></param>
+    public class WorkerService(GenericRepository<Worker> workerRepository, GenericRepository<SexType> sexTypeRepository, GenericRepository<Education> educationRepository, GenericRepository<Nation> nationRepository, GenericRepository<Dept> deptRepository, GenericRepository<Position> positionRepository, EncryptLib encrypt, IJwtConfigFactory jwtConfigFactory) : IWorkerService
     {
         /// <summary>
         /// 员工信息
         /// </summary>
-        private readonly PgRepository<Worker> workerRepository;
+        private readonly GenericRepository<Worker> workerRepository = workerRepository;
 
         /// <summary>
         /// 性别类型
         /// </summary>
-        private readonly PgRepository<SexType> sexTypeRepository;
+        private readonly GenericRepository<SexType> sexTypeRepository = sexTypeRepository;
 
         /// <summary>
         /// 学历类型
         /// </summary>
-        private readonly PgRepository<Education> educationRepository;
+        private readonly GenericRepository<Education> educationRepository = educationRepository;
 
         /// <summary>
         /// 民族类型
         /// </summary>
-        private readonly PgRepository<Nation> nationRepository;
+        private readonly GenericRepository<Nation> nationRepository = nationRepository;
 
         /// <summary>
         /// 部门
         /// </summary>
-        private readonly PgRepository<Dept> deptRepository;
+        private readonly GenericRepository<Dept> deptRepository = deptRepository;
 
         /// <summary>
         /// 职务
         /// </summary>
-        private readonly PgRepository<Position> positionRepository;
+        private readonly GenericRepository<Position> positionRepository = positionRepository;
 
         /// <summary>
         /// 加密
         /// </summary>
-        private readonly EOM.Encrypt.Encrypt encrypt;
+        private readonly jvncorelib.EncryptorLib.EncryptLib encrypt = encrypt;
 
         /// <summary>
-        /// 配置
+        /// JWT加密
         /// </summary>
-        private readonly IConfiguration configuration;
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="workerRepository"></param>
-        /// <param name="sexTypeRepository"></param>
-        /// <param name="educationRepository"></param>
-        /// <param name="nationRepository"></param>
-        /// <param name="deptRepository"></param>
-        /// <param name="positionRepository"></param>
-        /// <param name="encrypt"></param>
-        /// <param name="configuration"></param>
-        public WorkerService(PgRepository<Worker> workerRepository, PgRepository<SexType> sexTypeRepository, PgRepository<Education> educationRepository, PgRepository<Nation> nationRepository, PgRepository<Dept> deptRepository, PgRepository<Position> positionRepository, Encrypt.Encrypt encrypt, IConfiguration configuration)
-        {
-            this.workerRepository = workerRepository;
-            this.sexTypeRepository = sexTypeRepository;
-            this.educationRepository = educationRepository;
-            this.nationRepository = nationRepository;
-            this.deptRepository = deptRepository;
-            this.positionRepository = positionRepository;
-            this.encrypt = encrypt;
-            this.configuration = configuration;
-        }
+        private readonly IJwtConfigFactory _jwtConfigFactory = jwtConfigFactory;
 
         #region 修改员工信息
         /// <summary>
@@ -111,13 +100,13 @@ namespace EOM.TSHotelManager.Application
         {
             //加密联系方式
             var sourceTelStr = string.Empty;
-            if (!string.IsNullOrEmpty(worker.WorkerTel))
+            if (!worker.WorkerTel.IsNullOrEmpty())
             {
                 sourceTelStr = encrypt.Encryption(worker.WorkerTel, EncryptionLevel.Enhanced);
             }
             //加密身份证
             var sourceIdStr = string.Empty;
-            if (!string.IsNullOrEmpty(worker.CardId))
+            if (!worker.CardId.IsNullOrEmpty())
             {
                 sourceIdStr = encrypt.Encryption(worker.CardId, EncryptionLevel.Enhanced);
             }
@@ -225,19 +214,19 @@ namespace EOM.TSHotelManager.Application
                 source.WorkerTel = sourceTelStr;
                 //性别类型
                 var sexType = sexTypes.FirstOrDefault(a => a.sexId == source.WorkerSex);
-                source.WorkerSexName = string.IsNullOrEmpty(sexType.sexName) ? "" : sexType.sexName;
+                source.WorkerSexName = sexType.sexName.IsNullOrEmpty() ? "" : sexType.sexName;
                 //教育程度
                 var eduction = educations.FirstOrDefault(a => a.education_no == source.WorkerEducation);
-                source.EducationName = string.IsNullOrEmpty(eduction.education_name) ? "" : eduction.education_name;
+                source.EducationName = eduction.education_name.IsNullOrEmpty() ? "" : eduction.education_name;
                 //民族类型
                 var nation = nations.FirstOrDefault(a => a.nation_no == source.WorkerNation);
-                source.NationName = string.IsNullOrEmpty(nation.nation_name) ? "" : nation.nation_name;
+                source.NationName = nation.nation_name.IsNullOrEmpty() ? "" : nation.nation_name;
                 //部门
                 var dept = depts.FirstOrDefault(a => a.dept_no == source.WorkerClub);
-                source.ClubName = string.IsNullOrEmpty(dept.dept_name) ? "" : dept.dept_name;
+                source.ClubName = dept.dept_name.IsNullOrEmpty() ? "" : dept.dept_name;
                 //职位
                 var position = positions.FirstOrDefault(a => a.position_no == source.WorkerPosition);
-                source.PositionName = string.IsNullOrEmpty(position.position_name) ? "" : position.position_name;
+                source.PositionName = position.position_name.IsNullOrEmpty() ? "" : position.position_name;
             });
 
             return workers;
@@ -274,19 +263,19 @@ namespace EOM.TSHotelManager.Application
             w.WorkerTel = sourceTelStr;
             //性别类型
             var sexType = sexTypeRepository.GetSingle(a => a.sexId == w.WorkerSex);
-            w.WorkerSexName = string.IsNullOrEmpty(sexType.sexName) ? "" : sexType.sexName;
+            w.WorkerSexName = sexType.sexName.IsNullOrEmpty() ? "" : sexType.sexName;
             //教育程度
             var eduction = educationRepository.GetSingle(a => a.education_no == w.WorkerEducation);
-            w.EducationName = string.IsNullOrEmpty(eduction.education_name) ? "" : eduction.education_name;
+            w.EducationName = eduction.education_name.IsNullOrEmpty() ? "" : eduction.education_name;
             //民族类型
             var nation = nationRepository.GetSingle(a => a.nation_no == w.WorkerNation);
-            w.NationName = string.IsNullOrEmpty(nation.nation_name) ? "" : nation.nation_name;
+            w.NationName = nation.nation_name.IsNullOrEmpty() ? "" : nation.nation_name;
             //部门
             var dept = deptRepository.GetSingle(a => a.dept_no == w.WorkerClub);
-            w.ClubName = string.IsNullOrEmpty(dept.dept_name) ? "" : dept.dept_name;
+            w.ClubName = dept.dept_name.IsNullOrEmpty() ? "" : dept.dept_name;
             //职位
             var position = positionRepository.GetSingle(a => a.position_no == w.WorkerPosition);
-            w.PositionName = string.IsNullOrEmpty(position.position_name) ? "" : position.position_name;
+            w.PositionName = position.position_name.IsNullOrEmpty() ? "" : position.position_name;
             return w;
         }
         #endregion
@@ -318,33 +307,34 @@ namespace EOM.TSHotelManager.Application
             w.WorkerPwd = "";
             //性别类型
             var sexType = sexTypeRepository.GetSingle(a => a.sexId == w.WorkerSex);
-            w.WorkerSexName = string.IsNullOrEmpty(sexType.sexName) ? "" : sexType.sexName;
+            w.WorkerSexName = sexType.sexName.IsNullOrEmpty() ? "" : sexType.sexName;
             //教育程度
             var eduction = educationRepository.GetSingle(a => a.education_no == w.WorkerEducation);
-            w.EducationName = string.IsNullOrEmpty(eduction.education_name) ? "" : eduction.education_name;
+            w.EducationName = eduction.education_name.IsNullOrEmpty() ? "" : eduction.education_name;
             //民族类型
             var nation = nationRepository.GetSingle(a => a.nation_no == w.WorkerNation);
-            w.NationName = string.IsNullOrEmpty(nation.nation_name) ? "" : nation.nation_name;
+            w.NationName = nation.nation_name.IsNullOrEmpty() ? "" : nation.nation_name;
             //部门
             var dept = deptRepository.GetSingle(a => a.dept_no == w.WorkerClub);
-            w.ClubName = string.IsNullOrEmpty(dept.dept_name) ? "" : dept.dept_name;
+            w.ClubName = dept.dept_name.IsNullOrEmpty() ? "" : dept.dept_name;
             //职位
             var position = positionRepository.GetSingle(a => a.position_no == w.WorkerPosition);
-            w.PositionName = string.IsNullOrEmpty(position.position_name) ? "" : position.position_name;
+            w.PositionName = position.position_name.IsNullOrEmpty() ? "" : position.position_name;
 
             //附带Token
+            var jwtConfig = _jwtConfigFactory.GetJwtConfig();
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(configuration["Jwt:Key"]);
+            var key = Encoding.UTF8.GetBytes(jwtConfig.Key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, w.WorkerId)
                 }),
-                Expires = DateTime.Now.AddMinutes(20), // 设置Token过期时间
+                Expires = DateTime.Now.AddMinutes(jwtConfig.ExpiryMinutes),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                Audience = configuration["Jwt:Audience"],
-                Issuer = configuration["Jwt:Issuer"]
+                Audience = jwtConfig.Audience,
+                Issuer = jwtConfig.Issuer
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

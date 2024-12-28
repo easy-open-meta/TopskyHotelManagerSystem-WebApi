@@ -22,6 +22,7 @@
  *
  *模块说明：房间类
  */
+using EOM.TSHotelManager.Common.Util;
 using System;
 //using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,11 +38,13 @@ namespace EOM.TSHotelManager.Common.Core
         /// 房间编号
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_no", IsPrimaryKey = true)]
+        [NeedValid]
         public string RoomNo { get; set; }
         /// <summary>
         /// 房间类型
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_type")]
+        [NeedValid]
         public int RoomType { get; set; }
         /// <summary>
         /// 客户编号
@@ -67,6 +70,7 @@ namespace EOM.TSHotelManager.Common.Core
         /// 房间状态ID
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_state_id")]
+        [NeedValid]
         public int RoomStateId { get; set; }
         /// <summary>
         /// 房间状态
@@ -77,16 +81,19 @@ namespace EOM.TSHotelManager.Common.Core
         /// 房间单价
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_rent")]
+        [NeedValid]
         public decimal RoomMoney { get; set; }
         /// <summary>
         /// 房间押金
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_deposit")]
+        [NeedValid]
         public decimal RoomDeposit { get; set; }
         /// <summary>
         /// 房间位置
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_position")]
+        [NeedValid]
         public string RoomPosition { get; set; }
         /// <summary>
         /// 客户类型名称

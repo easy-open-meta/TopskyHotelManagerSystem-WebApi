@@ -23,6 +23,7 @@
  */
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -34,19 +35,19 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 客房类型
         /// </summary>
-        private readonly PgRepository<RoomType> roomTypeRepository;
+        private readonly GenericRepository<RoomType> roomTypeRepository;
 
         /// <summary>
         /// 客房信息
         /// </summary>
-        private readonly PgRepository<Room> roomRepository;
+        private readonly GenericRepository<Room> roomRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="roomTypeRepository"></param>
         /// <param name="roomRepository"></param>
-        public RoomTypeService(PgRepository<RoomType> roomTypeRepository, PgRepository<Room> roomRepository)
+        public RoomTypeService(GenericRepository<RoomType> roomTypeRepository, GenericRepository<Room> roomRepository)
         {
             this.roomTypeRepository = roomTypeRepository;
             this.roomRepository = roomRepository;
@@ -57,10 +58,19 @@ namespace EOM.TSHotelManager.Application
         /// 获取所有房间类型
         /// </summary>
         /// <returns></returns>
-        public List<RoomType> SelectRoomTypesAll()
+        public List<RoomType> SelectRoomTypesAll(int? isDelete)
         {
             List<RoomType> types = new List<RoomType>();
-            types = roomTypeRepository.GetList(a => a.delete_mk != 1);
+            if (!isDelete.IsNullOrEmpty())
+            {
+                types = roomTypeRepository.GetList(a => a.delete_mk == isDelete);
+
+            }
+            types = roomTypeRepository.GetList();
+            types.ForEach(t =>
+            {
+                t.DeleteMkNm = t.delete_mk == 0 ? "否" : "是";
+            });
             return types;
         }
         #endregion
@@ -76,9 +86,60 @@ namespace EOM.TSHotelManager.Application
             RoomType roomtype = new RoomType();
             Room room = new Room();
             room = roomRepository.GetSingle(a => a.RoomNo == no && a.delete_mk != 1);
-            roomtype.RoomName = roomTypeRepository.GetSingle(a => a.Roomtype == room.RoomStateId).RoomName;
+            roomtype.RoomName = roomTypeRepository.GetSingle(a => a.Roomtype == room.RoomType).RoomName;
             return roomtype;
         }
         #endregion
+
+        /// <summary>
+        /// 根据房间类型查询类型配置
+        /// </summary>
+        /// <param name="roomTypeId"></param>
+        /// <returns></returns>
+        public RoomType SelectRoomTypeByType(int roomTypeId)
+        {
+            var roomType = roomTypeRepository.GetSingle(a => a.Roomtype == roomTypeId);
+            return roomType;
+        }
+
+        /// <summary>
+        /// 添加房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        public bool InsertRoomType(RoomType roomType)
+        {
+            return roomTypeRepository.Insert(roomType);
+        }
+
+        /// <summary>
+        /// 更新房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        public bool UpdateRoomType(RoomType roomType)
+        {
+            return roomTypeRepository.Update(a => new RoomType
+            {
+                RoomName = roomType.RoomName,
+                RoomRent = roomType.RoomRent,
+                RoomDeposit = roomType.RoomDeposit,
+                delete_mk = roomType.delete_mk,
+                datachg_usr = roomType.datachg_usr
+            }, a => a.Roomtype == roomType.Roomtype);
+        }
+
+        /// <summary>
+        /// 删除房间状态
+        /// </summary>
+        /// <param name="roomType"></param>
+        /// <returns></returns>
+        public bool DeleteRoomType(RoomType roomType)
+        {
+            return roomTypeRepository.Update(a => new RoomType
+            {
+                delete_mk = 1
+            }, a => a.Roomtype == roomType.Roomtype);
+        }
     }
 }

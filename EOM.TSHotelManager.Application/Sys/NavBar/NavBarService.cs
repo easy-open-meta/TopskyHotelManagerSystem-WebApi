@@ -11,13 +11,13 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 导航控件
         /// </summary>
-        private readonly PgRepository<NavBar> navBarRepository;
+        private readonly GenericRepository<NavBar> navBarRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="navBarRepository"></param>
-        public NavBarService(PgRepository<NavBar> navBarRepository)
+        public NavBarService(GenericRepository<NavBar> navBarRepository)
         {
             this.navBarRepository = navBarRepository;
         }

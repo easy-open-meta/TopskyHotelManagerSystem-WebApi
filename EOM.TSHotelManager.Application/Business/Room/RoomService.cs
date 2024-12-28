@@ -21,9 +21,9 @@
  *SOFTWARE.
  *
  */
-using CK.Common;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -35,22 +35,22 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 客房信息
         /// </summary>
-        private readonly PgRepository<Room> roomRepository;
+        private readonly GenericRepository<Room> roomRepository;
 
         /// <summary>
         /// 客房状态
         /// </summary>
-        private readonly PgRepository<RoomState> roomStateRepository;
+        private readonly GenericRepository<RoomState> roomStateRepository;
 
         /// <summary>
         /// 客房类型
         /// </summary>
-        private readonly PgRepository<RoomType> roomTypeRepository;
+        private readonly GenericRepository<RoomType> roomTypeRepository;
 
         /// <summary>
         /// 客户信息
         /// </summary>
-        private readonly PgRepository<Custo> custoRepository;
+        private readonly GenericRepository<Custo> custoRepository;
 
         /// <summary>
         /// 
@@ -59,7 +59,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="roomStateRepository"></param>
         /// <param name="roomTypeRepository"></param>
         /// <param name="custoRepository"></param>
-        public RoomService(PgRepository<Room> roomRepository, PgRepository<RoomState> roomStateRepository, PgRepository<RoomType> roomTypeRepository, PgRepository<Custo> custoRepository)
+        public RoomService(GenericRepository<Room> roomRepository, GenericRepository<RoomState> roomStateRepository, GenericRepository<RoomType> roomTypeRepository, GenericRepository<Custo> custoRepository)
         {
             this.roomRepository = roomRepository;
             this.roomStateRepository = roomStateRepository;
@@ -84,9 +84,9 @@ namespace EOM.TSHotelManager.Application
             rooms.ForEach(source =>
             {
                 var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
+                source.RoomState = roomState.RoomStateName.IsNullOrEmpty() ? "" : roomState.RoomStateName;
                 var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
+                source.RoomName = roomType.RoomName.IsNullOrEmpty() ? "" : roomType.RoomName;
             });
             return rooms;
         }
@@ -100,17 +100,17 @@ namespace EOM.TSHotelManager.Application
         public List<Room> SelectCanUseRoomAll()
         {
             List<RoomState> roomStates = new List<RoomState>();
-            roomStates = roomStateRepository.GetList(a => a.delete_mk != 1);
+            roomStates = roomStateRepository.GetList();
             List<RoomType> roomTypes = new List<RoomType>();
-            roomTypes = roomTypeRepository.GetList(a => a.delete_mk != 1);
+            roomTypes = roomTypeRepository.GetList();
             List<Room> rooms = new List<Room>();
             rooms = roomRepository.GetList(a => a.delete_mk != 1 && a.RoomStateId == 0).OrderBy(a => a.RoomNo).ToList();
             rooms.ForEach(source =>
             {
                 var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
+                source.RoomState = roomState.RoomStateName.IsNullOrEmpty() ? "" : roomState.RoomStateName;
                 var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
+                source.RoomName = roomType.RoomName.IsNullOrEmpty() ? "" : roomType.RoomName;
             });
             return rooms;
         }
@@ -124,26 +124,26 @@ namespace EOM.TSHotelManager.Application
         public List<Room> SelectRoomAll()
         {
             List<RoomState> roomStates = new List<RoomState>();
-            roomStates = roomStateRepository.GetList(a => a.delete_mk != 1);
+            roomStates = roomStateRepository.GetList();
             List<RoomType> roomTypes = new List<RoomType>();
-            roomTypes = roomTypeRepository.GetList(a => a.delete_mk != 1);
+            roomTypes = roomTypeRepository.GetList();
             List<Room> rooms = new List<Room>();
-            rooms = roomRepository.GetList(a => a.delete_mk != 1).OrderBy(a => a.RoomNo).ToList();
+            rooms = roomRepository.GetList().OrderBy(a => a.RoomNo).ToList();
             var listCustoNo = rooms.Select(a => a.CustoNo).Distinct().ToList();
             List<Custo> custos = new List<Custo>();
             custos = custoRepository.GetList(a => listCustoNo.Contains(a.CustoNo));
             rooms.ForEach(source =>
             {
                 var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
+                source.RoomState = roomState.RoomStateName.IsNullOrEmpty() ? "" : roomState.RoomStateName;
                 var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
+                source.RoomName = roomType.RoomName.IsNullOrEmpty() ? "" : roomType.RoomName;
 
                 var custo = custos.FirstOrDefault(a => a.CustoNo.Equals(source.CustoNo));
                 source.CustoName = custo.IsNullOrEmpty() ? "" : custo.CustoName;
 
                 //把入住时间格式化
-                source.CheckTimeFormat = string.IsNullOrEmpty(source.CheckTime + "") ? ""
+                source.CheckTimeFormat = (source.CheckTime + "").IsNullOrEmpty() ? ""
                 : Convert.ToDateTime(source.CheckTime).ToString("yyyy-MM-dd HH:mm");
 
             });
@@ -171,9 +171,9 @@ namespace EOM.TSHotelManager.Application
             rooms.ForEach(source =>
             {
                 var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
+                source.RoomState = roomState.RoomStateName.IsNullOrEmpty() ? "" : roomState.RoomStateName;
                 var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
+                source.RoomName = roomType.RoomName.IsNullOrEmpty() ? "" : roomType.RoomName;
 
                 var custo = custos.FirstOrDefault(a => a.CustoNo.Equals(source.CustoNo));
                 source.CustoName = custo.IsNullOrEmpty() ? "" : custo.CustoName;
@@ -195,10 +195,18 @@ namespace EOM.TSHotelManager.Application
             roomStates = roomStateRepository.GetList(a => a.delete_mk != 1);
             Room room = new Room();
             room = roomRepository.GetSingle(a => a.delete_mk != 1 && a.RoomNo == no);
-            var roomSate = roomStates.FirstOrDefault(a => a.RoomStateId == room.RoomStateId);
-            room.RoomState = string.IsNullOrEmpty(roomSate.RoomStateName) ? "" : roomSate.RoomStateName;
-            var roomType = roomTypeRepository.GetSingle(a => a.Roomtype == room.RoomType);
-            room.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
+            if (!room.IsNullOrEmpty())
+            {
+                var roomSate = roomStates.FirstOrDefault(a => a.RoomStateId == room.RoomStateId);
+                room.RoomState = roomSate.RoomStateName.IsNullOrEmpty() ? "" : roomSate.RoomStateName;
+                var roomType = roomTypeRepository.GetSingle(a => a.Roomtype == room.RoomType);
+                room.RoomName = roomType.RoomName.IsNullOrEmpty() ? "" : roomType.RoomName;
+            }
+            else
+            {
+                room = new Room();
+            }
+
             return room;
         }
         #endregion
@@ -383,9 +391,9 @@ namespace EOM.TSHotelManager.Application
             rooms.ForEach(source =>
             {
                 var roomState = roomStates.FirstOrDefault(a => a.RoomStateId == source.RoomStateId);
-                source.RoomState = string.IsNullOrEmpty(roomState.RoomStateName) ? "" : roomState.RoomStateName;
+                source.RoomState = roomState.RoomStateName.IsNullOrEmpty() ? "" : roomState.RoomStateName;
                 var roomType = roomTypes.FirstOrDefault(a => a.Roomtype == source.RoomType);
-                source.RoomName = string.IsNullOrEmpty(roomType.RoomName) ? "" : roomType.RoomName;
+                source.RoomName = roomType.RoomName.IsNullOrEmpty() ? "" : roomType.RoomName;
             });
             return rooms;
         }

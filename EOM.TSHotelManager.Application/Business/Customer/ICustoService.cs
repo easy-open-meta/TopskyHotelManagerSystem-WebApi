@@ -62,7 +62,7 @@ namespace EOM.TSHotelManager.Application
         /// 查询所有客户信息
         /// </summary>
         /// <returns></returns>
-        OSelectCustoAllDto SelectCustoAll(int? pageIndex, int? pageSize, bool onlyVip = false);
+        OSelectAllDto<Custo> SelectCustoAll(int? pageIndex, int? pageSize, bool onlyVip = false);
 
         /// <summary>
         /// 查询指定客户信息

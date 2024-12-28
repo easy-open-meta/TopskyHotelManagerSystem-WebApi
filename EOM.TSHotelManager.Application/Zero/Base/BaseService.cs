@@ -21,9 +21,9 @@
  *SOFTWARE.
  *
  */
-using CK.Common;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 using SqlSugar;
 
 namespace EOM.TSHotelManager.Application
@@ -36,52 +36,52 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 员工信息
         /// </summary>
-        private readonly PgRepository<Worker> workerRepository;
+        private readonly GenericRepository<Worker> workerRepository;
 
         /// <summary>
         /// 性别类型
         /// </summary>
-        private readonly PgRepository<SexType> sexTypeRepository;
+        private readonly GenericRepository<SexType> sexTypeRepository;
 
         /// <summary>
         /// 学历类型
         /// </summary>
-        private readonly PgRepository<Education> educationRepository;
+        private readonly GenericRepository<Education> educationRepository;
 
         /// <summary>
         /// 民族类型
         /// </summary>
-        private readonly PgRepository<Nation> nationRepository;
+        private readonly GenericRepository<Nation> nationRepository;
 
         /// <summary>
         /// 部门
         /// </summary>
-        private readonly PgRepository<Dept> deptRepository;
+        private readonly GenericRepository<Dept> deptRepository;
 
         /// <summary>
         /// 职务
         /// </summary>
-        private readonly PgRepository<Position> positionRepository;
+        private readonly GenericRepository<Position> positionRepository;
 
         /// <summary>
         /// 证件类型
         /// </summary>
-        private readonly PgRepository<PassPortType> passPortTypeRepository;
+        private readonly GenericRepository<PassPortType> passPortTypeRepository;
 
         /// <summary>
         /// 客户类型
         /// </summary>
-        private readonly PgRepository<CustoType> custoTypeRepository;
+        private readonly GenericRepository<CustoType> custoTypeRepository;
 
         /// <summary>
         /// 奖惩类型
         /// </summary>
-        private readonly PgRepository<GBType> goodbadTypeRepository;
+        private readonly GenericRepository<GBType> goodbadTypeRepository;
 
         /// <summary>
         /// 基础URL
         /// </summary>
-        private readonly PgRepository<Base> baseRepository;
+        private readonly GenericRepository<Base> baseRepository;
 
         /// <summary>
         /// 
@@ -96,7 +96,7 @@ namespace EOM.TSHotelManager.Application
         /// <param name="custoTypeRepository"></param>
         /// <param name="goodbadTypeRepository"></param>
         /// <param name="baseRepository"></param>
-        public BaseService(PgRepository<Worker> workerRepository, PgRepository<SexType> sexTypeRepository, PgRepository<Education> educationRepository, PgRepository<Nation> nationRepository, PgRepository<Dept> deptRepository, PgRepository<Position> positionRepository, PgRepository<PassPortType> passPortTypeRepository, PgRepository<CustoType> custoTypeRepository, PgRepository<GBType> goodbadTypeRepository, PgRepository<Base> baseRepository)
+        public BaseService(GenericRepository<Worker> workerRepository, GenericRepository<SexType> sexTypeRepository, GenericRepository<Education> educationRepository, GenericRepository<Nation> nationRepository, GenericRepository<Dept> deptRepository, GenericRepository<Position> positionRepository, GenericRepository<PassPortType> passPortTypeRepository, GenericRepository<CustoType> custoTypeRepository, GenericRepository<GBType> goodbadTypeRepository, GenericRepository<Base> baseRepository)
         {
             this.workerRepository = workerRepository;
             this.sexTypeRepository = sexTypeRepository;
@@ -416,12 +416,12 @@ namespace EOM.TSHotelManager.Application
                 if (!source.dept_parent.IsNullOrEmpty())
                 {
                     var dept = depts.FirstOrDefault(a => a.dept_no == source.dept_parent);
-                    source.parent_name = dept == null || string.IsNullOrEmpty(dept.dept_name) ? "无" : dept.dept_name;
+                    source.parent_name = dept == null || dept.dept_name.IsNullOrEmpty() ? "无" : dept.dept_name;
                 }
                 if (!source.dept_leader.IsNullOrEmpty())
                 {
                     var leader = workers.FirstOrDefault(a => a.WorkerId == source.dept_leader);
-                    source.leader_name = leader == null || string.IsNullOrEmpty(leader.WorkerName) ? "无" : leader.WorkerName;
+                    source.leader_name = leader == null || leader.WorkerName.IsNullOrEmpty() ? "无" : leader.WorkerName;
                 }
 
             });

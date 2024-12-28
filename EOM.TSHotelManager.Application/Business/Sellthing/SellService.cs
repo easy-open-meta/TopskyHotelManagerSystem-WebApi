@@ -21,9 +21,9 @@
  *SOFTWARE.
  *
  */
-using CK.Common;
 using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 using SqlSugar;
 
 namespace EOM.TSHotelManager.Application
@@ -36,19 +36,19 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 商品信息
         /// </summary>
-        private readonly PgRepository<SellThing> sellThingRepository;
+        private readonly GenericRepository<SellThing> sellThingRepository;
 
         /// <summary>
         /// 消费情况
         /// </summary>
-        private readonly PgRepository<Spend> spendRepository;
+        private readonly GenericRepository<Spend> spendRepository;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="sellThingRepository"></param>
         /// <param name="spendRepository"></param>
-        public SellService(PgRepository<SellThing> sellThingRepository, PgRepository<Spend> spendRepository)
+        public SellService(GenericRepository<SellThing> sellThingRepository, GenericRepository<Spend> spendRepository)
         {
             this.sellThingRepository = sellThingRepository;
             this.spendRepository = spendRepository;

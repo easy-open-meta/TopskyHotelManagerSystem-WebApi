@@ -1,5 +1,6 @@
 ﻿using EOM.TSHotelManager.Common.Core;
 using EOM.TSHotelManager.EntityFramework;
+using jvncorelib.EntityLib;
 
 namespace EOM.TSHotelManager.Application
 {
@@ -11,19 +12,19 @@ namespace EOM.TSHotelManager.Application
         /// <summary>
         /// 员工照片
         /// </summary>
-        private readonly PgRepository<WorkerPic> workerPicRepository;
+        private readonly GenericRepository<WorkerPic> workerPicRepository;
 
         /// <summary>
         /// 加密
         /// </summary>
-        private readonly EOM.Encrypt.Encrypt encrypt;
+        private readonly jvncorelib.EncryptorLib.EncryptLib encrypt;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="workerPicRepository"></param>
         /// <param name="encrypt"></param>
-        public WorkerPicService(PgRepository<WorkerPic> workerPicRepository, EOM.Encrypt.Encrypt encrypt)
+        public WorkerPicService(GenericRepository<WorkerPic> workerPicRepository, jvncorelib.EncryptorLib.EncryptLib encrypt)
         {
             this.workerPicRepository = workerPicRepository;
             this.encrypt = encrypt;
@@ -40,7 +41,10 @@ namespace EOM.TSHotelManager.Application
 
             workerPicSource = workerPicRepository.GetSingle(a => a.WorkerId.Equals(workerPic.WorkerId));
 
-            //workerPicSource.Pic = workerPicSource == null || string.IsNullOrEmpty(workerPicSource.Pic)  "" : workerPicSource.Pic;
+            if (workerPicSource.IsNullOrEmpty())
+            {
+                return new WorkerPic { Id = 0, Pic = "", WorkerId = workerPic.WorkerId };
+            }
 
             return workerPicSource;
         }

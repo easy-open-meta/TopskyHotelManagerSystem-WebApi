@@ -37,7 +37,7 @@ namespace EOM.TSHotelManager.Application
         /// </summary>
         /// <param name="admin"></param>
         /// <returns></returns>
-        Admin SelectMangerByPass(Admin admin);
+        Admin SelectManagerByPass(Admin admin);
         #endregion
 
         #region 根据超管账号查询对应的密码

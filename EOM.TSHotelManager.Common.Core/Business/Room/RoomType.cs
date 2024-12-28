@@ -22,6 +22,8 @@
  *
  *模块说明：房间类型类
  */
+using EOM.TSHotelManager.Common.Util;
+
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>
@@ -34,27 +36,37 @@ namespace EOM.TSHotelManager.Common.Core
         /// 类型编号
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "RoomType")]
+        [NeedValid]
         public int Roomtype { get; set; }
         /// <summary>
         /// 房间类型
         /// </summary>
+        [NeedValid]
         public string RoomName { get; set; }
 
         /// <summary>
         /// 房间租金
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_rent", ColumnDataType = "decimal")]
+        [NeedValid]
         public decimal RoomRent { get; set; }
 
         /// <summary>
         /// 房间押金
         /// </summary>
         [SqlSugar.SugarColumn(ColumnName = "room_deposit")]
+        [NeedValid]
         public decimal RoomDeposit { get; set; }
 
         /// <summary>
         /// 删除标记
         /// </summary>
-        public int delete_mk { get; set; }
+        public int delete_mk { get; set; } = 0;
+
+        /// <summary>
+        /// 删除标记描述
+        /// </summary>
+        [SqlSugar.SugarColumn(IsIgnore = true)]
+        public string DeleteMkNm { get; set; }
     }
 }

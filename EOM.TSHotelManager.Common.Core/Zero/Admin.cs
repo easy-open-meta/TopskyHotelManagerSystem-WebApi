@@ -22,6 +22,8 @@
  *
  *模块说明：管理员实体类
  */
+using EOM.TSHotelManager.Common.Util;
+
 namespace EOM.TSHotelManager.Common.Core
 {
     /// <summary>
@@ -40,43 +42,53 @@ namespace EOM.TSHotelManager.Common.Core
         /// <summary>
         /// 编号
         /// </summary>
+        [SqlSugar.SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
         public int Id { get; set; }
 
         private string _AdminAccount;
         /// <summary>
         /// 管理员账号
         /// </summary>
+        [UIDisplay("管理员账号")]
         [SqlSugar.SugarColumn(IsPrimaryKey = true)]
+        [NeedValid]
         public string AdminAccount { get { return this._AdminAccount; } set { this._AdminAccount = value; } }
 
         private string _AdminPassword;
         /// <summary>
         /// 管理员密码
         /// </summary>
+        [NeedValid]
         public string AdminPassword { get { return this._AdminPassword; } set { this._AdminPassword = value; } }
 
         private string _AdminType;
         /// <summary>
         /// 管理员类型
         /// </summary>
+        [NeedValid]
         public string AdminType { get { return this._AdminType; } set { this._AdminType = value; } }
 
         private string _AdminName;
         /// <summary>
         /// 管理员名称
         /// </summary>
+        [UIDisplay("管理员名称")]
+        [NeedValid]
         public string AdminName { get { return this._AdminName; } set { this._AdminName = value; } }
 
         private System.Int32 _IsAdmin;
         /// <summary>
         /// 是否为超级管理员
         /// </summary>
+        [UIDisplay("超级管理员？")]
+        [NeedValid]
         public System.Int32 IsAdmin { get { return this._IsAdmin; } set { this._IsAdmin = value; } }
 
         private System.Int32 _DeleteMk;
         /// <summary>
         /// 删除标记
         /// </summary>
+        [UIDisplay("删除？")]
         public System.Int32 DeleteMk { get { return this._DeleteMk; } set { this._DeleteMk = value; } }
 
         /// <summary>
